@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3133329D28311C6900EA4DFD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133329C28311C6900EA4DFD /* main.cpp */; };
+		313332B228311C8100EA4DFD /* Midi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313332AC28311C8100EA4DFD /* Midi.cpp */; };
+		313332B328311C8100EA4DFD /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313332AF28311C8100EA4DFD /* Music.cpp */; };
+		313332B428311C8100EA4DFD /* Loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313332B128311C8100EA4DFD /* Loader.cpp */; };
+		3133331428314FC700EA4DFD /* libfluidsynth.3.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3133330F283148D000EA4DFD /* libfluidsynth.3.1.0.dylib */; };
+		3133331528314FC700EA4DFD /* libfluidsynth.3.1.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 3133330F283148D000EA4DFD /* libfluidsynth.3.1.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		313333202831537800EA4DFD /* Note.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133331D2831537800EA4DFD /* Note.cpp */; };
+		313333212831537800EA4DFD /* Chord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133331F2831537800EA4DFD /* Chord.cpp */; };
+		313333262831538900EA4DFD /* SongLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333222831538900EA4DFD /* SongLine.cpp */; };
+		313333272831538900EA4DFD /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333252831538900EA4DFD /* Song.cpp */; };
+		3133332A2831564B00EA4DFD /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333282831564B00EA4DFD /* Parser.cpp */; };
+		3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133332B2831574100EA4DFD /* MidiGenerator.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3133331628314FC700EA4DFD /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3133331528314FC700EA4DFD /* libfluidsynth.3.1.0.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3133329928311C6900EA4DFD /* MidiSFML */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MidiSFML; sourceTree = BUILT_PRODUCTS_DIR; };
+		3133329C28311C6900EA4DFD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		313332AA28311C8100EA4DFD /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Music.h; sourceTree = "<group>"; };
+		313332AB28311C8100EA4DFD /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		313332AC28311C8100EA4DFD /* Midi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Midi.cpp; sourceTree = "<group>"; };
+		313332AD28311C8100EA4DFD /* Midi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Midi.h; sourceTree = "<group>"; };
+		313332AE28311C8100EA4DFD /* sfMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sfMidi.h; sourceTree = "<group>"; };
+		313332AF28311C8100EA4DFD /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Music.cpp; sourceTree = "<group>"; };
+		313332B028311C8100EA4DFD /* Loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loader.h; sourceTree = "<group>"; };
+		313332B128311C8100EA4DFD /* Loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Loader.cpp; sourceTree = "<group>"; };
+		313332B628311C9B00EA4DFD /* libfluidsynth.2.3.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfluidsynth.2.3.9.dylib; path = ../../../../../opt/local/lib/libfluidsynth.2.3.9.dylib; sourceTree = "<group>"; };
+		313332BC28311D9E00EA4DFD /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		313332BD28311D9E00EA4DFD /* All Night Long.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "All Night Long.mid"; sourceTree = "<group>"; };
+		313332C128311D9F00EA4DFD /* GeneralUser GS FluidSynth v1.44.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeneralUser GS FluidSynth v1.44.sf2"; sourceTree = "<group>"; };
+		313332C3283121F100EA4DFD /* Essential Keys-sforzando-v9.6.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Essential Keys-sforzando-v9.6.sf2"; sourceTree = "<group>"; };
+		313332C42831227C00EA4DFD /* MOON.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = MOON.mid; sourceTree = "<group>"; };
+		313332C62831237900EA4DFD /* BOURREE-1.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "BOURREE-1.mid"; sourceTree = "<group>"; };
+		313332C8283124C300EA4DFD /* SHOW.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = SHOW.mid; sourceTree = "<group>"; };
+		313332CC2831279900EA4DFD /* Touhou.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Touhou.sf2; sourceTree = "<group>"; };
+		313332E32831457A00EA4DFD /* libfluidsynth.3.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfluidsynth.3.1.0.dylib; path = "../../../../../usr/local/Cellar/fluid-synth/2.2.7/lib/libfluidsynth.3.1.0.dylib"; sourceTree = "<group>"; };
+		313332FC283147FB00EA4DFD /* shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shell.h; sourceTree = "<group>"; };
+		313332FD283147FB00EA4DFD /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		313332FE283147FB00EA4DFD /* seq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = seq.h; sourceTree = "<group>"; };
+		313332FF283147FB00EA4DFD /* midi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = midi.h; sourceTree = "<group>"; };
+		31333300283147FB00EA4DFD /* seqbind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = seqbind.h; sourceTree = "<group>"; };
+		31333301283147FB00EA4DFD /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settings.h; sourceTree = "<group>"; };
+		31333302283147FB00EA4DFD /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event.h; sourceTree = "<group>"; };
+		31333303283147FB00EA4DFD /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		31333304283147FB00EA4DFD /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		31333305283147FB00EA4DFD /* synth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = synth.h; sourceTree = "<group>"; };
+		31333306283147FB00EA4DFD /* gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gen.h; sourceTree = "<group>"; };
+		31333307283147FB00EA4DFD /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
+		31333308283147FB00EA4DFD /* ladspa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ladspa.h; sourceTree = "<group>"; };
+		31333309283147FB00EA4DFD /* log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = log.h; sourceTree = "<group>"; };
+		3133330A283147FB00EA4DFD /* voice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = voice.h; sourceTree = "<group>"; };
+		3133330B283147FB00EA4DFD /* mod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mod.h; sourceTree = "<group>"; };
+		3133330C283147FB00EA4DFD /* sfont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sfont.h; sourceTree = "<group>"; };
+		3133330E283148BC00EA4DFD /* fluidsynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fluidsynth.h; sourceTree = "<group>"; };
+		3133330F283148D000EA4DFD /* libfluidsynth.3.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libfluidsynth.3.1.0.dylib; sourceTree = "<group>"; };
+		3133331C2831537800EA4DFD /* Chord.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Chord.hpp; sourceTree = "<group>"; };
+		3133331D2831537800EA4DFD /* Note.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Note.cpp; sourceTree = "<group>"; };
+		3133331E2831537800EA4DFD /* Note.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Note.hpp; sourceTree = "<group>"; };
+		3133331F2831537800EA4DFD /* Chord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chord.cpp; sourceTree = "<group>"; };
+		313333222831538900EA4DFD /* SongLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SongLine.cpp; sourceTree = "<group>"; };
+		313333232831538900EA4DFD /* Song.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Song.hpp; sourceTree = "<group>"; };
+		313333242831538900EA4DFD /* SongLine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SongLine.hpp; sourceTree = "<group>"; };
+		313333252831538900EA4DFD /* Song.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Song.cpp; sourceTree = "<group>"; };
+		313333282831564B00EA4DFD /* Parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		313333292831564B00EA4DFD /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
+		3133332B2831574100EA4DFD /* MidiGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiGenerator.cpp; sourceTree = "<group>"; };
+		3133332C2831574100EA4DFD /* MidiGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MidiGenerator.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3133329728311C6900EA4DFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3133331428314FC700EA4DFD /* libfluidsynth.3.1.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3133329128311C6900EA4DFD = {
+			isa = PBXGroup;
+			children = (
+				3133329B28311C6900EA4DFD /* MidiSFML */,
+				3133329A28311C6900EA4DFD /* Products */,
+				313332B528311C9B00EA4DFD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3133329A28311C6900EA4DFD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3133329928311C6900EA4DFD /* MidiSFML */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3133329B28311C6900EA4DFD /* MidiSFML */ = {
+			isa = PBXGroup;
+			children = (
+				3133331B2831536100EA4DFD /* MidiPlayer */,
+				3133331128314B0C00EA4DFD /* res */,
+				313332A828311C8100EA4DFD /* libs */,
+				3133329C28311C6900EA4DFD /* main.cpp */,
+			);
+			path = MidiSFML;
+			sourceTree = "<group>";
+		};
+		313332A828311C8100EA4DFD /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				3133330E283148BC00EA4DFD /* fluidsynth.h */,
+				313332AE28311C8100EA4DFD /* sfMidi.h */,
+				313332FB283147FB00EA4DFD /* fluidsynth */,
+				313332A928311C8100EA4DFD /* sfMidi */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		313332A928311C8100EA4DFD /* sfMidi */ = {
+			isa = PBXGroup;
+			children = (
+				313332AA28311C8100EA4DFD /* Music.h */,
+				313332AB28311C8100EA4DFD /* Error.h */,
+				313332AC28311C8100EA4DFD /* Midi.cpp */,
+				313332AD28311C8100EA4DFD /* Midi.h */,
+				313332AF28311C8100EA4DFD /* Music.cpp */,
+				313332B028311C8100EA4DFD /* Loader.h */,
+				313332B128311C8100EA4DFD /* Loader.cpp */,
+			);
+			path = sfMidi;
+			sourceTree = "<group>";
+		};
+		313332B528311C9B00EA4DFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				313332E32831457A00EA4DFD /* libfluidsynth.3.1.0.dylib */,
+				313332B628311C9B00EA4DFD /* libfluidsynth.2.3.9.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		313332FB283147FB00EA4DFD /* fluidsynth */ = {
+			isa = PBXGroup;
+			children = (
+				3133330F283148D000EA4DFD /* libfluidsynth.3.1.0.dylib */,
+				313332FC283147FB00EA4DFD /* shell.h */,
+				313332FD283147FB00EA4DFD /* version.h */,
+				313332FE283147FB00EA4DFD /* seq.h */,
+				313332FF283147FB00EA4DFD /* midi.h */,
+				31333300283147FB00EA4DFD /* seqbind.h */,
+				31333301283147FB00EA4DFD /* settings.h */,
+				31333302283147FB00EA4DFD /* event.h */,
+				31333303283147FB00EA4DFD /* types.h */,
+				31333304283147FB00EA4DFD /* misc.h */,
+				31333305283147FB00EA4DFD /* synth.h */,
+				31333306283147FB00EA4DFD /* gen.h */,
+				31333307283147FB00EA4DFD /* audio.h */,
+				31333308283147FB00EA4DFD /* ladspa.h */,
+				31333309283147FB00EA4DFD /* log.h */,
+				3133330A283147FB00EA4DFD /* voice.h */,
+				3133330B283147FB00EA4DFD /* mod.h */,
+				3133330C283147FB00EA4DFD /* sfont.h */,
+			);
+			path = fluidsynth;
+			sourceTree = "<group>";
+		};
+		3133331128314B0C00EA4DFD /* res */ = {
+			isa = PBXGroup;
+			children = (
+				313332BC28311D9E00EA4DFD /* bg.png */,
+				3133331328314B3100EA4DFD /* midis */,
+				3133331228314B2400EA4DFD /* synths */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		3133331228314B2400EA4DFD /* synths */ = {
+			isa = PBXGroup;
+			children = (
+				313332CC2831279900EA4DFD /* Touhou.sf2 */,
+				313332C3283121F100EA4DFD /* Essential Keys-sforzando-v9.6.sf2 */,
+				313332C128311D9F00EA4DFD /* GeneralUser GS FluidSynth v1.44.sf2 */,
+			);
+			path = synths;
+			sourceTree = "<group>";
+		};
+		3133331328314B3100EA4DFD /* midis */ = {
+			isa = PBXGroup;
+			children = (
+				313332C8283124C300EA4DFD /* SHOW.mid */,
+				313332C62831237900EA4DFD /* BOURREE-1.mid */,
+				313332C42831227C00EA4DFD /* MOON.mid */,
+				313332BD28311D9E00EA4DFD /* All Night Long.mid */,
+			);
+			path = midis;
+			sourceTree = "<group>";
+		};
+		3133331B2831536100EA4DFD /* MidiPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				313333252831538900EA4DFD /* Song.cpp */,
+				313333232831538900EA4DFD /* Song.hpp */,
+				313333222831538900EA4DFD /* SongLine.cpp */,
+				313333242831538900EA4DFD /* SongLine.hpp */,
+				3133331F2831537800EA4DFD /* Chord.cpp */,
+				3133331C2831537800EA4DFD /* Chord.hpp */,
+				3133331D2831537800EA4DFD /* Note.cpp */,
+				3133331E2831537800EA4DFD /* Note.hpp */,
+				313333282831564B00EA4DFD /* Parser.cpp */,
+				313333292831564B00EA4DFD /* Parser.hpp */,
+				3133332B2831574100EA4DFD /* MidiGenerator.cpp */,
+				3133332C2831574100EA4DFD /* MidiGenerator.hpp */,
+			);
+			path = MidiPlayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3133329828311C6900EA4DFD /* MidiSFML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 313332A528311C6900EA4DFD /* Build configuration list for PBXNativeTarget "MidiSFML" */;
+			buildPhases = (
+				3133329728311C6900EA4DFD /* Frameworks */,
+				3133331628314FC700EA4DFD /* Embed Libraries */,
+				3133329628311C6900EA4DFD /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MidiSFML;
+			productName = MidiSFML;
+			productReference = 3133329928311C6900EA4DFD /* MidiSFML */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3133329228311C6900EA4DFD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1330;
+				ORGANIZATIONNAME = "Valery Kovalev";
+				TargetAttributes = {
+					3133329828311C6900EA4DFD = {
+						CreatedOnToolsVersion = 13.3;
+					};
+				};
+			};
+			buildConfigurationList = 3133329528311C6900EA4DFD /* Build configuration list for PBXProject "MidiSFML" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3133329128311C6900EA4DFD;
+			productRefGroup = 3133329A28311C6900EA4DFD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3133329828311C6900EA4DFD /* MidiSFML */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3133329628311C6900EA4DFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				313333272831538900EA4DFD /* Song.cpp in Sources */,
+				313333262831538900EA4DFD /* SongLine.cpp in Sources */,
+				313332B328311C8100EA4DFD /* Music.cpp in Sources */,
+				313332B228311C8100EA4DFD /* Midi.cpp in Sources */,
+				3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */,
+				3133332A2831564B00EA4DFD /* Parser.cpp in Sources */,
+				313332B428311C8100EA4DFD /* Loader.cpp in Sources */,
+				3133329D28311C6900EA4DFD /* main.cpp in Sources */,
+				313333212831537800EA4DFD /* Chord.cpp in Sources */,
+				313333202831537800EA4DFD /* Note.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		313332A328311C6900EA4DFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX) sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		313332A428311C6900EA4DFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++11";
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "$(SFML_LINK_PREFIX) sfml-network$(SFML_LINK_SUFFIX)";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+		313332A628311C6900EA4DFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7C6C9JG2JY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+					/opt/local/include,
+					"/usr/local/Cellar/fluid-synth/2.2.7/lib",
+					"$(PROJECT_DIR)/MidiSFML/libs/fluidsynth",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		313332A728311C6900EA4DFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7C6C9JG2JY;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/local/lib,
+					/opt/local/include,
+					"/usr/local/Cellar/fluid-synth/2.2.7/lib",
+					"$(PROJECT_DIR)/MidiSFML/libs/fluidsynth",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3133329528311C6900EA4DFD /* Build configuration list for PBXProject "MidiSFML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				313332A328311C6900EA4DFD /* Debug */,
+				313332A428311C6900EA4DFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		313332A528311C6900EA4DFD /* Build configuration list for PBXNativeTarget "MidiSFML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				313332A628311C6900EA4DFD /* Debug */,
+				313332A728311C6900EA4DFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3133329228311C6900EA4DFD /* Project object */;
+}
