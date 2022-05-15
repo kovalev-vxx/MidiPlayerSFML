@@ -49,8 +49,8 @@ int main()
 
   spr_bg.setPosition(40.0f, 100.0f);
 
-  sfmidi::Midi testMidi("res/synths/Essential Keys-sforzando-v9.6.sf2",
-                        "res/midis/SHOW.mid");
+  sfmidi::Midi testMidi("res/synths/Touhou.sf2",
+                        "res/midis/Sing, Sing, Sing FAATTTB.mid");
   if (testMidi.hasError()) {
     std::cout<<testMidi.getError();
     return 1;

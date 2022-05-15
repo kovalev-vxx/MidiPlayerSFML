@@ -87,6 +87,11 @@
 		313333292831564B00EA4DFD /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
 		3133332B2831574100EA4DFD /* MidiGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiGenerator.cpp; sourceTree = "<group>"; };
 		3133332C2831574100EA4DFD /* MidiGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MidiGenerator.hpp; sourceTree = "<group>"; };
+		31B409512831655500B161C5 /* debussy-clair-de-lune.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "debussy-clair-de-lune.mid"; sourceTree = "<group>"; };
+		31B409522831665400B161C5 /* Queen - Bohemian Rhapsody.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "Queen - Bohemian Rhapsody.mid"; sourceTree = "<group>"; };
+		31B4095328318B1B00B161C5 /* moonlight_sonata_third_movement.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = moonlight_sonata_third_movement.mid; sourceTree = "<group>"; };
+		31B4095528318C4A00B161C5 /* The Jazz Police bigband copy.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "The Jazz Police bigband copy.mid"; sourceTree = "<group>"; };
+		31B4095628318D1C00B161C5 /* Sing, Sing, Sing FAATTTB.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "Sing, Sing, Sing FAATTTB.mid"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +216,11 @@
 		3133331328314B3100EA4DFD /* midis */ = {
 			isa = PBXGroup;
 			children = (
+				31B4095628318D1C00B161C5 /* Sing, Sing, Sing FAATTTB.mid */,
+				31B4095528318C4A00B161C5 /* The Jazz Police bigband copy.mid */,
+				31B4095328318B1B00B161C5 /* moonlight_sonata_third_movement.mid */,
+				31B409522831665400B161C5 /* Queen - Bohemian Rhapsody.mid */,
+				31B409512831655500B161C5 /* debussy-clair-de-lune.mid */,
 				313332C8283124C300EA4DFD /* SHOW.mid */,
 				313332C62831237900EA4DFD /* BOURREE-1.mid */,
 				313332C42831227C00EA4DFD /* MOON.mid */,
