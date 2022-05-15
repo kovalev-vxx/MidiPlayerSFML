@@ -19,6 +19,12 @@
 		313333272831538900EA4DFD /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333252831538900EA4DFD /* Song.cpp */; };
 		3133332A2831564B00EA4DFD /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333282831564B00EA4DFD /* Parser.cpp */; };
 		3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133332B2831574100EA4DFD /* MidiGenerator.cpp */; };
+		31B409642831912300B161C5 /* MidiEventList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4095A2831912300B161C5 /* MidiEventList.cpp */; };
+		31B409652831912300B161C5 /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4095D2831912300B161C5 /* Options.cpp */; };
+		31B409662831912300B161C5 /* MidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409602831912300B161C5 /* MidiMessage.cpp */; };
+		31B409672831912300B161C5 /* Binasc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409612831912300B161C5 /* Binasc.cpp */; };
+		31B409682831912300B161C5 /* MidiEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409622831912300B161C5 /* MidiEvent.cpp */; };
+		31B409692831912300B161C5 /* MidiFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409632831912300B161C5 /* MidiFile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -92,6 +98,40 @@
 		31B4095328318B1B00B161C5 /* moonlight_sonata_third_movement.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = moonlight_sonata_third_movement.mid; sourceTree = "<group>"; };
 		31B4095528318C4A00B161C5 /* The Jazz Police bigband copy.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "The Jazz Police bigband copy.mid"; sourceTree = "<group>"; };
 		31B4095628318D1C00B161C5 /* Sing, Sing, Sing FAATTTB.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "Sing, Sing, Sing FAATTTB.mid"; sourceTree = "<group>"; };
+		31B409582831912300B161C5 /* MidiEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiEvent.h; sourceTree = "<group>"; };
+		31B409592831912300B161C5 /* MidiFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiFile.h; sourceTree = "<group>"; };
+		31B4095A2831912300B161C5 /* MidiEventList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiEventList.cpp; sourceTree = "<group>"; };
+		31B4095B2831912300B161C5 /* MidiEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiEventList.h; sourceTree = "<group>"; };
+		31B4095C2831912300B161C5 /* Binasc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Binasc.h; sourceTree = "<group>"; };
+		31B4095D2831912300B161C5 /* Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Options.cpp; sourceTree = "<group>"; };
+		31B4095E2831912300B161C5 /* Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Options.h; sourceTree = "<group>"; };
+		31B4095F2831912300B161C5 /* MidiMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidiMessage.h; sourceTree = "<group>"; };
+		31B409602831912300B161C5 /* MidiMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiMessage.cpp; sourceTree = "<group>"; };
+		31B409612831912300B161C5 /* Binasc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Binasc.cpp; sourceTree = "<group>"; };
+		31B409622831912300B161C5 /* MidiEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiEvent.cpp; sourceTree = "<group>"; };
+		31B409632831912300B161C5 /* MidiFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MidiFile.cpp; sourceTree = "<group>"; };
+		31B4096A283198DF00B161C5 /* Pirates of the Caribbean - He's a Pirate (3).mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "Pirates of the Caribbean - He's a Pirate (3).mid"; sourceTree = "<group>"; };
+		31B4096B2831997B00B161C5 /* chopin-nocturne-op9-no2-violin-and-piano.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "chopin-nocturne-op9-no2-violin-and-piano.mid"; sourceTree = "<group>"; };
+		31B4096C283199F000B161C5 /* CELINE_DION_-_All_by_myself.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "CELINE_DION_-_All_by_myself.mid"; sourceTree = "<group>"; };
+		31B4096E28319C9B00B161C5 /* event.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = event.hpp; sourceTree = "<group>"; };
+		31B4096F28319C9B00B161C5 /* note.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = note.hpp; sourceTree = "<group>"; };
+		31B4097028319C9B00B161C5 /* file.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file.hpp; sourceTree = "<group>"; };
+		31B4097128319C9B00B161C5 /* converters.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = converters.hpp; sourceTree = "<group>"; };
+		31B4097328319C9B00B161C5 /* abstract.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = abstract.hpp; sourceTree = "<group>"; };
+		31B4097428319C9B00B161C5 /* null.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = null.hpp; sourceTree = "<group>"; };
+		31B4097628319C9B00B161C5 /* alsa.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alsa.hpp; sourceTree = "<group>"; };
+		31B4097728319C9B00B161C5 /* windows.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = windows.hpp; sourceTree = "<group>"; };
+		31B4097828319C9B00B161C5 /* default.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = default.hpp; sourceTree = "<group>"; };
+		31B4097928319C9B00B161C5 /* track.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = track.hpp; sourceTree = "<group>"; };
+		31B4097B28319C9B00B161C5 /* endianness.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = endianness.hpp; sourceTree = "<group>"; };
+		31B4097C28319C9B00B161C5 /* player_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_base.hpp; sourceTree = "<group>"; };
+		31B4097D28319C9B00B161C5 /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		31B4097E28319C9B00B161C5 /* simulator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = simulator.hpp; sourceTree = "<group>"; };
+		31B4097F28319C9B00B161C5 /* instrument.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = instrument.hpp; sourceTree = "<group>"; };
+		31B4098028319C9B00B161C5 /* sysex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sysex.hpp; sourceTree = "<group>"; };
+		31B4098128319C9B00B161C5 /* message.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = message.hpp; sourceTree = "<group>"; };
+		31B4098328319C9B00B161C5 /* player_async.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_async.hpp; sourceTree = "<group>"; };
+		31B4098428319C9B00B161C5 /* player_sync.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_sync.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +177,8 @@
 		313332A828311C8100EA4DFD /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				31B4096D28319C9B00B161C5 /* cxxmidi */,
+				31B409572831912300B161C5 /* midifile */,
 				3133330E283148BC00EA4DFD /* fluidsynth.h */,
 				313332AE28311C8100EA4DFD /* sfMidi.h */,
 				313332FB283147FB00EA4DFD /* fluidsynth */,
@@ -216,6 +258,9 @@
 		3133331328314B3100EA4DFD /* midis */ = {
 			isa = PBXGroup;
 			children = (
+				31B4096C283199F000B161C5 /* CELINE_DION_-_All_by_myself.mid */,
+				31B4096B2831997B00B161C5 /* chopin-nocturne-op9-no2-violin-and-piano.mid */,
+				31B4096A283198DF00B161C5 /* Pirates of the Caribbean - He's a Pirate (3).mid */,
 				31B4095628318D1C00B161C5 /* Sing, Sing, Sing FAATTTB.mid */,
 				31B4095528318C4A00B161C5 /* The Jazz Police bigband copy.mid */,
 				31B4095328318B1B00B161C5 /* moonlight_sonata_third_movement.mid */,
@@ -246,6 +291,83 @@
 				3133332C2831574100EA4DFD /* MidiGenerator.hpp */,
 			);
 			path = MidiPlayer;
+			sourceTree = "<group>";
+		};
+		31B409572831912300B161C5 /* midifile */ = {
+			isa = PBXGroup;
+			children = (
+				31B409582831912300B161C5 /* MidiEvent.h */,
+				31B409592831912300B161C5 /* MidiFile.h */,
+				31B4095A2831912300B161C5 /* MidiEventList.cpp */,
+				31B4095B2831912300B161C5 /* MidiEventList.h */,
+				31B4095C2831912300B161C5 /* Binasc.h */,
+				31B4095D2831912300B161C5 /* Options.cpp */,
+				31B4095E2831912300B161C5 /* Options.h */,
+				31B4095F2831912300B161C5 /* MidiMessage.h */,
+				31B409602831912300B161C5 /* MidiMessage.cpp */,
+				31B409612831912300B161C5 /* Binasc.cpp */,
+				31B409622831912300B161C5 /* MidiEvent.cpp */,
+				31B409632831912300B161C5 /* MidiFile.cpp */,
+			);
+			path = midifile;
+			sourceTree = "<group>";
+		};
+		31B4096D28319C9B00B161C5 /* cxxmidi */ = {
+			isa = PBXGroup;
+			children = (
+				31B4096E28319C9B00B161C5 /* event.hpp */,
+				31B4096F28319C9B00B161C5 /* note.hpp */,
+				31B4097028319C9B00B161C5 /* file.hpp */,
+				31B4097128319C9B00B161C5 /* converters.hpp */,
+				31B4097228319C9B00B161C5 /* output */,
+				31B4097928319C9B00B161C5 /* track.hpp */,
+				31B4097A28319C9B00B161C5 /* guts */,
+				31B4097F28319C9B00B161C5 /* instrument.hpp */,
+				31B4098028319C9B00B161C5 /* sysex.hpp */,
+				31B4098128319C9B00B161C5 /* message.hpp */,
+				31B4098228319C9B00B161C5 /* player */,
+			);
+			path = cxxmidi;
+			sourceTree = "<group>";
+		};
+		31B4097228319C9B00B161C5 /* output */ = {
+			isa = PBXGroup;
+			children = (
+				31B4097328319C9B00B161C5 /* abstract.hpp */,
+				31B4097428319C9B00B161C5 /* null.hpp */,
+				31B4097528319C9B00B161C5 /* linux */,
+				31B4097728319C9B00B161C5 /* windows.hpp */,
+				31B4097828319C9B00B161C5 /* default.hpp */,
+			);
+			path = output;
+			sourceTree = "<group>";
+		};
+		31B4097528319C9B00B161C5 /* linux */ = {
+			isa = PBXGroup;
+			children = (
+				31B4097628319C9B00B161C5 /* alsa.hpp */,
+			);
+			path = linux;
+			sourceTree = "<group>";
+		};
+		31B4097A28319C9B00B161C5 /* guts */ = {
+			isa = PBXGroup;
+			children = (
+				31B4097B28319C9B00B161C5 /* endianness.hpp */,
+				31B4097C28319C9B00B161C5 /* player_base.hpp */,
+				31B4097D28319C9B00B161C5 /* utils.hpp */,
+				31B4097E28319C9B00B161C5 /* simulator.hpp */,
+			);
+			path = guts;
+			sourceTree = "<group>";
+		};
+		31B4098228319C9B00B161C5 /* player */ = {
+			isa = PBXGroup;
+			children = (
+				31B4098328319C9B00B161C5 /* player_async.hpp */,
+				31B4098428319C9B00B161C5 /* player_sync.hpp */,
+			);
+			path = player;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,13 +428,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B409692831912300B161C5 /* MidiFile.cpp in Sources */,
+				31B409642831912300B161C5 /* MidiEventList.cpp in Sources */,
 				313333272831538900EA4DFD /* Song.cpp in Sources */,
 				313333262831538900EA4DFD /* SongLine.cpp in Sources */,
 				313332B328311C8100EA4DFD /* Music.cpp in Sources */,
 				313332B228311C8100EA4DFD /* Midi.cpp in Sources */,
+				31B409682831912300B161C5 /* MidiEvent.cpp in Sources */,
+				31B409672831912300B161C5 /* Binasc.cpp in Sources */,
 				3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */,
 				3133332A2831564B00EA4DFD /* Parser.cpp in Sources */,
 				313332B428311C8100EA4DFD /* Loader.cpp in Sources */,
+				31B409652831912300B161C5 /* Options.cpp in Sources */,
+				31B409662831912300B161C5 /* MidiMessage.cpp in Sources */,
 				3133329D28311C6900EA4DFD /* main.cpp in Sources */,
 				313333212831537800EA4DFD /* Chord.cpp in Sources */,
 				313333202831537800EA4DFD /* Note.cpp in Sources */,

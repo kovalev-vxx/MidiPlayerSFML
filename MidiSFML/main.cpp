@@ -50,7 +50,7 @@ int main()
   spr_bg.setPosition(40.0f, 100.0f);
 
   sfmidi::Midi testMidi("res/synths/Touhou.sf2",
-                        "res/midis/Sing, Sing, Sing FAATTTB.mid");
+                        "res/midis/CELINE_DION_-_All_by_myself.mid");
   if (testMidi.hasError()) {
     std::cout<<testMidi.getError();
     return 1;

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include "Song.hpp"
+#include "MidiFile.h"
 
 class MidiGenerator{
 public:
