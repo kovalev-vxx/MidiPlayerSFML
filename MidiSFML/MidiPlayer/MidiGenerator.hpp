@@ -9,12 +9,8 @@
 #include <string>
 
 class MidiGenerator{
-private:
-    cxxmidi::File _file;
 public:
-//    void generateMidi(Song song);
-    void generateMidi();
-    std::string generateTestMidi(Song &song);
+    std::string generateMidi(Song &song);
 };
 
 #endif /* MidiGenerator_hpp */
