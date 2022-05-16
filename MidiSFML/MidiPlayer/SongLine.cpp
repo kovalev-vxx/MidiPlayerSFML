@@ -19,6 +19,12 @@ double SongLine::getDuration(){
     return _duration;
 }
 
+std::map<int, Chord> SongLine::getChordsOn(){
+    return _chordsOn;
+}
+std::map<int, Chord> SongLine::getChordsOff(){
+    return _chordsOff;
+}
 
 double SongLine::getVolume(){
     return _volume;

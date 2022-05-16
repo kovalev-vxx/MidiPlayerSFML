@@ -26,7 +26,7 @@ SOFTWARE.
 #include <string>
 #include <vector>
 
-#include <cxxmidi/event.hpp>
+#include "event.hpp"
 
 namespace cxxmidi {
 

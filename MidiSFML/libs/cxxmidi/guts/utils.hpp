@@ -24,7 +24,7 @@ SOFTWARE.
 #define INCLUDE_CXXMIDI_GUTS_UTILS_HPP_
 
 #include <cstdint>
-#include <cxxmidi/guts/endianness.hpp>
+#include "endianness.hpp"
 
 namespace cxxmidi {
 namespace utils {

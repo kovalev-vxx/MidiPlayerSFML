@@ -6,8 +6,8 @@
 //  Copyright © 2022 Valery Kovalev. All rights reserved.
 //
 
-#ifndef Note_hpp
-#define Note_hpp
+#ifndef mNote_hpp
+#define mNote_hpp
 
 #include <stdio.h>
 

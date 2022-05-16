@@ -8,24 +8,21 @@
 
 #include "Chord.hpp"
 
-Chord::Chord(std::vector<Note> notes, double duration, float volume){
+Chord::Chord(std::vector<Note> notes, float volume){
     _notes = notes;
-    _duration = duration;
     if(volume<=0 | volume>=1){
         throw std::invalid_argument("The volume must be between 0 and 1");
     }
     _volume = volume;
 }
 
-Chord::Chord(std::vector<Note> notes, double duration){
+Chord::Chord(std::vector<Note> notes){
     _notes = std::move(notes);
-    _duration = duration;
     _volume = 1;
 }
 
 Chord::Chord(){
     _notes = {};
-    _duration = 0;
     _volume = 1;
 }
 
@@ -33,13 +30,6 @@ std::vector<Note> Chord::getNotes(){
     return _notes;
 }
 
-double Chord::getDuration(){
-    return _duration;
-}
-
-bool Chord::isPause(){
-    return false;
-}
 
 void Chord::changeVolume(double value){
     if(value<=0 | value>=1){

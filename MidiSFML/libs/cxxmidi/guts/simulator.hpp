@@ -23,7 +23,7 @@ SOFTWARE.
 #ifndef INCLUDE_CXXMIDI_GUTS_SIMULATOR_HPP_
 #define INCLUDE_CXXMIDI_GUTS_SIMULATOR_HPP_
 
-#include <cxxmidi/guts/player_base.hpp>
+#include "player_base.hpp"
 
 namespace cxxmidi {
 namespace guts {
@@ -36,7 +36,7 @@ class Simulator : protected PlayerBase {
 }  // namespace guts
 }  // namespace cxxmidi
 
-#include <cxxmidi/converters.hpp>
+#include "converters.hpp"
 
 namespace cxxmidi {
 namespace guts {

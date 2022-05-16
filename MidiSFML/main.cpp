@@ -32,6 +32,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "sfMidi.h"
+#include "MidiPlayer/MidiGenerator.hpp"
 
 
 
@@ -46,16 +47,20 @@ int main()
   sf::Texture tex_bg;
   tex_bg.loadFromFile("res/bg.png");
   spr_bg.setTexture(tex_bg);
-
+    MidiGenerator m;
+    m.generateMidi();
   spr_bg.setPosition(40.0f, 100.0f);
 
   sfmidi::Midi testMidi("res/synths/Touhou.sf2",
-                        "res/midis/CELINE_DION_-_All_by_myself.mid");
+                        "MYMIDI.mid");
   if (testMidi.hasError()) {
     std::cout<<testMidi.getError();
     return 1;
   }
-
+    
+    
+    
+    
 double gain = 1.0;
   testMidi.setGain(gain);
 

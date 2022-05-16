@@ -27,7 +27,7 @@ SOFTWARE.
 #include <assert.h>
 #include <thread>  // NOLINT() CPP11_INCLUDES
 
-#include <cxxmidi/guts/player_base.hpp>
+#include "player_base.hpp"
 
 namespace cxxmidi {
 class File;
@@ -46,9 +46,9 @@ class PlayerSync : public guts::PlayerBase {
 }  // namespace player
 }  // namespace cxxmidi
 
-#include <cxxmidi/converters.hpp>
-#include <cxxmidi/file.hpp>
-#include <cxxmidi/guts/utils.hpp>
+#include "converters.hpp"
+#include "file.hpp"
+#include "utils.hpp"
 
 namespace cxxmidi {
 namespace player {

@@ -12,23 +12,19 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
-#include "Note.hpp"
+#include "mNote.hpp"
 
 class Chord{
     private:
         std::vector<Note> _notes;
-        double _duration;
         double _volume;
     public:
-        Chord(std::vector<Note> notes, double duration, float volume);
-        Chord(std::vector<Note> notes, double duration);
-        Chord();
-        double getDuration();
+        Chord(std::vector<Note> notes, float volume);
+        Chord(std::vector<Note> notes);
+        Chord();;
         std::vector<Note> getNotes();
-        bool isPause();
         void changeVolume(double value);
         void addNote(Note note);
-        void changeDuration(double duration);
         double getVolume();
 };
 

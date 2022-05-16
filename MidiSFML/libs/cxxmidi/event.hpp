@@ -25,7 +25,7 @@ SOFTWARE.
 
 #include <cstdint>
 
-#include <cxxmidi/message.hpp>
+#include "message.hpp"
 
 namespace cxxmidi {
 

@@ -6,7 +6,7 @@
 //  Copyright © 2022 Valery Kovalev. All rights reserved.
 //
 
-#include "Note.hpp"
+#include "mNote.hpp"
 
 Note::Note(int midiValue){
     _midiValue = midiValue;
