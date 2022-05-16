@@ -45,7 +45,3 @@ double Chord::getVolume(){
 void Chord::addNote(Note note){
     _notes.emplace_back(note);
 }
-
-void Chord::changeDuration(double duration){
-    _duration = duration;
-}

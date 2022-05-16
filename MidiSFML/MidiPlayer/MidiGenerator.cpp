@@ -56,9 +56,16 @@ void MidiGenerator::generateMidi(){
 std::string MidiGenerator::generateTestMidi(Song &song){
     cxxmidi::File file;
     
-//    for (SongLine &line: song.getLines()){
-//        for (auto &chord:line.g)
-//    }
+    for (SongLine &line: song.getLines()){
+        cxxmidi::Track &track = file.AddTrack();
+        track.push_back(cxxmidi::Event(0, cxxmidi::Message::kProgramChange, cxxmidi::Instrument(line.getInstrumentId())));
+        std::vector<int> onTimes;
+        std::vector<int> offTimes;
+        std::vector<Chord> chords;
+        for (auto& chordOn:line.getChordsOn()){
+            
+        }
+    }
 }
 
 

@@ -8,7 +8,7 @@
 
 #include "SongLine.hpp"
 
-SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, double volume, int instrumentId){
+SongLine::SongLine(std::map<Chord, int> chordsOn, std::map<Chord, int> chordsOff, double volume, int instrumentId){
     _instrumentId = instrumentId;
     _chordsOn = chordsOn;
     _chordsOff  = chordsOff;
