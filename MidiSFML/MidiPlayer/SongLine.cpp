@@ -12,8 +12,35 @@ SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff
     _instrumentId = instrumentId;
     _chordsOn = chordsOn;
     _chordsOff  = chordsOff;
+    if(volume<0 | volume>1){
+        throw std::invalid_argument("The volume must be between 0 and 1");
+    }
     _volume = volume;
 };
+
+SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, double volume){
+    _instrumentId = 1;
+    _chordsOn = chordsOn;
+    _chordsOff  = chordsOff;
+    if(volume<0 | volume>1){
+        throw std::invalid_argument("The volume must be between 0 and 1");
+    }
+    _volume = volume;
+}
+SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, int instrumentId){
+    _instrumentId = instrumentId;
+    _chordsOn = chordsOn;
+    _chordsOff  = chordsOff;
+    _volume = 1;
+    
+}
+SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff){
+    _instrumentId = 1;
+    _chordsOn = chordsOn;
+    _chordsOff  = chordsOff;
+    _volume = 1;
+    
+}
 
 double SongLine::getDuration(){
     return _duration;

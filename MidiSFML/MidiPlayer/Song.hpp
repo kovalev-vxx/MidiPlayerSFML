@@ -23,6 +23,8 @@ private:
     double _volume;
 public:
     Song(std::vector<SongLine> songLines, int tempo, std::string title, double volume);
+    Song(std::vector<SongLine> songLines, int tempo, double volume);
+    Song(std::vector<SongLine> songLines, int tempo);
     std::vector<SongLine> getLines();
     int getTempo();
     std::string getTitle();

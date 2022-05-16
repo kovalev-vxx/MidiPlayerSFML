@@ -24,6 +24,9 @@ private:
     double _volume;
 public:
     SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, double volume, int instrumentId);
+    SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, double volume);
+    SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, int instrumentId);
+    SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff);
     std::map<int, Chord> getChordsOn();
     std::map<int, Chord> getChordsOff();
     double getDuration();
