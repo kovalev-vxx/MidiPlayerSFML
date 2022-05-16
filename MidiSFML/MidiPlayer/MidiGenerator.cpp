@@ -10,6 +10,7 @@
 #include "note.hpp"
 #include "message.hpp"
 #include "instrument.hpp"
+#include "Chord.hpp"
 
 
 //cxxmidi::File file;
@@ -41,6 +42,7 @@ void MidiGenerator::generateMidi(){
                            cxxmidi::Message::kNoteOn,     // message type
                            cxxmidi::Note(60+i),  // note
                            0));  // velocity=0 => note off
+          std::cout << 0 << " "<< 0.5 << " " << 1000 << std::endl;
       }
         
       track.push_back(cxxmidi::Event(0,  // deltatime
@@ -56,16 +58,58 @@ void MidiGenerator::generateMidi(){
 std::string MidiGenerator::generateTestMidi(Song &song){
     cxxmidi::File file;
     
+    
     for (SongLine &line: song.getLines()){
         cxxmidi::Track &track = file.AddTrack();
         track.push_back(cxxmidi::Event(0, cxxmidi::Message::kProgramChange, cxxmidi::Instrument(line.getInstrumentId())));
-        std::vector<int> onTimes;
-        std::vector<int> offTimes;
+        
         std::vector<Chord> chords;
+        std::vector<int> timesOn;
+        std::vector<int> timesOff;
+        
         for (auto& chordOn:line.getChordsOn()){
-            
+            timesOn.emplace_back(chordOn.first);
+            chords.emplace_back(chordOn.second);
         }
+        
+        for (auto& chordOff:line.getChordsOff()){
+            timesOff.emplace_back(chordOff.first);
+        }
+        
+        int lastTimeOn = 0;
+        int lastTimeOff = 0;
+        
+        for (int i =0; i<chords.size();i++){
+            int dtOn = timesOn[i]-lastTimeOff;
+            int dtOff = timesOff[i]-lastTimeOn;
+
+            
+            for (Note &note:chords[i].getNotes()){
+                track.push_back(
+                    cxxmidi::Event(dtOn,// deltatime
+                                   cxxmidi::Message::kNoteOn,     // message type
+                                   cxxmidi::Note(note.getMidiValue()),// note
+                                   (int)127*chords[i].getVolume()*line.getVolume()*song.getVolume()));// velocity [0...127]
+                track.push_back(
+                    cxxmidi::Event(dtOff,                            // deltatime
+                                   cxxmidi::Message::kNoteOn,     // message type
+                                   cxxmidi::Note(note.getMidiValue()),  // note
+                                   0));  // velocity=0 => note off
+            }
+            
+            lastTimeOn += timesOn[i];
+            lastTimeOff += timesOff[i];
+        }
+        
+        track.push_back(cxxmidi::Event(0,  // deltatime
+                                       cxxmidi::Message::kMeta,
+                                       cxxmidi::Message::kEndOfTrack));
+        
     }
+    std::string fileName = "res/generatedMidis/"+song.getTitle()+".mid";
+    file.SaveAs(fileName.c_str());
+    return fileName;
 }
+
 
 

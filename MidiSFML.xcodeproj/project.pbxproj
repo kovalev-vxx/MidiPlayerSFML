@@ -238,6 +238,7 @@
 		3133331128314B0C00EA4DFD /* res */ = {
 			isa = PBXGroup;
 			children = (
+				31B4098528326B5F00B161C5 /* generatedMidis */,
 				313332BC28311D9E00EA4DFD /* bg.png */,
 				3133331328314B3100EA4DFD /* midis */,
 				3133331228314B2400EA4DFD /* synths */,
@@ -368,6 +369,13 @@
 				31B4098428319C9B00B161C5 /* player_sync.hpp */,
 			);
 			path = player;
+			sourceTree = "<group>";
+		};
+		31B4098528326B5F00B161C5 /* generatedMidis */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = generatedMidis;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

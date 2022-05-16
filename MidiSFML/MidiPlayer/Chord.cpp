@@ -10,7 +10,7 @@
 
 Chord::Chord(std::vector<Note> notes, float volume){
     _notes = notes;
-    if(volume<=0 | volume>=1){
+    if(volume<0 | volume>1){
         throw std::invalid_argument("The volume must be between 0 and 1");
     }
     _volume = volume;
@@ -32,7 +32,7 @@ std::vector<Note> Chord::getNotes(){
 
 
 void Chord::changeVolume(double value){
-    if(value<=0 | value>=1){
+    if(value<0 | value>1){
         throw std::invalid_argument("The volume must be between 0 and 1");
     }
     _volume = value;

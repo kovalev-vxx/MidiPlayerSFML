@@ -33,7 +33,7 @@
 #include <SFML/Graphics.hpp>
 #include "sfMidi.h"
 #include "MidiPlayer/MidiGenerator.hpp"
-
+#include "MidiPlayer/Song.hpp"
 
 
 int main()
@@ -50,30 +50,22 @@ int main()
     MidiGenerator m;
     m.generateMidi();
   spr_bg.setPosition(40.0f, 100.0f);
+    
+    
+    SongLine sl = SongLine({{0, Chord({Note(50)}, 1)}, {1000, Chord({Note(55)}, 1)}}, {{1000, Chord({Note(50)}, 1)}, {2000, Chord({Note(55)}, 0.5)}}, 1, 1);
+    
+    SongLine sl2 = SongLine({{0, Chord({Note(62)}, 1)}, {1000, Chord({Note(67)}, 1)}}, {{1000, Chord({Note(62)}, 1)}, {2000, Chord({Note(67)}, 0.5)}}, 1, 1);
+    
+    Song song = Song({sl, sl2}, 120, "Hello", 0.1);
 
-  sfmidi::Midi testMidi("res/synths/Touhou.sf2",
-                        "MYMIDI.mid");
-  if (testMidi.hasError()) {
-    std::cout<<testMidi.getError();
-    return 1;
-  }
-    
-    
-    
-    
-double gain = 1.0;
-  testMidi.setGain(gain);
-
-  // To preload the midi instead:
-//   sfmidi::Music testMidi;
-//
-//   {
-//     sfmidi::Loader testLoader("Essential Keys-sforzando-v9.6.sf2");
-//     testLoader.setGain(1.0);
-//
-//     testMidi.loadMidiFromFile(testLoader, "MOON.mid");
-//   }
-
+    sfmidi::Midi testMidi("res/synths/Touhou.sf2",
+                          m.generateTestMidi(song));
+    if (testMidi.hasError()) {
+      std::cout<<testMidi.getError();
+      return 1;
+    }
+    double gain = 1.0;
+      testMidi.setGain(gain);
   testMidi.play();
 
   while (sfApp.isOpen()) {

@@ -21,7 +21,7 @@ class Chord{
     public:
         Chord(std::vector<Note> notes, float volume);
         Chord(std::vector<Note> notes);
-        Chord();;
+        Chord();
         std::vector<Note> getNotes();
         void changeVolume(double value);
         void addNote(Note note);
