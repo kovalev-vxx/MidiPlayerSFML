@@ -19,5 +19,6 @@ private:
 public:
     Parser();
     Song parseFromTxt(std::string filePath);
+    Song parseFromMidi(std::string filePath);
 };
 #endif /* Parser_hpp */

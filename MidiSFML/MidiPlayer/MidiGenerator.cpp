@@ -38,16 +38,20 @@ std::string MidiGenerator::generateMidi(Song &song){
         for (int i =0; i<chords.size();i++){
             int dtOn = timesOn[i]-lastTimeOff;
             int dtOff = timesOff[i]-lastTimeOn;
-
+            
             
             for (Note &note:chords[i].getNotes()){
                 track.push_back(
-                    cxxmidi::Event(dtOn,// deltatime
+                    cxxmidi::Event(cxxmidi::converters::Us2dt(dtOn*1000,  // 0.5s
+                                                              500000,  // tempo [us/quarternote]
+                                                              500),// deltatime
                                    cxxmidi::Message::kNoteOn,     // message type
                                    cxxmidi::Note(note.getMidiValue()),// note
                                    (int)127*chords[i].getVolume()*line.getVolume()*song.getVolume()));// velocity [0...127]
                 track.push_back(
-                    cxxmidi::Event(dtOff,                            // deltatime
+                    cxxmidi::Event(cxxmidi::converters::Us2dt(dtOff*1000,  // 0.5s
+                                                              500000,  // tempo [us/quarternote]
+                                                              500),                            // deltatime
                                    cxxmidi::Message::kNoteOn,     // message type
                                    cxxmidi::Note(note.getMidiValue()),  // note
                                    0));  // velocity=0 => note off

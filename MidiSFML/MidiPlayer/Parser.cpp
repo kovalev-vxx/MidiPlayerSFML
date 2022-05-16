@@ -13,3 +13,8 @@ Parser::Parser(){
 
 Song Parser::parseFromTxt(std::string filePath){
 }
+
+
+Song Parser::parseFromMidi(std::string filePath){
+    
+}
