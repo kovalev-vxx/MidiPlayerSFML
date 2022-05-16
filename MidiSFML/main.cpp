@@ -48,7 +48,6 @@ int main()
   tex_bg.loadFromFile("res/bg.png");
   spr_bg.setTexture(tex_bg);
     MidiGenerator m;
-    m.generateMidi();
   spr_bg.setPosition(40.0f, 100.0f);
     
     
@@ -59,7 +58,7 @@ int main()
     Song song = Song({sl, sl2}, 120, "Hello", 0.1);
 
     sfmidi::Midi testMidi("res/synths/Touhou.sf2",
-                          m.generateTestMidi(song));
+                          m.generateMidi(song));
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;

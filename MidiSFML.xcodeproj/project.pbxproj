@@ -25,6 +25,7 @@
 		31B409672831912300B161C5 /* Binasc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409612831912300B161C5 /* Binasc.cpp */; };
 		31B409682831912300B161C5 /* MidiEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409622831912300B161C5 /* MidiEvent.cpp */; };
 		31B409692831912300B161C5 /* MidiFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409632831912300B161C5 /* MidiFile.cpp */; };
+		31B4098828326E2A00B161C5 /* MidiPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4098628326E2A00B161C5 /* MidiPlayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -132,6 +133,8 @@
 		31B4098128319C9B00B161C5 /* message.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = message.hpp; sourceTree = "<group>"; };
 		31B4098328319C9B00B161C5 /* player_async.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_async.hpp; sourceTree = "<group>"; };
 		31B4098428319C9B00B161C5 /* player_sync.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_sync.hpp; sourceTree = "<group>"; };
+		31B4098628326E2A00B161C5 /* MidiPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiPlayer.cpp; sourceTree = "<group>"; };
+		31B4098728326E2A00B161C5 /* MidiPlayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MidiPlayer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +293,8 @@
 				313333292831564B00EA4DFD /* Parser.hpp */,
 				3133332B2831574100EA4DFD /* MidiGenerator.cpp */,
 				3133332C2831574100EA4DFD /* MidiGenerator.hpp */,
+				31B4098628326E2A00B161C5 /* MidiPlayer.cpp */,
+				31B4098728326E2A00B161C5 /* MidiPlayer.hpp */,
 			);
 			path = MidiPlayer;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 			files = (
 				31B409692831912300B161C5 /* MidiFile.cpp in Sources */,
 				31B409642831912300B161C5 /* MidiEventList.cpp in Sources */,
+				31B4098828326E2A00B161C5 /* MidiPlayer.cpp in Sources */,
 				313333272831538900EA4DFD /* Song.cpp in Sources */,
 				313333262831538900EA4DFD /* SongLine.cpp in Sources */,
 				313332B328311C8100EA4DFD /* Music.cpp in Sources */,
