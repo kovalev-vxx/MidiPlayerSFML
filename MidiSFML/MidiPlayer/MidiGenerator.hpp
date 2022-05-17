@@ -2,11 +2,15 @@
 #define MidiGenerator_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <string>
+
 #include "Song.hpp"
 #include "MidiFile.h"
 #include "file.hpp"
-#include <iostream>
-#include <string>
+#include "note.hpp"
+#include "message.hpp"
+#include "instrument.hpp"
 
 class MidiGenerator{
 public:
