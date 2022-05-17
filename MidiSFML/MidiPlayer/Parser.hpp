@@ -10,15 +10,23 @@
 #define Parser_hpp
 
 #include <stdio.h>
-#include "Song.hpp"
 #include <iostream>
 #include <string>
+#include <fstream>
+
+#include "Song.hpp"
+
+std::string getBodyTag(std::string line);
 
 class Parser{
 private:
+    std::string _title;
+    int _tempo;
+    double _volume = 1.0;
 public:
     Parser();
     Song parseFromTxt(std::string filePath);
     Song parseFromMidi(std::string filePath);
 };
+
 #endif /* Parser_hpp */
