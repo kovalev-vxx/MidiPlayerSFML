@@ -6,11 +6,11 @@
 #include <string>
 
 #include "Song.hpp"
-#include "MidiFile.h"
-#include "file.hpp"
-#include "note.hpp"
-#include "message.hpp"
-#include "instrument.hpp"
+#include "midifile/MidiFile.h"
+#include "cxxmidi/file.hpp"
+#include "cxxmidi/note.hpp"
+#include "cxxmidi/message.hpp"
+#include "cxxmidi/instrument.hpp"
 
 class MidiGenerator{
 public:

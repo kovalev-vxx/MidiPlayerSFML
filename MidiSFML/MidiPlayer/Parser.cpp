@@ -25,26 +25,17 @@ std::string getContent(std::string line, std::string type) {
         first = line.find_first_of('"') + 1;
         last = line.substr(first).find_first_of('"') + first;
     }
-    /*else if (type == "2") {
+    else if (type == "2") {
         last = line.find_last_of('"');
         first = line.substr(0, last).find_last_of('"') + 1;
-    }*/
+    }
 
     charCount = last - first;
     return line.substr(first, charCount);
 }
 
-int getInstrumentalId(std::string instrumental) {
-    if (instrumental == "piano")
-        return 0;
-    else if (instrumental == "guitar")
-        return 24;
-    else if (instrumental == "sax")
-        return 66;
-    else {
-        std::cout << "Set default instrumental id" << std::endl;
-        return 1;
-    }
+int getInstrumentalId(std::string realNote) {
+    return 0;
 }
 
 Parser::Parser() {
@@ -72,11 +63,58 @@ Song Parser::parseFromTxt(std::string filePath){
                 _title = body;
             else if (tag.find("tempo") < tag.size())
                 _tempo = stoi(body);
-            else if (tag.find("line instrument") < tag.size())
-                _InstrumentalId = getInstrumentalId(getContent(tag, "1"));
-            else if (tag.find("chord") < tag.size()) {
-                duration = getContent(tag, "1");
+            else if (tag.find("line instrument") < tag.size()) {
+                cxxmidi::Instrument instrument;
+                std::string lookingInstrumental;
+                std::string usingInstrumental = getContent(tag, "1");
+                int instrumentalId;
+                bool check = true;
 
+                for (int i = 0; check; i++) {
+                    lookingInstrumental = instrument.GetName(i);
+                    instrumentalId = i;
+
+                    std::transform(lookingInstrumental.begin(), lookingInstrumental.end(), lookingInstrumental.begin(), tolower);
+                    std::transform(usingInstrumental.begin(), usingInstrumental.end(), usingInstrumental.begin(), tolower);
+
+                    if (lookingInstrumental.find(usingInstrumental) < lookingInstrumental.size()) {
+                        _instrumentalId = instrumentalId;
+                        check = false;
+                    }
+                }
+            }
+            else if (tag.find("chord") < tag.size()) {
+                /*duration = getContent(tag, "1");*/
+                std::vector<Note> notes;
+                std::string note;
+                bool check = true;
+
+                // listOfNote have string of notes
+                std::string listOfNote = body;
+
+                while (check) {
+                    note = listOfNote.substr(0, listOfNote.find_first_of(','));
+
+                    listOfNote = listOfNote.substr(listOfNote.find_first_of(', ') + 1);
+                    std::cout << note << std::endl;
+
+                    if (listOfNote.find_first_of(',') > listOfNote.size()) {
+                        note = listOfNote.substr(0, listOfNote.find_first_of(','));
+
+                        listOfNote = listOfNote.substr(listOfNote.find_first_of(', ') + 1);
+                        std::cout << note << std::endl;
+
+                        check = false;
+                    }
+                }
+
+                if (getContent(tag, "2") == "real_note") {
+                    // ex: A4 to 69
+                    Note note = Note(realNote);
+                }
+                else {
+                    Note note = Note(midiValue);
+                }
             }
             else if (tag.find("pause") < tag.size()) {
 
@@ -92,4 +130,11 @@ Song Parser::parseFromTxt(std::string filePath){
 
 Song Parser::parseFromMidi(std::string filePath){
     
+}
+
+void Parser::setVolume(double volume) {
+    if(volume < 0 | volume > 1){
+        throw std::invalid_argument("The volume must be between 0 and 1.");
+    }
+    _volume = volume;
 }

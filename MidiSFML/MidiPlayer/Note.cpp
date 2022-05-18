@@ -6,11 +6,15 @@
 //  Copyright © 2022 Valery Kovalev. All rights reserved.
 //
 
-#include "mNote.hpp"
+#include "Note.hpp"
 
 Note::Note(int midiValue){
     _midiValue = midiValue;
 };
+
+Note::Note(std::string realNote) {
+
+}
 
 int Note::getMidiValue(){
     return _midiValue;

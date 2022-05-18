@@ -15,6 +15,7 @@
 #include <fstream>
 
 #include "Song.hpp"
+#include "cxxmidi/instrument.hpp"
 
 std::string getContent(std::string line, std::string type);
 
@@ -26,11 +27,13 @@ private:
     int _tempo;
     double _volume = 1.0;
 
-    int _InstrumentalId;
+    int _instrumentalId;
 public:
     Parser();
     Song parseFromTxt(std::string filePath);
     Song parseFromMidi(std::string filePath);
+
+    void setVolume(double volume);
 };
 
 #endif /* Parser_hpp */
