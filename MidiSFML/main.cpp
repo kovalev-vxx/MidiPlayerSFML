@@ -34,127 +34,134 @@
 #include "sfMidi.h"
 #include "MidiPlayer/MidiGenerator.hpp"
 #include "MidiPlayer/Song.hpp"
+#include "App/App.hpp"
+#include "App/AppStartState.hpp"
+//#include "Utils/fileSystem.hpp"
 
 
-int main()
+int main(int argc, char const** argv)
 {
-  sf::RenderWindow sfApp(sf::VideoMode(800, 600, 32), "SFML Window");
-
-  sfApp.setFramerateLimit(60);
-
-  sf::Sprite spr_bg;
-  
-  sf::Texture tex_bg;
-  tex_bg.loadFromFile("res/bg.png");
-  spr_bg.setTexture(tex_bg);
-    MidiGenerator m;
-  spr_bg.setPosition(40.0f, 100.0f);
-    
-    
-    SongLine sl = SongLine({{0, Chord({Note(50)}, 1)}, {5000, Chord({Note(55)}, 1)}}, {{100, Chord({Note(50)}, 1)}, {6000, Chord({Note(55)}, 0.5)}}, 1, 1);
-    
-    SongLine sl2 = SongLine({{0, Chord({Note(62)}, 1)}, {1000, Chord({Note(67)}, 1)}}, {{1000, Chord({Note(62)}, 1)}, {2000, Chord({Note(67)}, 0.5)}}, 1, 1);
-    
-    Song song = Song({sl, sl2}, 120, "Hello", 1);
-
-    sfmidi::Midi testMidi("res/synths/Essential Keys-sforzando-v9.6.sf2", "res/midis/polet_shmelya.mid");
-    if (testMidi.hasError()) {
-      std::cout<<testMidi.getError();
-      return 1;
-    }
-    double gain = 1.0;
-      testMidi.setGain(gain);
-  testMidi.play();
-
-  while (sfApp.isOpen()) {
-    sf::Event sfEvent;
-    while (sfApp.pollEvent(sfEvent)) {
-      if (sfEvent.type == sf::Event::Closed)
-        sfApp.close();
-
-        if (sfEvent.type == sf::Event::KeyPressed) {
-        switch (sfEvent.key.code) {
-              case sf::Keyboard::Escape:
-            {
-              sfApp.close();
-              break;
-            }
-
-          case sf::Keyboard::F12:
-            {
-              sf::Image screen = sfApp.capture();
-              screen.saveToFile("screenshot.png");
-
-              break;
-            }
-                
-            case sf::Keyboard::Up:
-            {
-                if (gain<1){
-                    gain+=0.05;
-                    std::cout << gain << std::endl;
-                    testMidi.setGain(gain);
-                }
-                
-                break;
-                
-            }
-            case sf::Keyboard::Down:
-            {
-                if (gain>=0.05){
-                    gain-=0.05;
-                    std::cout << gain << std::endl;
-                    testMidi.setGain(gain);
-                }
-                break;
-                
-            }
-
-          case sf::Keyboard::Left:
-            {
-              sf::Int32 playingOffset =
-                testMidi.getPlayingOffset().asMilliseconds();
-              if (playingOffset > 4000) {
-                testMidi.setPlayingOffset
-                  (sf::milliseconds(playingOffset - 4000));
-              }
-              else
-                testMidi.setPlayingOffset(sf::Time::Zero);
-
-              break;
-            }
-
-          case sf::Keyboard::Right:
-            {
-              sf::Int32 playingOffset =
-                testMidi.getPlayingOffset().asMilliseconds();
-
-              testMidi.setPlayingOffset
-                (sf::milliseconds(playingOffset + 4000));
-
-              break;
-            }
-
-          case sf::Keyboard::Space:
-            {
-              if (testMidi.getStatus() != sf::SoundStream::Playing)
-                testMidi.play();
-              else
-                testMidi.pause();
-              break;
-            }
-        }
-      }
-    }
-
-    sfApp.clear();
-
-    sfApp.draw(spr_bg);
-
-    sfApp.display();
-  }
-
-  testMidi.stop();
-
-  return 0;
+    App app = App(argc, argv);
+    app.pushState(new AppStartState(&app));
+    app.gameLoop();
+    return 0;
+//  sf::RenderWindow sfApp(sf::VideoMode(800, 600, 32), "SFML Window");
+//
+//  sfApp.setFramerateLimit(60);
+//
+//  sf::Sprite spr_bg;
+//
+//  sf::Texture tex_bg;
+//  tex_bg.loadFromFile("res/bg.png");
+//  spr_bg.setTexture(tex_bg);
+//    MidiGenerator m;
+//  spr_bg.setPosition(40.0f, 100.0f);
+//
+//
+//    SongLine sl = SongLine({{0, Chord({Note(50)}, 1)}, {5000, Chord({Note(55)}, 1)}}, {{100, Chord({Note(50)}, 1)}, {6000, Chord({Note(55)}, 0.5)}}, 1, 1);
+//
+//    SongLine sl2 = SongLine({{0, Chord({Note(62)}, 1)}, {1000, Chord({Note(67)}, 1)}}, {{1000, Chord({Note(62)}, 1)}, {2000, Chord({Note(67)}, 0.5)}}, 1, 1);
+//
+//    Song song = Song({sl, sl2}, 120, "Hello", 1);
+//
+//    sfmidi::Midi testMidi("res/synths/Touhou.sf2", "res/midis/Pirates of the Caribbean - He's a Pirate (3).mid");
+//    if (testMidi.hasError()) {
+//      std::cout<<testMidi.getError();
+//      return 1;
+//    }
+//    double gain = 1.0;
+//      testMidi.setGain(gain);
+//  testMidi.play();
+//
+//  while (sfApp.isOpen()) {
+//    sf::Event sfEvent;
+//    while (sfApp.pollEvent(sfEvent)) {
+//      if (sfEvent.type == sf::Event::Closed)
+//        sfApp.close();
+//
+//        if (sfEvent.type == sf::Event::KeyPressed) {
+//        switch (sfEvent.key.code) {
+//              case sf::Keyboard::Escape:
+//            {
+//              sfApp.close();
+//              break;
+//            }
+//
+//          case sf::Keyboard::F12:
+//            {
+//              sf::Image screen = sfApp.capture();
+//              screen.saveToFile("screenshot.png");
+//
+//              break;
+//            }
+//
+//            case sf::Keyboard::Up:
+//            {
+//                if (gain<1){
+//                    gain+=0.05;
+//                    std::cout << gain << std::endl;
+//                    testMidi.setGain(gain);
+//                }
+//
+//                break;
+//
+//            }
+//            case sf::Keyboard::Down:
+//            {
+//                if (gain>=0.05){
+//                    gain-=0.05;
+//                    std::cout << gain << std::endl;
+//                    testMidi.setGain(gain);
+//                }
+//                break;
+//
+//            }
+//
+//          case sf::Keyboard::Left:
+//            {
+//              sf::Int32 playingOffset =
+//                testMidi.getPlayingOffset().asMilliseconds();
+//              if (playingOffset > 4000) {
+//                testMidi.setPlayingOffset
+//                  (sf::milliseconds(playingOffset - 4000));
+//              }
+//              else
+//                testMidi.setPlayingOffset(sf::Time::Zero);
+//
+//              break;
+//            }
+//
+//          case sf::Keyboard::Right:
+//            {
+//              sf::Int32 playingOffset =
+//                testMidi.getPlayingOffset().asMilliseconds();
+//
+//              testMidi.setPlayingOffset
+//                (sf::milliseconds(playingOffset + 4000));
+//
+//              break;
+//            }
+//
+//          case sf::Keyboard::Space:
+//            {
+//              if (testMidi.getStatus() != sf::SoundStream::Playing)
+//                testMidi.play();
+//              else
+//                testMidi.pause();
+//              break;
+//            }
+//        }
+//      }
+//    }
+//
+//    sfApp.clear();
+//
+//    sfApp.draw(spr_bg);
+//
+//    sfApp.display();
+//  }
+//
+//  testMidi.stop();
+//
+//  return 0;
 }
