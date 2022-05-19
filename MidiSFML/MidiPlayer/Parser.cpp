@@ -90,30 +90,32 @@ Song Parser::parseFromTxt(std::string filePath){
                 bool check = true;
 
                 // listOfNote have string of notes
-                std::string listOfNote = body;
+                std::string stringOfNote = body;
+                std::vector<std::string> listOfNotes;
 
                 while (check) {
-                    note = listOfNote.substr(0, listOfNote.find_first_of(','));
+                    note = stringOfNote.substr(0, stringOfNote.find_first_of(','));
+                    stringOfNote = stringOfNote.substr(stringOfNote.find_first_of(', ') + 1);
+                    listOfNotes.push_back(note);
 
-                    listOfNote = listOfNote.substr(listOfNote.find_first_of(', ') + 1);
-                    std::cout << note << std::endl;
-
-                    if (listOfNote.find_first_of(',') > listOfNote.size()) {
-                        note = listOfNote.substr(0, listOfNote.find_first_of(','));
-
-                        listOfNote = listOfNote.substr(listOfNote.find_first_of(', ') + 1);
-                        std::cout << note << std::endl;
-
+                    if (stringOfNote.find_first_of(',') > stringOfNote.size()) {
+                        note = stringOfNote.substr(0, stringOfNote.find_first_of(','));
+                        stringOfNote = stringOfNote.substr(stringOfNote.find_first_of(', ') + 1);
+                        listOfNotes.push_back(note);
                         check = false;
                     }
                 }
 
                 if (getContent(tag, "2") == "real_note") {
                     // ex: A4 to 69
-                    Note note = Note(realNote);
+                    for (std::string i : listOfNotes) {
+                        notes.push_back(Note(i));
+                    }
                 }
                 else {
-                    Note note = Note(midiValue);
+                    for (std::string i : listOfNotes) {
+                        notes.push_back(Note(std::stoi(i)));
+                    }
                 }
             }
             else if (tag.find("pause") < tag.size()) {
