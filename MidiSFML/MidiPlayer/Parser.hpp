@@ -19,7 +19,7 @@
 
 std::string getContent(std::string line, std::string type);
 
-int getInstrumentalId(std::string instrumental);
+int getInstrumentalId(std::string usingInstrumental);
 
 class Parser{
 private:
