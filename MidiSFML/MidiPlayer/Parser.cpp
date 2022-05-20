@@ -62,7 +62,7 @@ Parser::Parser() {
 Song Parser::parseFromTxt(std::string filePath){
     std::string title;
     int tempo;
-    int minuteToMilliseconds = (60 * 1000);
+    int minuteToMilliseconds = 60 * 1000;
     double oneDuration;
     double timeForChord = 0.0;
 
@@ -88,14 +88,14 @@ Song Parser::parseFromTxt(std::string filePath){
 
             tag = getContent(str, "tag");
             body = getContent(str, "body");
-            // in song
+            // For Song
             if (tag.find("title") < tag.size())
                 title = body;
             else if (tag.find("tempo") < tag.size()) {
                 tempo = stoi(body);
                 oneDuration = static_cast<double>(minuteToMilliseconds) / tempo;
             }
-            // in songLine
+            // For SongLines
             else if (tag.find("line instrument") < tag.size())
                 instrumentId = getInstrumentId(getContent(tag, "1"));
             else if (tag.find("chord") < tag.size()) {
@@ -109,11 +109,11 @@ Song Parser::parseFromTxt(std::string filePath){
                 while (true) {
                     note = stringOfNote.substr(0, stringOfNote.find_first_of(','));
                     stringOfNote = stringOfNote.substr(stringOfNote.find_first_of(',') + 2);
-                    notes.emplace_back(Note(note));
+                    listOfNotes.push_back(note);
 
                     if (stringOfNote.find_first_of(',') > stringOfNote.size()) {
                         note = stringOfNote.substr(0, stringOfNote.find_first_of(','));
-                        notes.emplace_back(Note(note));
+                        listOfNotes.push_back(note);
                         break;
                     }
                 }
