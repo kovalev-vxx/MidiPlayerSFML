@@ -34,7 +34,7 @@ std::string getContent(std::string line, std::string type) {
     return line.substr(first, charCount);
 }
 
-int getInstrumentalId(std::string usingInstrumental) {
+int getInstrumentId(std::string usingInstrumental) {
     cxxmidi::Instrument instrument;
     std::string lookingInstrumental;
     int instrumentalId;
@@ -60,6 +60,18 @@ Parser::Parser() {
 }
 
 Song Parser::parseFromTxt(std::string filePath){
+    std::string title;
+    int tempo;
+    int minuteToMilliseconds = (60 * 1000);
+    double oneDuration;
+    double timeForChord = 0.0;
+
+    int instrumentId;
+    std::map<int, Chord> chordsOn;
+    std::map<int, Chord> chordsOff;
+
+    std::vector<SongLine> songLines;
+
     std::string str;
     std::string tag;
     std::string body;
@@ -78,73 +90,85 @@ Song Parser::parseFromTxt(std::string filePath){
             body = getContent(str, "body");
             // in song
             if (tag.find("title") < tag.size())
-                _title = body;
-            else if (tag.find("tempo") < tag.size())
-                _tempo = stoi(body);
+                title = body;
+            else if (tag.find("tempo") < tag.size()) {
+                tempo = stoi(body);
+                oneDuration = static_cast<double>(minuteToMilliseconds) / tempo;
+            }
             // in songLine
             else if (tag.find("line instrument") < tag.size())
-                _instrumentalId = getInstrumentalId(getContent(tag, "1"));
+                instrumentId = getInstrumentId(getContent(tag, "1"));
             else if (tag.find("chord") < tag.size()) {
+                // Create a range notes
                 std::vector<Note> notes;
                 std::string note;
-                bool check = true;
-
-                // listOfNote have string of notes
+                // listOfNote have a string of notes
                 std::string stringOfNote = body;
                 std::vector<std::string> listOfNotes;
 
-                while (check) {
+                while (true) {
                     note = stringOfNote.substr(0, stringOfNote.find_first_of(','));
-                    stringOfNote = stringOfNote.substr(stringOfNote.find_first_of(", ") + 1);
-                    listOfNotes.push_back(note);
+                    stringOfNote = stringOfNote.substr(stringOfNote.find_first_of(',') + 2);
+                    notes.emplace_back(Note(note));
 
                     if (stringOfNote.find_first_of(',') > stringOfNote.size()) {
                         note = stringOfNote.substr(0, stringOfNote.find_first_of(','));
-                        stringOfNote = stringOfNote.substr(stringOfNote.find_first_of(", ") + 1);
-                        listOfNotes.push_back(note);
-                        check = false;
+                        notes.emplace_back(Note(note));
+                        break;
                     }
                 }
-
-                if (getContent(tag, "2") == "real_note") {
+                // Create a chord
+                if (getContent(tag, "2") == "real_note")
                     // ex: A4 to 69
-                    for (std::string i : listOfNotes) {
+                    for (std::string i : listOfNotes)
                         notes.emplace_back(Note(i));
-                    }
-                }
-                else {
-                    for (std::string i : listOfNotes) {
+                else
+                    for (std::string i : listOfNotes)
                         notes.emplace_back(Note(std::stoi(i)));
-                    }
-                }
-                /*duration = getContent(tag, "1");*/
-                // in <line>
+
                 Chord chord(notes);
 
-                std::map<int, Chord> chordsOn;
-                std::map<int, Chord> chordsOff;
-
-                int minuteToMilliseconds = (60 * 1000);
-                double oneDuration;
+                // Count a duration for the chord
                 double chordDuration;
-
                 std::string duration = getContent(tag, "1");
-                oneDuration = static_cast<double>(minuteToMilliseconds) / _tempo;
 
                 if (duration.find('/') < duration.size()) {
                     int numerator = std::stoi(duration.substr(0, duration.find_first_of('/')));
                     int denominator = std::stoi(duration.substr(duration.find_first_of('/') + 1));
-                    chordDuration = numerator / static_cast<double>(denominator);
+                    chordDuration = (numerator * oneDuration) / static_cast<double>(denominator);
                 }
                 else
                     chordDuration = static_cast<double>(std::stoi(getContent(tag, "1")) * oneDuration);
 
-//                chordsOn[] =
+                // Create a chordsOn and a chordsOff
+                chordsOn[timeForChord] = chord;
+                timeForChord += chordDuration;
+                chordsOff[timeForChord] = chord;
             }
             else if (tag.find("pause") < tag.size()) {
+                // Add pause for a SongLine
+                double pause;
+                std::string duration = getContent(tag, "1");
 
+                if (duration.find('/') < duration.size()) {
+                    int numerator = std::stoi(duration.substr(0, duration.find_first_of('/')));
+                    int denominator = std::stoi(duration.substr(duration.find_first_of('/') + 1));
+                    pause = (numerator * oneDuration) / static_cast<double>(denominator);
+                }
+                else
+                    pause = static_cast<double>(std::stoi(getContent(tag, "1")) * oneDuration);
+
+                timeForChord += pause;
+            }
+            else if ((tag.find("/line") < tag.size()) && (tag.find("/lines") > tag.size())) {
+                // Create a range SongLines
+                songLines.emplace_back(SongLine(chordsOn, chordsOff, instrumentId));
+                chordsOn.clear();
+                chordsOff.clear();
             }
         }
+
+        return Song(songLines, tempo, title, _volumeOfSong);
     }
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
@@ -157,9 +181,9 @@ Song Parser::parseFromMidi(std::string filePath){
     
 }
 
-void Parser::setVolume(double volume) {
+void Parser::setVolumeOfSong(double volume) {
     if(volume < 0 | volume > 1){
         throw std::invalid_argument("The volume must be between 0 and 1.");
     }
-    _volume = volume;
+    _volumeOfSong = volume;
 }

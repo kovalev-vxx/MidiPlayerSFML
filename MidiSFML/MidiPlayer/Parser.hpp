@@ -19,21 +19,17 @@
 
 std::string getContent(std::string line, std::string type);
 
-int getInstrumentalId(std::string usingInstrumental);
+int getInstrumentId(std::string usingInstrumental);
 
 class Parser{
 private:
-    std::string _title;
-    int _tempo;
-    double _volume = 1.0;
-
-    int _instrumentalId;
+    double _volumeOfSong = 1.0;
 public:
     Parser();
     Song parseFromTxt(std::string filePath);
     Song parseFromMidi(std::string filePath);
 
-    void setVolume(double volume);
+    void setVolumeOfSong(double volume);
 };
 
 #endif /* Parser_hpp */
