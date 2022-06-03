@@ -12,7 +12,7 @@ void TextureManager::loadTexture(const std::string& name, const std::string& fil
 {
     /* Load the texture */
     sf::Texture tex;
-    tex.loadFromFile(_fileS->getRoot()+filename);
+    tex.loadFromFile(_fs->getRoot()+filename);
 
     /* Add it to the list of textures */
     this->textures[name] = tex;

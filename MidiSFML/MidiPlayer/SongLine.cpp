@@ -19,7 +19,7 @@ SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff
 };
 
 SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff, double volume){
-    _instrumentId = 1;
+    _instrumentId = 0;
     _chordsOn = chordsOn;
     _chordsOff  = chordsOff;
     if(volume<0 | volume>1){
@@ -35,7 +35,7 @@ SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff
     
 }
 SongLine::SongLine(std::map<int, Chord> chordsOn, std::map<int, Chord> chordsOff){
-    _instrumentId = 1;
+    _instrumentId = 0;
     _chordsOn = chordsOn;
     _chordsOff  = chordsOff;
     _volume = 1;
