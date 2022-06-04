@@ -98,14 +98,14 @@ int main(int argc, char const** argv)
 //
 //    generator.generateMidi(mySong);
     
-    auto res = parser.parseFromMidi("res/midis/BOURREE-1.mid");
+    auto res = parser.parseFromMidi("res/midis/clair_after_gtp.mid");
     SongLine sl = SongLine(res.first, res.second);
     Song testSong = Song({sl},120);
     generator.generateMidi(testSong);
     
 
 
-    sfmidi::Midi testMidi(fs.getRoot()+"res/synths/Touhou.sf2", fs.getRoot()+"res/midis/Pirates of the Caribbean - He's a Pirate (3).mid");
+    sfmidi::Midi testMidi(fs.getRoot()+"res/synths/Touhou.sf2", fs.getRoot()+"res/midis/tarrega_francisco-recuerdos_de_la_alhambra_3.mid");
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
