@@ -178,13 +178,105 @@ Song Parser::parseFromTxt(std::string filePath){
 }
 
 
-Song Parser::parseFromMidi(std::string filePath){
-    
-}
-
 void Parser::setVolumeOfSong(double volume) {
     if(volume < 0 | volume > 1){
         throw std::invalid_argument("The volume must be between 0 and 1.");
     }
     _volumeOfSong = volume;
+}
+
+//Song Parser::parseFromMidi(std::string filePath){
+////    cxxmidi::File file = cxxmidi::File(filePath.c_str());
+//    cxxmidi::File file = cxxmidi::File(midiName.c_str());
+//
+//    try{
+//        for (int i=0; i<file.size()-1;i++){
+//            auto &track = file[i];
+////            std::cout << "TRACK NAME: " << track.GetName() << std::endl;
+//            for (int j=0; j<track.size();j++){
+//                auto &event = track[j];
+////                std::cout << event.GetType() << std::endl;
+//            }
+//        }
+//    }catch(...){
+//        std::cout << "ERROR" << std::endl;
+//    }
+//}
+
+
+std::pair<std::map<int, Chord>, std::map<int, Chord>> Parser::parseFromMidi(std::string filePath){
+    std::cout << "PARSER" << std::endl;
+    std::map<int, Chord> starts;
+    std::map<int, Chord> ends;
+    smf::MidiFile _midifile;
+    _midifile.read(filePath);
+    _midifile.doTimeAnalysis();
+    _midifile.linkNotePairs();
+    _midifile.setMillisecondTicks();
+    
+    if (!_midifile.status()) {
+       std::cerr << "Error reading MIDI file" << std::endl;
+    }
+    
+    int tempo;
+    for (int i=0; i<_midifile[0].size(); i++) {
+        if (_midifile[0][i].isTempo()){
+            tempo = _midifile[0][i].getTempoBPM();
+            std::cout << "TEMPO " << _midifile[0][i].getTempoBPM() << std::endl;
+        }
+    }
+    
+    int track = 1;
+    int last_tick = 0;
+    double last_second = 0;
+    for (int i=0; i<_midifile[track].size(); i++) {
+        int tick = _midifile[track][i].tick;
+        double seconds = _midifile[track][i].seconds*1000;
+        double duration = _midifile[track][i].getDurationInSeconds();
+        int midiValue = (int)_midifile[track][i][1];
+        bool isNoteOn = _midifile[track][i].isNoteOn();
+        bool isNoteOff = _midifile[track][i].isNoteOff();
+        if (isNoteOn){
+            std::cout << "SEC:" << seconds << " DUR: " << duration << " MIDI: " << midiValue << std::endl;
+        }
+        if (isNoteOn){
+            if (starts[seconds].getNotes().size()){
+                starts[seconds].addNote(Note(midiValue));
+            } else {
+                starts[seconds] = Chord({Note(midiValue)});
+            }
+
+        }
+        if (isNoteOff){
+            if (ends[seconds].getNotes().size()){
+                ends[seconds].addNote(Note(midiValue));
+            } else {
+                ends[seconds] = Chord({Note(midiValue)});
+            }
+
+        }
+    
+    
+        
+//        if (isNoteOn){
+//            if (starts[seconds*1000].getNotes()){
+//                starts[seconds*1000].addNote(Note(midiValue));
+//            } else {
+//                starts[seconds*1000] = Chord();
+//                starts[seconds*1000].changeDuration(calcTempo(duration, tempo));
+//                starts[seconds*1000].addNote(Note(midiValue));
+//            }
+//        }
+//
+//        if (isNoteOff){
+//            if (ends[seconds*1000].getDuration()){
+//                ends[seconds*1000].addNote(Note(midiValue));
+//            } else {
+//                ends[seconds*1000] = Chord();
+//                ends[seconds*1000].changeDuration(calcTempo(duration, tempo));
+//                ends[seconds*1000].addNote(Note(midiValue));
+//            }
+//        }
+    }
+    return std::make_pair(starts, ends);
 }

@@ -3,10 +3,13 @@
 
 #include <stdio.h>
 #include "Song.hpp"
-#include "MidiFile.h"
 #include "file.hpp"
 #include <iostream>
 #include <string>
+#include "note.hpp"
+#include "message.hpp"
+#include "instrument.hpp"
+
 
 class MidiGenerator{
 public:

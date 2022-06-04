@@ -13,6 +13,7 @@
 #include "Song.hpp"
 #include <iostream>
 #include <string>
+#include "MidiFile.h"
 
 #include <stdio.h>
 #include <iostream>
@@ -21,6 +22,7 @@
 
 #include "Song.hpp"
 #include "instrument.hpp"
+#include "file.hpp"
 
 std::string getContent(std::string line, std::string type);
 
@@ -29,10 +31,11 @@ int getInstrumentId(std::string usingInstrumental);
 class Parser{
 private:
     double _volumeOfSong = 1.0;
+    std::string midiName = "res/midis/BOURREE-1.mid";
 public:
     Parser();
     Song parseFromTxt(std::string filePath);
-    Song parseFromMidi(std::string filePath);
+    std::pair<std::map<int, Chord>, std::map<int, Chord>> parseFromMidi(std::string filePath);
 
     void setVolumeOfSong(double volume);
 };

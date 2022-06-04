@@ -60,43 +60,48 @@ int main(int argc, char const** argv)
 
     
     Parser parser;
-    Song s = parser.parseFromTxt("song.txt");
+//    Song s = parser.parseFromTxt("song.txt");
     MidiGenerator generator;
-    generator.generateMidi(s);
+//    generator.generateMidi(s);
+//
+//
+//    std::map<int, Chord> chordsOn = {{0, Chord({Note("A7"), Note("E3"), Note("G3")})},
+//        {1000, Chord({Note("E3"), Note("G3"), Note("B3")})},
+//        {2000, Chord({Note("C3"), Note("E3"), Note("G3")})},
+//        {3000, Chord({Note("E3"), Note("G3"), Note("B3")})}
+//    };
+//
+//    std::map<int, Chord> chordsOff = {{1000, Chord({Note("C3"), Note("E3"), Note("G3")})},
+//        {2000, Chord({Note("E3"), Note("G3"), Note("B3")})},
+//        {3000, Chord({Note("C3"), Note("E3"), Note("G3")})},
+//        {4000, Chord({Note("E3"), Note("G3"), Note("B3")})}
+//    };
+//
+//    std::map<int, Chord> chordsOn1 = {
+//        {0, Chord({Note("C4")})},
+//        {1000, Chord({Note("E4")})},
+//        {2000, Chord({Note("G4")})},
+//        {3000, Chord({Note("B4")})},
+//    };
+//
+//    std::map<int, Chord> chordsOff1 = {
+//        {250, Chord({Note("C4")})},
+//        {2000, Chord({Note("E4")})},
+//        {3000, Chord({Note("G4")})},
+//        {4000, Chord({Note("B4")})},
+//    };
+//
+//
+//    SongLine songLine = SongLine(chordsOn, chordsOff);
+//    SongLine songLine1 = SongLine(chordsOn1, chordsOff1);
+//    Song mySong = Song({songLine, songLine1}, 120);
+//
+//    generator.generateMidi(mySong);
     
-    
-    std::map<int, Chord> chordsOn = {{0, Chord({Note("C3"), Note("E3"), Note("G3")})},
-        {1000, Chord({Note("E3"), Note("G3"), Note("B3")})},
-        {2000, Chord({Note("C3"), Note("E3"), Note("G3")})},
-        {3000, Chord({Note("E3"), Note("G3"), Note("B3")})}
-    };
-    
-    std::map<int, Chord> chordsOff = {{1000, Chord({Note("C3"), Note("E3"), Note("G3")})},
-        {2000, Chord({Note("E3"), Note("G3"), Note("B3")})},
-        {3000, Chord({Note("C3"), Note("E3"), Note("G3")})},
-        {4000, Chord({Note("E3"), Note("G3"), Note("B3")})}
-    };
-    
-    std::map<int, Chord> chordsOn1 = {
-        {0, Chord({Note("C4")})},
-        {1000, Chord({Note("E4")})},
-        {2000, Chord({Note("G4")})},
-        {3000, Chord({Note("B4")})},
-    };
-    
-    std::map<int, Chord> chordsOff1 = {
-        {250, Chord({Note("C4")})},
-        {2000, Chord({Note("E4")})},
-        {3000, Chord({Note("G4")})},
-        {4000, Chord({Note("B4")})},
-    };
-    
-    
-    SongLine songLine = SongLine(chordsOn, chordsOff);
-    SongLine songLine1 = SongLine(chordsOn1, chordsOff1);
-    Song mySong = Song({songLine, songLine1}, 120);
-    
-    generator.generateMidi(mySong);
+    auto res = parser.parseFromMidi("res/midis/BOURREE-1.mid");
+    SongLine sl = SongLine(res.first, res.second);
+    Song testSong = Song({sl},120);
+    generator.generateMidi(testSong);
     
 
 
