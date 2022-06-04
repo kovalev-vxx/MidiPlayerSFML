@@ -17,69 +17,55 @@ std::string MidiGenerator::generateMidi(Song &song){
         cxxmidi::Track &track = file.AddTrack();
         track.push_back(cxxmidi::Event(0, cxxmidi::Message::kProgramChange, cxxmidi::Instrument(line.getInstrumentId())));
         
-        std::vector<Chord> chords;
-        std::vector<int> timesOn;
-        std::vector<int> timesOff;
         
-        for (auto& chordOn:line.getChordsOn()){
-            timesOn.emplace_back(chordOn.first);
-            chords.emplace_back(chordOn.second);
+        std::vector<std::pair<Note, bool>> notes;
+        
+        for (auto& noteOn:line.getNotesOn()){
+            notes.emplace_back(std::make_pair(noteOn, true));
         }
         
-        for (auto& chordOff:line.getChordsOff()){
-            timesOff.emplace_back(chordOff.first);
+        for (auto& noteOff:line.getNotesOff()){
+            notes.emplace_back(std::make_pair(noteOff, false));
         }
+        std::cout << notes.size() << std::endl;
         
-        int lastTimeOff = 0;
+        std::sort(notes.begin(), notes.end(), [](std::pair<Note, bool> n1, std::pair<Note, bool> n2){
+            return n1.first.getAbsoluteTime() < n2.first.getAbsoluteTime();
+        });
         
-        for (int i =0; i<chords.size();i++){
-            int dtOn = timesOn[i]-lastTimeOff;
-            int dtOff = timesOff[i]-timesOn[i];
+        int lastTime = 0;
+        
+        for (int i =0; i<notes.size();i++){
+            int dt = notes[i].first.getAbsoluteTime()-lastTime;
             
-            std::cout << i << " " << dtOn << " " << dtOff << std::endl;
+            std::cout << dt << " " << notes[i].first.getMidiValue();
             
-//            std::cout  << "dtOn" << dtOn << std::endl;
-//            std::cout  << "dOn" << timesOn[i] << std::endl;
-            
-//            std::cout  << "dtOff" << dtOff << std::endl;
-//            std::cout  << "dOff" << timesOff[i] << std::endl;
-            
-            for(int j=0; j<chords[i].getNotes().size();j++){
-                if (j==0){
-                    std::cout << j << " CHORD: " << i << " ADDED ON: " << dtOn << " note:" << chords[i].getNotes()[j].getMidiValue() << std::endl;
-                    track.push_back(
-                        cxxmidi::Event(dtOn,// deltatime
-                                       cxxmidi::Message::kNoteOn,     // message type
-                                       cxxmidi::Note(chords[i].getNotes()[j].getMidiValue()),// note
-                                       (int)127*chords[i].getVolume()*line.getVolume()*song.getVolume()));// velocity [0...127]
-                } else {
-                    std::cout << j << " CHORD: " << i << " ADDED ON: " << 0 << " note:" << chords[i].getNotes()[j].getMidiValue() << std::endl;
-                    track.push_back(
-                        cxxmidi::Event(0,// deltatime
-                                       cxxmidi::Message::kNoteOn,     // message type
-                                       cxxmidi::Note(chords[i].getNotes()[j].getMidiValue()),// note
-                                       (int)127*chords[i].getVolume()*line.getVolume()*song.getVolume()));// velocity [0...127]
-                }
+            if (notes[i].second){
+                std::cout << " ON" << std::endl;
+            } else {
+                std::cout << " OFF" << std::endl;
             }
             
-            for(int j=0; j<chords[i].getNotes().size();j++){
-                if (j==0){
-                    std::cout << j << " CHORD: " << i << " ADDED Off: " << dtOff << " note:" << chords[i].getNotes()[j].getMidiValue() << std::endl;
-                    track.push_back(
-                        cxxmidi::Event(dtOff,// deltatime
-                                       cxxmidi::Message::kNoteOn,     // message type
-                                       cxxmidi::Note(chords[i].getNotes()[j].getMidiValue()),// note
-                                       0));// velocity [0...127]
-                } else {
-                    std::cout << j << " CHORD: " << i << " ADDED Off: " << 0 << " note:" << chords[i].getNotes()[j].getMidiValue() << std::endl;
-                    track.push_back(
-                        cxxmidi::Event(0,// deltatime
-                                       cxxmidi::Message::kNoteOn,     // message type
-                                       cxxmidi::Note(chords[i].getNotes()[j].getMidiValue()),// note
-                                       0));// velocity [0...127]
-                }
+            if (notes[i].first.getAbsoluteTime() != lastTime){
+                std::cout << "Change: " << notes[i].first.getAbsoluteTime() << std::endl;
             }
-            lastTimeOff = timesOff[i];
+            
+            if (notes[i].second){
+                track.push_back(
+                    cxxmidi::Event(dt,// deltatime
+                                   cxxmidi::Message::kNoteOn,     // message type
+                                   cxxmidi::Note(notes[i].first.getMidiValue()),// note
+                                   (int)127*line.getVolume()*song.getVolume()));// velocity [0...127]
+            } else {
+                track.push_back(
+                    cxxmidi::Event(dt,// deltatime
+                                   cxxmidi::Message::kNoteOn,     // message type
+                                   cxxmidi::Note(notes[i].first.getMidiValue()),// note
+                                   0));// velocity [0...127]
+            }
+            
+            lastTime = notes[i].first.getAbsoluteTime();
+            
         }
         
         track.push_back(cxxmidi::Event(0,  // deltatime

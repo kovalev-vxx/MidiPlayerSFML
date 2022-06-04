@@ -45,21 +45,10 @@ int main(int argc, char const** argv)
 //    app.pushState(new AppStartState(&app));
 //    app.gameLoop();
 //    return 0;
-  sf::RenderWindow sfApp(sf::VideoMode(800, 600, 32), "SFML Window");
-    fileSystem fs;
-    fs.setRoot(argv[0]);
 
-  sfApp.setFramerateLimit(60);
-
-  sf::Sprite spr_bg;
-
-  sf::Texture tex_bg;
-  tex_bg.loadFromFile(fs.getRoot()+"res/bg.png");
-  spr_bg.setTexture(tex_bg);
-  spr_bg.setPosition(40.0f, 100.0f);
 
     
-    Parser parser;
+//    Parser parser;
 //    Song s = parser.parseFromTxt("song.txt");
     MidiGenerator generator;
 //    generator.generateMidi(s);
@@ -98,10 +87,45 @@ int main(int argc, char const** argv)
 //
 //    generator.generateMidi(mySong);
     
-    auto res = parser.parseFromMidi("res/midis/clair_after_gtp.mid");
-    SongLine sl = SongLine(res.first, res.second);
+//    auto res = parser.parseFromMidi("res/midis/clair_after_gtp.mid");
+//    SongLine sl = SongLine(res.first, res.second);
+    
+    std::vector<Note> notesOn = {
+        Note("C3", 0), Note("E3", 0), Note("G3",0), Note("G6",500),
+        Note("C4", 1000), Note("E4", 1000), Note("G4",1000),
+        Note("C5", 2000), Note("E5", 2000), Note("G5",2000),
+    };
+    
+
+    std::vector<Note> notesOff = {Note("G6", 2500),
+        Note("C3", 1000), Note("E3", 1000), Note("G3",1000),
+        Note("C4", 2000), Note("E4", 2000), Note("G4",2000),
+        Note("C5", 3000), Note("E5", 3000), Note("G5",3000),
+    };
+    
+    
+    std::cout << notesOn.size() << std::endl;
+    
+    SongLine sl = SongLine(notesOn, notesOff);
+    
+    
     Song testSong = Song({sl},120);
     generator.generateMidi(testSong);
+    return 0;
+    
+    
+    sf::RenderWindow sfApp(sf::VideoMode(800, 600, 32), "SFML Window");
+      fileSystem fs;
+      fs.setRoot(argv[0]);
+
+    sfApp.setFramerateLimit(60);
+
+    sf::Sprite spr_bg;
+
+    sf::Texture tex_bg;
+    tex_bg.loadFromFile(fs.getRoot()+"res/bg.png");
+    spr_bg.setTexture(tex_bg);
+    spr_bg.setPosition(40.0f, 100.0f);
     
 
 

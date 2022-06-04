@@ -32,10 +32,12 @@ private:
             {"G", 10},
             {"G#", 11},
     };
+    int _absoluteTime; //miliseconds
 public:
     int getMidiValue();
-    Note(int midiValue);
-    Note(std::string realNote);
+    int getAbsoluteTime();
+    Note(int midiValue, int absoluteTime);
+    Note(std::string realNote, int absoluteTime);
 };
 
 #endif /* mNote_hpp */

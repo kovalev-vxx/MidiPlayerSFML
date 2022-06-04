@@ -35,7 +35,7 @@ private:
 public:
     Parser();
     Song parseFromTxt(std::string filePath);
-    std::pair<std::map<int, Chord>, std::map<int, Chord>> parseFromMidi(std::string filePath);
+//    std::pair<std::map<int, Chord>, std::map<int, Chord>> parseFromMidi(std::string filePath);
 
     void setVolumeOfSong(double volume);
 };
