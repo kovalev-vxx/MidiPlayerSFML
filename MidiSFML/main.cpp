@@ -34,30 +34,84 @@
 #include "sfMidi.h"
 #include "MidiPlayer/MidiGenerator.hpp"
 #include "MidiPlayer/Song.hpp"
+#include "App/App.hpp"
+#include "App/AppStartState.hpp"
+#include "MidiPlayer/Parser.hpp"
+#include <chrono>
 
 
-int main()
+int main(int argc, char const** argv)
 {
-  sf::RenderWindow sfApp(sf::VideoMode(800, 600, 32), "SFML Window");
+//    App app = App(argc, argv);
+//    app.pushState(new AppStartState(&app));
+//    app.gameLoop();
+//    return 0;
 
-  sfApp.setFramerateLimit(60);
 
-  sf::Sprite spr_bg;
-  
-  sf::Texture tex_bg;
-  tex_bg.loadFromFile("res/bg.png");
-  spr_bg.setTexture(tex_bg);
-    MidiGenerator m;
-  spr_bg.setPosition(40.0f, 100.0f);
+    fileSystem fss;
+    fss.setRoot(argv[0]);
+    std::cout << fss.getRoot() << std::endl;
+    std::cout << fss.pathToResousers() << std::endl;
+    std::cout << fss.pathToSynths() << std::endl;
+    std::cout << fss.pathToMidis() << std::endl;
+    std::cout << fss.pathToGeneratedMidis() << std::endl;
+    Parser parser;
+    MidiGenerator generator;
     
     
-    SongLine sl = SongLine({{0, Chord({Note(50)}, 1)}, {5000, Chord({Note(55)}, 1)}}, {{100, Chord({Note(50)}, 1)}, {6000, Chord({Note(55)}, 0.5)}}, 1, 1);
-    
-    SongLine sl2 = SongLine({{0, Chord({Note(62)}, 1)}, {1000, Chord({Note(67)}, 1)}}, {{1000, Chord({Note(62)}, 1)}, {2000, Chord({Note(67)}, 0.5)}}, 1, 1);
-    
-    Song song = Song({sl, sl2}, 120, "Hello", 1);
+    int WIDHT = 1280;
+    int HEIGHT = 720;
 
-    sfmidi::Midi testMidi("res/synths/Essential Keys-sforzando-v9.6.sf2", "res/midis/polet_shmelya.mid");
+    std::vector<sf::RectangleShape> noteRects;
+    std::chrono::high_resolution_clock::time_point start;
+    std::chrono::high_resolution_clock::time_point end;
+    float fps;
+    
+    
+    Song test = parser.parseFromMidi("debussy-clair-de-lune.mid", fss.pathToMidis());
+    std::cout << test.getTitle() << std::endl;
+    for(auto& line:test.getLines()){
+        for(int i=0; i<line.getNotesOn().size();i++){
+            int midiValue = line.getNotesOn()[i].getMidiValue();
+            int startTime = line.getNotesOn()[i].getAbsoluteTime();
+            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
+            sf::RectangleShape rect;
+            rect.setSize(sf::Vector2f(WIDHT/100, duration));
+            rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, startTime));
+            rect.setFillColor(sf::Color(255, 0, 0));
+            rect.setOutlineColor(sf::Color(0,0,0));
+            noteRects.push_back(rect);
+        }
+    }
+    
+//    std::string genSong = generator.generateMidi(test, fss.pa);
+//    return 0;
+    
+    
+    sf::RenderWindow sfApp(sf::VideoMode(WIDHT, HEIGHT, 32), "SFML Window");
+    
+//    sfApp.getSize()
+      fileSystem fs;
+      fs.setRoot(argv[0]);
+
+    sfApp.setFramerateLimit(60);
+
+    sf::Sprite spr_bg;
+
+    sf::Texture tex_bg;
+    tex_bg.loadFromFile(fs.getRoot()+"res/bg.png");
+    spr_bg.setTexture(tex_bg);
+    spr_bg.setPosition(40.0f, 100.0f);
+    
+    sf::RectangleShape rect;
+    sf::Vector2f pos(0,0);
+    rect.setPosition(pos);
+    rect.setSize(sf::Vector2f(100,100));
+    sfApp.setFramerateLimit(60);
+    
+
+
+    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"debussy-clair-de-lune.mid");
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
@@ -65,9 +119,19 @@ int main()
     double gain = 1.0;
       testMidi.setGain(gain);
   testMidi.play();
+    sf::Clock clock;
+    double offset = 0;
 
   while (sfApp.isOpen()) {
     sf::Event sfEvent;
+      
+//      float currentTime = clock.restart().asSeconds();
+//        if (currentTime){
+//            double fps = 1 / (currentTime);
+//        } else {
+//            fps = 60;
+//        }
+      
     while (sfApp.pollEvent(sfEvent)) {
       if (sfEvent.type == sf::Event::Closed)
         sfApp.close();
@@ -87,7 +151,7 @@ int main()
 
               break;
             }
-                
+
             case sf::Keyboard::Up:
             {
                 if (gain<1){
@@ -95,9 +159,9 @@ int main()
                     std::cout << gain << std::endl;
                     testMidi.setGain(gain);
                 }
-                
+
                 break;
-                
+
             }
             case sf::Keyboard::Down:
             {
@@ -107,7 +171,7 @@ int main()
                     testMidi.setGain(gain);
                 }
                 break;
-                
+
             }
 
           case sf::Keyboard::Left:
@@ -146,12 +210,22 @@ int main()
         }
       }
     }
+      
+
 
     sfApp.clear();
+      for (auto& noteRect:noteRects){
+          sfApp.draw(noteRect);
+          noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-offset));
+      }
+      
 
-    sfApp.draw(spr_bg);
+      
+      std::cout << offset << std::endl;
 
-    sfApp.display();
+
+      sfApp.display();
+      offset = clock.restart().asMilliseconds();
   }
 
   testMidi.stop();

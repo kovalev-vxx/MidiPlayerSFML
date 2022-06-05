@@ -95,7 +95,7 @@ Song Parser::parseFromTxt(std::string filePath){
                 tempo = stoi(body);
                 oneDuration = static_cast<double>(minuteToMilliseconds) / tempo;
             }
-            // For SongLines
+                // For SongLines
             else if (tag.find("line instrument") < tag.size())
                 // instrumentId = getInstrumentId(getContent(tag, "1"));
                 instrumentId = std::stoi(getContent(tag, "1"));
@@ -180,13 +180,46 @@ Song Parser::parseFromTxt(std::string filePath){
 }
 
 
-Song Parser::parseFromMidi(std::string filePath){
-    
-}
+Song Parser::parseFromMidi(std::string fileName, std::string fileDir){
+    smf::MidiFile midifile;
+    std::cout << fileDir+fileName << std::endl;
+    midifile.read(fileDir+fileName);
+    midifile.doTimeAnalysis();
+    midifile.linkNotePairs();
+    midifile.setMillisecondTicks();
 
-void Parser::setVolumeOfSong(double volume) {
-    if(volume < 0 | volume > 1){
-        throw std::invalid_argument("The volume must be between 0 and 1.");
+
+    if (!midifile.status()) {
+        std::cerr << "Error reading MIDI file" << std::endl;
     }
-    _volumeOfSong = volume;
+
+    std::vector<SongLine> songLines;
+
+    for (int i=0; i<midifile.getNumTracks(); i++){
+        std::vector<Note> notesOn;
+        std::vector<Note> notesOff;
+        int instrumentId = 0;
+
+        for(int j=0;j<midifile[i].size();j++){
+            if (midifile[i][j].isTimbre()) {
+                instrumentId = midifile[i][j].getP1();
+            }
+            double seconds = midifile[i][j].seconds*1000;
+            int midiValue = (int)midifile[i][j][1];
+            bool isNoteOn = midifile[i][j].isNoteOn();
+            bool isNoteOff = midifile[i][j].isNoteOff();
+            if (isNoteOn){
+                notesOn.push_back(Note(midiValue,seconds));
+                notesOn.back().setVolume((double)(int)midifile[i][j][2]/127);
+            }
+            if (isNoteOff){
+                notesOff.push_back(Note(midiValue,seconds));
+            }
+        }
+        songLines.push_back(SongLine(notesOn, notesOff, instrumentId));
+    }
+    for (int i=0;i<4;i++){
+        fileName.pop_back();
+    }
+    return Song(songLines, fileName);
 }

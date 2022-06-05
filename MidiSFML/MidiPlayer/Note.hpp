@@ -6,13 +6,14 @@
 //  Copyright © 2022 Valery Kovalev. All rights reserved.
 //
 
-#ifndef Note_hpp
-#define Note_hpp
+#ifndef mNote_hpp
+#define mNote_hpp
 
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
 #include <map>
+#include <string>
 
 class Note{
 private:
@@ -31,12 +32,16 @@ private:
             {"G", 10},
             {"G#", 11},
     };
+    int _absoluteTime; //miliseconds
+    double _volume;
 public:
     int getMidiValue();
-    Note(int midiValue);
-    Note(std::string realNote);
-
-
+    int getAbsoluteTime();
+    Note(int midiValue, int absoluteTime);
+    Note(std::string realNote, int absoluteTime);
+    void setVolume(double value);
+    double getVolume();
 };
 
-#endif /* Note_hpp */
+#endif /* mNote_hpp */
+

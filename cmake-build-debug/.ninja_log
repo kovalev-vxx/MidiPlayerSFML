@@ -1,0 +1,26 @@
+# ninja log v5
+2526	4960	1654261227081409610	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Loader.cpp.o	b80168fded2b0478
+14	2526	1654261224641682277	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiMessage.cpp.o	88689556547c4d36
+3144	4953	1654261227045413254	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Midi.cpp.o	b75fe167175c499e
+14	4078	1654261226121512356	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiFile.cpp.o	aa2917802f9643f7
+5	3144	1654261225261609418	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Binasc.cpp.o	94c50bcd6d627c53
+3994	5436	1654261227549362173	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Music.cpp.o	b77be7345dff9806
+17	6449	1654267074951355883	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Song.cpp.o	8916d37ac498f054
+6478	7784	1654267076295710257	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/SongLine.cpp.o	b89617575381a3b6
+2264	4870	1654261226565464638	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Options.cpp.o	aec662090d4f0ffc
+2	2263	1654261224381713484	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEvent.cpp.o	20d514910e4dbe6c
+7	3979	1654261226033521824	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEventList.cpp.o	75238c6444dcc0ab
+3958	4053	1652866807647152135	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiPlayer.cpp.o	c0d0a7f44910bc47
+6449	8069	1654267076627797907	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/main.cpp.o	601d51ef1aa37be2
+5	6589	1654267075099394888	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Note.cpp.o	a0dea14249f7c92d
+7	7060	1654267075575520405	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Parser.cpp.o	63ca01061c45fe14
+1	6478	1654267075039379062	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Chord.cpp.o	46686921660396f2
+2	7477	1654267075955620581	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiGenerator.cpp.o	a4819b03f3562641
+0	48	1654455299474815991	build.ninja	8e856452a9ce25cc
+3	3369	1654455302814700311	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Note.cpp.o	a0dea14249f7c92d
+1	3507	1654455302954695483	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Chord.cpp.o	46686921660396f2
+6	3670	1654455303110690103	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Song.cpp.o	8916d37ac498f054
+93	1957	1654455388784107917	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/SongLine.cpp.o	b89617575381a3b6
+19	3133	1654455629188055325	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Parser.cpp.o	63ca01061c45fe14
+25	3223	1654455629276054543	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/main.cpp.o	601d51ef1aa37be2
+1	1460	1654455761903317767	CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiGenerator.cpp.o	a4819b03f3562641

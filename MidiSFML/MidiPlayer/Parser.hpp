@@ -10,12 +10,19 @@
 #define Parser_hpp
 
 #include <stdio.h>
+#include "Song.hpp"
+#include <iostream>
+#include <string>
+#include "midifile/MidiFile.h"
+
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <fstream>
 
 #include "Song.hpp"
 #include "cxxmidi/instrument.hpp"
+#include "cxxmidi/file.hpp"
 
 std::string getContent(std::string line, std::string type);
 
@@ -26,10 +33,9 @@ private:
     double _volumeOfSong = 1.0;
 public:
     Parser();
-    Song parseFromTxt(std::string filePath);
-    Song parseFromMidi(std::string filePath);
+//    Song parseFromTxt(std::string filePath);
+    Song parseFromMidi(std::string fileName, std::string fileDir);
 
     void setVolumeOfSong(double volume);
 };
-
 #endif /* Parser_hpp */

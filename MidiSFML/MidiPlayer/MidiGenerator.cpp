@@ -7,7 +7,9 @@
 //
 
 #include "MidiGenerator.hpp"
-
+#include "cxxmidi/note.hpp"
+#include "cxxmidi/message.hpp"
+#include "cxxmidi/instrument.hpp"
 
 
 std::string MidiGenerator::generateMidi(Song &song){

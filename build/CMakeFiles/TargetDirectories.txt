@@ -1,0 +1,3 @@
+/home/purpleduck/CLionProjects/MidiPlayerSFML/build/CMakeFiles/edit_cache.dir
+/home/purpleduck/CLionProjects/MidiPlayerSFML/build/CMakeFiles/rebuild_cache.dir
+/home/purpleduck/CLionProjects/MidiPlayerSFML/build/CMakeFiles/MidiPlayerSFML.dir
