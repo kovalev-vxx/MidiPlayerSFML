@@ -36,7 +36,7 @@ class Simulator : protected PlayerBase {
 }  // namespace guts
 }  // namespace cxxmidi
 
-#include "converters.hpp"
+#include "cxxmidi/converters.hpp"
 
 namespace cxxmidi {
 namespace guts {

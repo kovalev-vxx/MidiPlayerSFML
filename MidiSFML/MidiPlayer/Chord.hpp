@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
-#include "mNote.hpp"
+#include "Note.hpp"
 
 class Chord{
     private:

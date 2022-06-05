@@ -7,6 +7,7 @@
 //
 
 #include "MidiGenerator.hpp"
+#include "cxxmidi/note.hpp"
 
 
 

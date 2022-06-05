@@ -3,12 +3,12 @@
 
 #include <stdio.h>
 #include "Song.hpp"
-#include "file.hpp"
+#include "cxxmidi/file.hpp"
 #include <iostream>
 #include <string>
-#include "note.hpp"
-#include "message.hpp"
-#include "instrument.hpp"
+#include "Note.hpp"
+#include "cxxmidi/message.hpp"
+#include "cxxmidi/instrument.hpp"
 
 
 class MidiGenerator{

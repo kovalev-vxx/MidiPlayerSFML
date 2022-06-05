@@ -13,7 +13,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "mNote.hpp"
+#include "Note.hpp"
 #include <algorithm>
 
 class SongLine{

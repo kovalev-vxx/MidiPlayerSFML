@@ -6,7 +6,7 @@
 //  Copyright © 2022 Valery Kovalev. All rights reserved.
 //
 
-#include "mNote.hpp"
+#include "Note.hpp"
 
 Note::Note(int midiValue, int absoluteTime){
     _midiValue = midiValue;
