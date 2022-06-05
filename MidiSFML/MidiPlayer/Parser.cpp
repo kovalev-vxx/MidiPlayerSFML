@@ -187,15 +187,14 @@ void Parser::setVolumeOfSong(double volume) {
 
 
 
-Song Parser::parseFromMidi(std::string filePath){
-    std::cout << "PARSER" << std::endl;
+Song Parser::parseFromMidi(std::string fileName, std::string fileDir){
     smf::MidiFile midifile;
-    midifile.read(filePath);
+    std::cout << fileDir+fileName << std::endl;
+    midifile.read(fileDir+fileName);
     midifile.doTimeAnalysis();
     midifile.linkNotePairs();
     midifile.setMillisecondTicks();
     
-    std::cout << midifile.getNumTracks() << std::endl;
     
     if (!midifile.status()) {
        std::cerr << "Error reading MIDI file" << std::endl;
@@ -218,7 +217,7 @@ Song Parser::parseFromMidi(std::string filePath){
             bool isNoteOff = midifile[i][j].isNoteOff();
             if (isNoteOn){
                 notesOn.push_back(Note(midiValue,seconds));
-                notesOn.back().setVolume((double)((int)midifile[i][j][2]/127));
+                notesOn.back().setVolume((double)(int)midifile[i][j][2]/127);
             }
             if (isNoteOff){
                 notesOff.push_back(Note(midiValue,seconds));
@@ -226,7 +225,6 @@ Song Parser::parseFromMidi(std::string filePath){
         }
         songLines.push_back(SongLine(notesOn, notesOff, instrumentId));
     }
-    std::string fileName = midifile.getFilename();
     for (int i=0;i<4;i++){
         fileName.pop_back();
     }

@@ -31,11 +31,10 @@ int getInstrumentId(std::string usingInstrumental);
 class Parser{
 private:
     double _volumeOfSong = 1.0;
-    std::string midiName = "res/midis/BOURREE-1.mid";
 public:
     Parser();
 //    Song parseFromTxt(std::string filePath);
-    Song parseFromMidi(std::string filePath);
+    Song parseFromMidi(std::string fileName, std::string fileDir);
 
     void setVolumeOfSong(double volume);
 };

@@ -24,3 +24,20 @@ void fileSystem::setRoot(std::string path){
 std::string fileSystem::getRoot(){
     return _root;
 }
+
+
+std::string fileSystem::pathToResousers(){
+    return std::filesystem::path(_root + "res/");;
+}
+
+std::string fileSystem::pathToSynths(){
+    return std::filesystem::path(pathToResousers() + "synths/");
+}
+
+std::string fileSystem::pathToMidis(){
+    return std::filesystem::path(pathToResousers() + "midis/");
+}
+
+std::string fileSystem::pathToGeneratedMidis(){
+    return std::filesystem::path(pathToResousers() + "generatedMidis/");
+}

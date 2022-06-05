@@ -22,6 +22,10 @@ public:
     void setRoot(std::string path);
     fileSystem(std::string root);
     std::string getRoot();
+    std::string pathToResousers();
+    std::string pathToSynths();
+    std::string pathToMidis();
+    std::string pathToGeneratedMidis();
 };
 
 

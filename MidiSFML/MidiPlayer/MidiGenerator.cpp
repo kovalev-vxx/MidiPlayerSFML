@@ -10,7 +10,7 @@
 
 
 
-std::string MidiGenerator::generateMidi(Song &song){
+std::string MidiGenerator::generateMidi(Song &song, std::string exportDir){
     cxxmidi::File file;
     
     for (SongLine &line: song.getLines()){
@@ -26,7 +26,6 @@ std::string MidiGenerator::generateMidi(Song &song){
         for (auto& noteOff:line.getNotesOff()){
             notes.emplace_back(std::make_pair(noteOff, false));
         }
-        std::cout << notes.size() << std::endl;
         
         std::sort(notes.begin(), notes.end(), [](std::pair<Note, bool> n1, std::pair<Note, bool> n2){
             return n1.first.getAbsoluteTime() < n2.first.getAbsoluteTime();
@@ -60,7 +59,7 @@ std::string MidiGenerator::generateMidi(Song &song){
                                        cxxmidi::Message::kEndOfTrack));
         
     }
-    std::string fileName = "res/generatedMidis/"+song.getTitle()+".mid";
+    std::string fileName = exportDir+song.getTitle()+".mid";
     file.SaveAs(fileName.c_str());
     return fileName;
 }

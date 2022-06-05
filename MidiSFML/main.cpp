@@ -47,38 +47,45 @@ int main(int argc, char const** argv)
 //    return 0;
 
 
-    
+    fileSystem fss;
+    fss.setRoot(argv[0]);
+    std::cout << fss.getRoot() << std::endl;
+    std::cout << fss.pathToResousers() << std::endl;
+    std::cout << fss.pathToSynths() << std::endl;
+    std::cout << fss.pathToMidis() << std::endl;
+    std::cout << fss.pathToGeneratedMidis() << std::endl;
     Parser parser;
     MidiGenerator generator;
+    
+    
+    int WIDHT = 1280;
+    int HEIGHT = 720;
 
-    
-    std::vector<Note> notesOn = {
-        Note("C3", 0), Note("E3", 0), Note("G3",0), Note("G6",500),
-        Note("C4", 1000), Note("E4", 1000), Note("G4",1000),
-        Note("C5", 2000), Note("E5", 2000), Note("G5",2000),
-    };
-    
-
-    std::vector<Note> notesOff = {Note("G6", 2500),
-        Note("C3", 1000), Note("E3", 1000), Note("G3",1000),
-        Note("C4", 2000), Note("E4", 2000), Note("G4",2000),
-        Note("C5", 3000), Note("E5", 3000), Note("G5",3000),
-    };
+    std::vector<sf::RectangleShape> noteRects;
     
     
-    std::cout << notesOn.size() << std::endl;
+    Song test = parser.parseFromMidi("Tchaikovsky__Swan_Lake.mid", fss.pathToMidis());
+    std::cout << test.getTitle() << std::endl;
+    for(auto& line:test.getLines()){
+        for(int i=0; i<line.getNotesOn().size();i++){
+            int midiValue = line.getNotesOn()[i].getMidiValue();
+            int startTime = line.getNotesOn()[i].getAbsoluteTime();
+            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
+            sf::RectangleShape rect;
+            rect.setSize(sf::Vector2f(WIDHT/100, duration));
+            rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, startTime));
+            rect.setFillColor(sf::Color(255, 0, 0));
+            noteRects.push_back(rect);
+        }
+    }
     
-    SongLine sl = SongLine(notesOn, notesOff);
+    std::string genSong = generator.generateMidi(test, fss.pathToGeneratedMidis());
+//    return 0;
     
     
+    sf::RenderWindow sfApp(sf::VideoMode(WIDHT, HEIGHT, 32), "SFML Window");
     
-    
-    Song test = parser.parseFromMidi("res/midis/SHOW.mid");
-    generator.generateMidi(test);
-    return 0;
-    
-    
-    sf::RenderWindow sfApp(sf::VideoMode(800, 600, 32), "SFML Window");
+//    sfApp.getSize()
       fileSystem fs;
       fs.setRoot(argv[0]);
 
@@ -91,9 +98,15 @@ int main(int argc, char const** argv)
     spr_bg.setTexture(tex_bg);
     spr_bg.setPosition(40.0f, 100.0f);
     
+    sf::RectangleShape rect;
+    sf::Vector2f pos(0,0);
+    rect.setPosition(pos);
+    rect.setSize(sf::Vector2f(100,100));
+    
+    
 
 
-    sfmidi::Midi testMidi(fs.getRoot()+"res/synths/Touhou.sf2", fs.getRoot()+"res/midis/tarrega_francisco-recuerdos_de_la_alhambra_3.mid");
+    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", genSong);
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
@@ -184,8 +197,18 @@ int main(int argc, char const** argv)
     }
 
     sfApp.clear();
-
-    sfApp.draw(spr_bg);
+//      sfApp.draw(spr_bg);
+      for (auto& noteRect:noteRects){
+//          std::cout << noteRect.getPosition().x << std::endl;
+          sfApp.draw(noteRect);
+          noteRect.setPosition(noteRect.getPosition().x, noteRect.getPosition().y-10);
+      }
+//      sfApp.draw(rect);
+    
+      
+      
+      pos.x+=10;
+      rect.setPosition(pos);
 
     sfApp.display();
   }

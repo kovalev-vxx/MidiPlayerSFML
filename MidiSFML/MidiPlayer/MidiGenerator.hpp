@@ -13,7 +13,7 @@
 
 class MidiGenerator{
 public:
-    std::string generateMidi(Song &song);
+    std::string generateMidi(Song &song, std::string exportDir);
 };
 
 #endif /* MidiGenerator_hpp */
