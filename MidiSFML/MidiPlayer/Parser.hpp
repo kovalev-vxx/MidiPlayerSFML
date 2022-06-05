@@ -13,7 +13,7 @@
 #include "Song.hpp"
 #include <iostream>
 #include <string>
-#include "MidiFile.h"
+#include "midifile/MidiFile.h"
 
 #include <stdio.h>
 #include <iostream>
@@ -21,8 +21,8 @@
 #include <fstream>
 
 #include "Song.hpp"
-#include "instrument.hpp"
-#include "file.hpp"
+#include "cxxmidi/instrument.hpp"
+#include "cxxmidi/file.hpp"
 
 std::string getContent(std::string line, std::string type);
 
