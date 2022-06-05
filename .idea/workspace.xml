@@ -9,7 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be54c312-85c3-41f3-910b-b37c3aca7075" name="Changes" comment="Change problems" />
+    <list default="true" id="be54c312-85c3-41f3-910b-b37c3aca7075" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +86,7 @@
       <workItem from="1654266685607" duration="1530000" />
       <workItem from="1654450024769" duration="30000" />
       <workItem from="1654454013928" duration="1952000" />
-      <workItem from="1654456000216" duration="2000" />
+      <workItem from="1654456000216" duration="594000" />
     </task>
     <task id="LOCAL-00001" summary="Todo:&#10;Realise to parse tag and body">
       <created>1652802394212</created>
@@ -165,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654455862464</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Some commits">
+      <created>1654456121098</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1654456121098</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +208,7 @@
     <MESSAGE value="commit" />
     <MESSAGE value="pull" />
     <MESSAGE value="Change problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change problems" />
+    <MESSAGE value="Some commits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some commits" />
   </component>
 </project>
