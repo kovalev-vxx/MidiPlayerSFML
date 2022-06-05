@@ -17,7 +17,7 @@
 class Note{
 private:
     int _midiValue;
-    const std::map<std::string, int> NOTES = {
+    std::map<std::string, int> NOTES = {
             {"A", 0},
             {"A#", 1},
             {"B", 2},

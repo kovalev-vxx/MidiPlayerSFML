@@ -97,7 +97,10 @@ Song Parser::parseFromTxt(std::string filePath){
             }
             // For SongLines
             else if (tag.find("line instrument") < tag.size())
-                instrumentId = getInstrumentId(getContent(tag, "1"));
+                // instrumentId = getInstrumentId(getContent(tag, "1"));
+                instrumentId = std::stoi(getContent(tag, "1"));
+            else if (tag == "line")
+                instrumentId = 1;
             else if (tag.find("chord") < tag.size()) {
                 // Create a range notes
                 std::vector<Note> notes;
