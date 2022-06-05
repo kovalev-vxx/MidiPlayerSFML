@@ -1,0 +1,42 @@
+Index: MidiSFML/MidiPlayer/Parser.hpp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\n//  Parser.hpp\n//  MidiSFML\n//\n//  Created by Valery Kovalev on 15.05.2022.\n//  Copyright © 2022 Valery Kovalev. All rights reserved.\n//\n\n#ifndef Parser_hpp\n#define Parser_hpp\n\n#include <stdio.h>\n#include \"Song.hpp\"\n#include <iostream>\n#include <string>\n\nclass Parser{\nprivate:\npublic:\n    Parser();\n    Song parseFromTxt(std::string filePath);\n};\n#endif /* Parser_hpp */\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MidiSFML/MidiPlayer/Parser.hpp b/MidiSFML/MidiPlayer/Parser.hpp
+--- a/MidiSFML/MidiPlayer/Parser.hpp	
++++ b/MidiSFML/MidiPlayer/Parser.hpp	
+@@ -10,14 +10,30 @@
+ #define Parser_hpp
+ 
+ #include <stdio.h>
+-#include "Song.hpp"
+ #include <iostream>
+ #include <string>
++#include <fstream>
++
++#include "Song.hpp"
++
++std::string getBodyOfTag(std::string line) {
++    int charCount;
++    int first;
++    int last;
++
++    first = line.find_first_of('>') + 1;
++    last = line.find_last_of('<');
++    charCount = last - first;
++    return line.substr(first, charCount);
++}
+ 
+ class Parser{
+ private:
++    float _volume = 1.0f;
+ public:
+     Parser();
+     Song parseFromTxt(std::string filePath);
++    void setVolume(float volume);
+ };
++
+ #endif /* Parser_hpp */

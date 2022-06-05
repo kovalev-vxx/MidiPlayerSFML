@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be54c312-85c3-41f3-910b-b37c3aca7075" name="Changes" comment="Change problems" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/MidiSFML/MidiPlayer/Chord.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MidiSFML/MidiPlayer/Note.hpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MidiSFML/MidiPlayer/Note.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MidiSFML/MidiPlayer/Chord.hpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MidiSFML/main.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MidiSFML/MidiPlayer/Parser.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MidiSFML/MidiPlayer/Parser.hpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.4" />
+  </component>
+  <component name="ProjectId" id="29D3GMqh3sBBz25jo5145tU5I1u" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be54c312-85c3-41f3-910b-b37c3aca7075" name="Changes" comment="" />
+      <created>1652633731574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652633731574</updated>
+      <workItem from="1652633733231" duration="9900000" />
+      <workItem from="1652792375005" duration="7325000" />
+      <workItem from="1652813067789" duration="4439000" />
+      <workItem from="1652858244661" duration="8017000" />
+      <workItem from="1652882615125" duration="1253000" />
+      <workItem from="1652943235240" duration="11571000" />
+      <workItem from="1653062343821" duration="6946000" />
+      <workItem from="1653390460183" duration="512000" />
+      <workItem from="1654261037642" duration="4190000" />
+      <workItem from="1654266685607" duration="1530000" />
+      <workItem from="1654450024769" duration="30000" />
+      <workItem from="1654454013928" duration="1952000" />
+      <workItem from="1654456000216" duration="2000" />
+    </task>
+    <task id="LOCAL-00001" summary="Todo:&#10;Realise to parse tag and body">
+      <created>1652802394212</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1652802394212</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Todo:&#10;Realise to parse tag and body">
+      <created>1652817815506</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652817815506</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Todo:&#10;Realise to parse tag and body">
+      <created>1652874746873</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652874746873</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Todo:&#10;Parse pause&#10;Building song&#10;&#10;Realised:&#10;Note(std::string realNote)">
+      <created>1652948132848</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652948132848</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Todo:&#10;Parse pause&#10;Building song&#10;&#10;Realised:&#10;Note(std::string realNote)&#10;Chord(std::vector&lt;Note&gt; notes)">
+      <created>1652970875947</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652970875947</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Realised:&#10;ParseFromTxt">
+      <created>1653068932458</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653068932458</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Realised:&#10;ParseFromTxt">
+      <created>1653069587462</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653069587462</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ParseFromTxt is ready">
+      <created>1654454144267</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654454144267</updated>
+    </task>
+    <task id="LOCAL-00009" summary="commit">
+      <created>1654454709147</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1654454709147</updated>
+    </task>
+    <task id="LOCAL-00010" summary="pull">
+      <created>1654455219607</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654455219607</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Change problems">
+      <created>1654455862464</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654455862464</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Todo:&#10;Realise to parse tag and body" />
+    <MESSAGE value="Todo:&#10;Parse pause&#10;Building song&#10;&#10;Realised:&#10;Note(std::string realNote)" />
+    <MESSAGE value="Todo:&#10;Parse pause&#10;Building song&#10;&#10;Realised:&#10;Note(std::string realNote)&#10;Chord(std::vector&lt;Note&gt; notes)" />
+    <MESSAGE value="Realised:&#10;ParseFromTxt" />
+    <MESSAGE value="ParseFromTxt is ready" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="pull" />
+    <MESSAGE value="Change problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change problems" />
+  </component>
+</project>
