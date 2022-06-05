@@ -34,8 +34,8 @@ private:
     std::string midiName = "res/midis/BOURREE-1.mid";
 public:
     Parser();
-    Song parseFromTxt(std::string filePath);
-//    std::pair<std::map<int, Chord>, std::map<int, Chord>> parseFromMidi(std::string filePath);
+//    Song parseFromTxt(std::string filePath);
+    Song parseFromMidi(std::string filePath);
 
     void setVolumeOfSong(double volume);
 };

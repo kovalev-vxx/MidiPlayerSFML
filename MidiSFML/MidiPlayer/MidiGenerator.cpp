@@ -15,9 +15,8 @@ std::string MidiGenerator::generateMidi(Song &song){
     
     for (SongLine &line: song.getLines()){
         cxxmidi::Track &track = file.AddTrack();
+
         track.push_back(cxxmidi::Event(0, cxxmidi::Message::kProgramChange, cxxmidi::Instrument(line.getInstrumentId())));
-        
-        
         std::vector<std::pair<Note, bool>> notes;
         
         for (auto& noteOn:line.getNotesOn()){
@@ -37,25 +36,13 @@ std::string MidiGenerator::generateMidi(Song &song){
         
         for (int i =0; i<notes.size();i++){
             int dt = notes[i].first.getAbsoluteTime()-lastTime;
-            
-            std::cout << dt << " " << notes[i].first.getMidiValue();
-            
-            if (notes[i].second){
-                std::cout << " ON" << std::endl;
-            } else {
-                std::cout << " OFF" << std::endl;
-            }
-            
-            if (notes[i].first.getAbsoluteTime() != lastTime){
-                std::cout << "Change: " << notes[i].first.getAbsoluteTime() << std::endl;
-            }
-            
+
             if (notes[i].second){
                 track.push_back(
                     cxxmidi::Event(dt,// deltatime
                                    cxxmidi::Message::kNoteOn,     // message type
                                    cxxmidi::Note(notes[i].first.getMidiValue()),// note
-                                   (int)127*line.getVolume()*song.getVolume()));// velocity [0...127]
+                                   (int)127*notes[i].first.getVolume()*line.getVolume()*song.getVolume()));// velocity [0...127]
             } else {
                 track.push_back(
                     cxxmidi::Event(dt,// deltatime
