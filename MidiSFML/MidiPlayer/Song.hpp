@@ -18,15 +18,14 @@
 class Song{
 private:
     std::vector<SongLine> _songLines;
-    int _tempo;
     std::string _title;
     double _volume;
 public:
-    Song(std::vector<SongLine> songLines, int tempo, std::string title, double volume);
-    Song(std::vector<SongLine> songLines, int tempo, double volume);
-    Song(std::vector<SongLine> songLines, int tempo);
+    Song(std::vector<SongLine> songLines, std::string title, double volume);
+    Song(std::vector<SongLine> songLines, std::string title);
+    Song(std::vector<SongLine> songLines, double volume);
+    Song(std::vector<SongLine> songLines);
     std::vector<SongLine> getLines();
-    int getTempo();
     std::string getTitle();
     double getVolume();
     void changeVolume(double value);
