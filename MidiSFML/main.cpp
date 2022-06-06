@@ -64,22 +64,63 @@ int main(int argc, char const** argv)
 
     std::vector<sf::RectangleShape> noteRects;
     
+    struct tNote{
+        int midiValue;
+        int duration;
+        int timeOn;
+        int timeOff;
+        bool played;
+    };
+    
+    std::vector<tNote> notesWithDurations;
+    
+    for(auto& line:test.getLines()){
+        for(int i=0; i<line.getNotesOn().size();i++){
+            tNote n;
+            n.midiValue = line.getNotesOn()[i].getMidiValue();
+            n.timeOn = line.getNotesOn()[i].getAbsoluteTime();
+            n.timeOff = line.getNotesOff()[i].getAbsoluteTime();
+            n.duration = n.timeOff-n.timeOn;
+            n.played = false;
+            notesWithDurations.push_back(n);
+        }
+    }
     
     Song test = parser.parseFromMidi("BOURREE-1.mid", fss.pathToMidis());
     std::cout << test.getTitle() << std::endl;
-    for(auto& line:test.getLines()){
-        for(int i=0; i<line.getNotesOn().size();i++){
-            int midiValue = line.getNotesOn()[i].getMidiValue();
-            int startTime = line.getNotesOn()[i].getAbsoluteTime();
-            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
-            sf::RectangleShape rect;
-            rect.setSize(sf::Vector2f(WIDHT/127, duration));
-            rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, startTime));
-            rect.setFillColor(sf::Color(255, 0, 0));
-            rect.setOutlineColor(sf::Color(0,0,0));
-            noteRects.push_back(rect);
-        }
-    }
+//    for(auto& line:test.getLines()){
+//        for(int i=0; i<line.getNotesOn().size();i++){
+//            int midiValue = line.getNotesOn()[i].getMidiValue();
+//            int startTime = line.getNotesOn()[i].getAbsoluteTime();
+//            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
+//            sf::RectangleShape rect;
+//            rect.setSize(sf::Vector2f(WIDHT/127, duration));
+//            rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, startTime));
+//            rect.setFillColor(sf::Color(255, 0, 0));
+//            rect.setOutlineColor(sf::Color(0,0,0));
+//            noteRects.push_back(rect);
+//        }
+//    }
+    
+
+    
+//    for(auto& line:test.getLines()){
+//        for(int i=0; i<line.getNotesOn().size();i++){
+//            int midiValue = line.getNotesOn()[i].getMidiValue();
+//            int startTime = line.getNotesOn()[i].getAbsoluteTime();
+//            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
+//            sf::RectangleShape rect;
+//            rect.setSize(sf::Vector2f(duration/WIDHT*100, HEIGHT/127));
+//            rect.setPosition(sf::Vector2f(startTime/WIDHT*100, HEIGHT/127*midiValue));
+//            rect.setFillColor(sf::Color(255, 0, 0));
+//            rect.setOutlineColor(sf::Color(0,0,0));
+//            noteRects.push_back(rect);
+//        }
+//    }
+
+    
+    
+    
     
 //    std::string genSong = generator.generateMidi(test, fss.pa);
 //    return 0;
@@ -99,10 +140,6 @@ int main(int argc, char const** argv)
     spr_bg.setTexture(tex_bg);
     spr_bg.setPosition(40.0f, 100.0f);
     
-    sf::RectangleShape rect;
-    sf::Vector2f pos(0,0);
-    rect.setPosition(pos);
-    rect.setSize(sf::Vector2f(100,100));
     sfApp.setFramerateLimit(60);
     
 
@@ -114,7 +151,7 @@ int main(int argc, char const** argv)
     }
     double gain = 1.0;
       testMidi.setGain(gain);
-  testMidi.play();
+//  testMidi.play();
     sf::Clock clock;
     double offset = 0;
     int lastPlayerOffset = 0;
@@ -206,12 +243,36 @@ int main(int argc, char const** argv)
       offset = testMidi.getPlayingOffset().asMilliseconds()-lastPlayerOffset;
       for (auto& noteRect:noteRects){
           sfApp.draw(noteRect);
-          noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-offset));
+//          noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x-offset, noteRect.getPosition().y));
       }
       lastPlayerOffset = testMidi.getPlayingOffset().asMilliseconds();
 
       
-      std::cout << offset << std::endl;
+//      std::cout << testMidi.getPlayingOffset().asMilliseconds() << std::endl;
+//      for(auto& notes:notesWithSamePlayTime){
+//          if(notes.first<=lastPlayerOffset){
+//              std::cout << "TIME: " << notes.first << std::endl;
+//              for(auto& note:notes.second){
+//                  std::cout << "n: " << note.getMidiValue() << std::endl;
+//              }
+//          }
+//      }
+      
+      
+//      for(auto& line:test.getLines()){
+//          for(auto& note: line.getNotesOn()){
+//              if(note.getAbsoluteTime()<=lastPlayerOffset){
+//                  std::cout << "TIME: " << note.getAbsoluteTime() << " " << note.getMidiValue()  << std::endl;
+//              }
+//          }
+//      }
+      
+      for(auto& note:notesWithDurations){
+          if(lastPlayerOffset>=note.timeOn && lastPlayerOffset<=note.timeOff && note.played == false){
+              std::cout << "TIME: " << note.timeOff << " " << note.midiValue   << std::endl;
+              note.played = true;
+          }
+      }
 
 
       sfApp.display();
