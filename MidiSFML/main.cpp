@@ -63,12 +63,9 @@ int main(int argc, char const** argv)
     int HEIGHT = 720;
 
     std::vector<sf::RectangleShape> noteRects;
-    std::chrono::high_resolution_clock::time_point start;
-    std::chrono::high_resolution_clock::time_point end;
-    float fps;
     
     
-    Song test = parser.parseFromMidi("debussy-clair-de-lune.mid", fss.pathToMidis());
+    Song test = parser.parseFromMidi("BOURREE-1.mid", fss.pathToMidis());
     std::cout << test.getTitle() << std::endl;
     for(auto& line:test.getLines()){
         for(int i=0; i<line.getNotesOn().size();i++){
@@ -76,7 +73,7 @@ int main(int argc, char const** argv)
             int startTime = line.getNotesOn()[i].getAbsoluteTime();
             int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
             sf::RectangleShape rect;
-            rect.setSize(sf::Vector2f(WIDHT/100, duration));
+            rect.setSize(sf::Vector2f(WIDHT/127, duration));
             rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, startTime));
             rect.setFillColor(sf::Color(255, 0, 0));
             rect.setOutlineColor(sf::Color(0,0,0));
@@ -94,7 +91,6 @@ int main(int argc, char const** argv)
       fileSystem fs;
       fs.setRoot(argv[0]);
 
-    sfApp.setFramerateLimit(60);
 
     sf::Sprite spr_bg;
 
@@ -111,7 +107,7 @@ int main(int argc, char const** argv)
     
 
 
-    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"debussy-clair-de-lune.mid");
+    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"BOURREE-1.mid");
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
@@ -121,16 +117,9 @@ int main(int argc, char const** argv)
   testMidi.play();
     sf::Clock clock;
     double offset = 0;
-
+    int lastPlayerOffset = 0;
   while (sfApp.isOpen()) {
     sf::Event sfEvent;
-      
-//      float currentTime = clock.restart().asSeconds();
-//        if (currentTime){
-//            double fps = 1 / (currentTime);
-//        } else {
-//            fps = 60;
-//        }
       
     while (sfApp.pollEvent(sfEvent)) {
       if (sfEvent.type == sf::Event::Closed)
@@ -212,20 +201,22 @@ int main(int argc, char const** argv)
     }
       
 
-
+      
     sfApp.clear();
+      offset = testMidi.getPlayingOffset().asMilliseconds()-lastPlayerOffset;
       for (auto& noteRect:noteRects){
           sfApp.draw(noteRect);
           noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-offset));
       }
-      
+      lastPlayerOffset = testMidi.getPlayingOffset().asMilliseconds();
 
       
       std::cout << offset << std::endl;
 
 
       sfApp.display();
-      offset = clock.restart().asMilliseconds();
+      
+      
   }
 
   testMidi.stop();
