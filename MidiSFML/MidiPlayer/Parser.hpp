@@ -13,14 +13,11 @@
 #include "Song.hpp"
 #include <iostream>
 #include <string>
-#include "midifile/MidiFile.h"
-
-#include <stdio.h>
-#include <iostream>
-#include <string>
 #include <fstream>
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
 
-#include "Song.hpp"
+#include "midifile/MidiFile.h"
 #include "cxxmidi/instrument.hpp"
 #include "cxxmidi/file.hpp"
 
@@ -33,7 +30,7 @@ private:
     double _volumeOfSong = 1.0;
 public:
     Parser();
-//    Song parseFromTxt(std::string filePath);
+    Song parseFromTxt(std::string filePath);
     Song parseFromMidi(std::string fileName, std::string fileDir);
 
     void setVolumeOfSong(double volume);
