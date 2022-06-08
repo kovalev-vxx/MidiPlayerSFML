@@ -73,6 +73,13 @@ int main(int argc, char const** argv)
     };
     
     std::vector<tNote> notesWithDurations;
+    std::map<int, int> offsets;
+    int totalDuration = 0;
+    
+    Song test = parser.parseFromMidi("clair_after_gtp.mid", fss.pathToMidis());
+    std::cout << test.getTitle() << std::endl;
+    
+    double coof = 1;
     
     for(auto& line:test.getLines()){
         for(int i=0; i<line.getNotesOn().size();i++){
@@ -82,53 +89,75 @@ int main(int argc, char const** argv)
             n.timeOff = line.getNotesOff()[i].getAbsoluteTime();
             n.duration = n.timeOff-n.timeOn;
             n.played = false;
+            offsets[n.timeOn] = n.duration;
+            if(n.duration<offsets[n.timeOn]){
+                offsets[n.timeOn] = n.duration;
+            }
+            totalDuration+=n.duration;
             notesWithDurations.push_back(n);
         }
     }
     
-    Song test = parser.parseFromMidi("BOURREE-1.mid", fss.pathToMidis());
-    std::cout << test.getTitle() << std::endl;
+    
+    for (auto& n: notesWithDurations){
+        std::cout << "ON: " <<n.timeOn << " V: " << n.midiValue << " D: " << n.duration << " OFFSET: " << offsets[n.timeOn] << std::endl;
+    }
+    
+//
 //    for(auto& line:test.getLines()){
+//        int s = 0;
 //        for(int i=0; i<line.getNotesOn().size();i++){
+//            if (i==0){
+//                s = line.getNotesOn()[0].getAbsoluteTime();
+//            }
 //            int midiValue = line.getNotesOn()[i].getMidiValue();
 //            int startTime = line.getNotesOn()[i].getAbsoluteTime();
 //            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
 //            sf::RectangleShape rect;
-//            rect.setSize(sf::Vector2f(WIDHT/127, duration));
-//            rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, startTime));
+//            rect.setSize(sf::Vector2f(WIDHT/127, duration*HEIGHT/totalDuration*2));
+//            rect.setPosition(sf::Vector2f(WIDHT/127*midiValue, (startTime-s)*HEIGHT/totalDuration*2));
 //            rect.setFillColor(sf::Color(255, 0, 0));
 //            rect.setOutlineColor(sf::Color(0,0,0));
 //            noteRects.push_back(rect);
 //        }
 //    }
     
+    for(auto& note:notesWithDurations){
+        sf::RectangleShape rect;
+        rect.setSize(sf::Vector2f(WIDHT/127, note.duration/2));
+        rect.setPosition(sf::Vector2f(WIDHT/127*note.midiValue, (note.timeOn-notesWithDurations[0].timeOn+HEIGHT/2)));
+        rect.setFillColor(sf::Color(255, 0, 0));
+        rect.setOutlineColor(sf::Color(0,0,0));
+        noteRects.push_back(rect);
+    }
 
     
+    
+    std::cout << totalDuration << std::endl;
 //    for(auto& line:test.getLines()){
 //        for(int i=0; i<line.getNotesOn().size();i++){
 //            int midiValue = line.getNotesOn()[i].getMidiValue();
 //            int startTime = line.getNotesOn()[i].getAbsoluteTime();
 //            int duration = line.getNotesOff()[i].getAbsoluteTime()- line.getNotesOn()[i].getAbsoluteTime();
 //            sf::RectangleShape rect;
-//            rect.setSize(sf::Vector2f(duration/WIDHT*100, HEIGHT/127));
-//            rect.setPosition(sf::Vector2f(startTime/WIDHT*100, HEIGHT/127*midiValue));
+//            rect.setSize(sf::Vector2f(duration, HEIGHT/127));
+//            rect.setPosition(sf::Vector2f(startTime, HEIGHT/127*midiValue));
 //            rect.setFillColor(sf::Color(255, 0, 0));
 //            rect.setOutlineColor(sf::Color(0,0,0));
 //            noteRects.push_back(rect);
 //        }
 //    }
+//
+    
+    sf::RectangleShape line;
+    line.setSize(sf::Vector2f(WIDHT, 5));
+    line.setPosition(sf::Vector2f(0, HEIGHT/2));
+    
 
-    
-    
-    
-    
-//    std::string genSong = generator.generateMidi(test, fss.pa);
-//    return 0;
     
     
     sf::RenderWindow sfApp(sf::VideoMode(WIDHT, HEIGHT, 32), "SFML Window");
     
-//    sfApp.getSize()
       fileSystem fs;
       fs.setRoot(argv[0]);
 
@@ -144,7 +173,7 @@ int main(int argc, char const** argv)
     
 
 
-    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"BOURREE-1.mid");
+    sfmidi::Midi testMidi(fss.pathToSynths()+"Essential Keys-sforzando-v9.6.sf2", fss.pathToMidis()+"clair_after_gtp.mid");
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
@@ -154,7 +183,9 @@ int main(int argc, char const** argv)
 //  testMidi.play();
     sf::Clock clock;
     double offset = 0;
-    int lastPlayerOffset = 0;
+    int lastTimeon = 0;
+    int now = 0;
+    int last = 0;
   while (sfApp.isOpen()) {
     sf::Event sfEvent;
       
@@ -240,44 +271,56 @@ int main(int argc, char const** argv)
 
       
     sfApp.clear();
-      offset = testMidi.getPlayingOffset().asMilliseconds()-lastPlayerOffset;
+      
+      sfApp.draw(line);
+
+
+
+      now = testMidi.getPlayingOffset().asMilliseconds();
+      
+//      for(auto& note:notesWithDurations){
+//          if(now>=note.timeOn && now<=note.timeOff && note.played == false){
+//
+//              int size = 0;
+//              if (note.timeOn != lastTimeon){
+//                  std::cout << "TIME: " << note.timeOff << " " << note.midiValue  << "OFFSET:" << offsets[note.timeOn] << " NEW OFFSER: " << note.timeOff- note.timeOn << std::endl;
+//                  std::cout << "CHANGE" << std::endl;
+//                  offset = offsets[note.timeOn];
+//                  for (auto& noteRect:noteRects){
+////                      std::cout << noteRect.getPosition().x << " " << noteRect.getPosition().y << std::endl;
+////                      std::cout << "NOW: " << now << " LAST: " << last << " dif " << now-last << " y: " << noteRect.getPosition().y << " SIZE:" <<noteRect.getSize().y<< std::endl;
+//                      int dif = now-lastTimeon;
+//                      dif = note.timeOff- note.timeOn;
+//                      size+=noteRect.getSize().y;
+//                      noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-dif));
+//                  }
+//                  lastTimeon = note.timeOn;
+//
+//                  std::cout << "TOTAL-SIZE:" << size << std::endl;
+//              }
+//              note.played = true;
+//
+//          }
+//      }
+      
+      float dt = now-last;
+      std::cout << now-last << std::endl;
       for (auto& noteRect:noteRects){
           sfApp.draw(noteRect);
-//          noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x-offset, noteRect.getPosition().y));
-      }
-      lastPlayerOffset = testMidi.getPlayingOffset().asMilliseconds();
-
-      
-//      std::cout << testMidi.getPlayingOffset().asMilliseconds() << std::endl;
-//      for(auto& notes:notesWithSamePlayTime){
-//          if(notes.first<=lastPlayerOffset){
-//              std::cout << "TIME: " << notes.first << std::endl;
-//              for(auto& note:notes.second){
-//                  std::cout << "n: " << note.getMidiValue() << std::endl;
-//              }
-//          }
-//      }
-      
-      
-//      for(auto& line:test.getLines()){
-//          for(auto& note: line.getNotesOn()){
-//              if(note.getAbsoluteTime()<=lastPlayerOffset){
-//                  std::cout << "TIME: " << note.getAbsoluteTime() << " " << note.getMidiValue()  << std::endl;
-//              }
-//          }
-//      }
-      
-      for(auto& note:notesWithDurations){
-          if(lastPlayerOffset>=note.timeOn && lastPlayerOffset<=note.timeOff && note.played == false){
-              std::cout << "TIME: " << note.timeOff << " " << note.midiValue   << std::endl;
-              note.played = true;
+          if(testMidi.getStatus() == sf::SoundStream::Playing && now>notesWithDurations[0].timeOn){
+//              std::cout << dt << std::endl;
+              noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-dt));
           }
       }
+      
+      if (now != last){
+          last = now;
+      }
+      
+      
 
 
       sfApp.display();
-      
-      
   }
 
   testMidi.stop();
