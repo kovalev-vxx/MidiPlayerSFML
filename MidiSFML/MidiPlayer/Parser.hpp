@@ -33,7 +33,7 @@ private:
     double _volumeOfSong = 1.0;
 public:
     Parser();
-//    Song parseFromTxt(std::string filePath);
+    Song parseFromTxt(std::string filePath);
     Song parseFromMidi(std::string fileName, std::string fileDir);
 
     void setVolumeOfSong(double volume);
