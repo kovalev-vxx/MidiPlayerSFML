@@ -38,6 +38,7 @@
 #include "App/AppStartState.hpp"
 #include "MidiPlayer/Parser.hpp"
 #include <chrono>
+#include <thread>
 
 
 int main(int argc, char const** argv)
@@ -59,8 +60,8 @@ int main(int argc, char const** argv)
     MidiGenerator generator;
     
     
-    int WIDHT = 1280;
-    int HEIGHT = 720;
+    int WIDHT = 1920;
+    int HEIGHT = 1080;
 
     std::vector<sf::RectangleShape> noteRects;
     
@@ -80,43 +81,78 @@ int main(int argc, char const** argv)
 //    Song songFromTxt = parser.parseFromTxt(fss.getRoot()+"song.txt");
 //    generator.generateMidi(songFromTxt, fss.getRoot());
     
-    Song test = parser.parseFromMidi("The Jazz Police.mid", fss.pathToMidis());
+    Song test = parser.parseFromMidi("toto-africa.mid", fss.pathToMidis());
     std::cout << test.getTitle() << std::endl;
     
     double coof = 1;
     
     int ins = 0;
     int ins_cout = test.getLines().size();
+    
+    sf::Clock c;
+    
+    std::cout << "NOTES START: " << c.restart().asMilliseconds() << std::endl;
+
     for(auto& line:test.getLines()){
         
-        for(int i=0; i<line.getNotesOn().size();i++){
+        std::vector<int> timesOff;
+        for (auto& noteOff: line.getNotesOff()){
+            timesOff.push_back(noteOff.getAbsoluteTime());
+        }
+        
+        int note_n = 0;
+        for(auto& noteOn: line.getNotesOn()){
             tNote n;
-            n.midiValue = line.getNotesOn()[i].getMidiValue();
-            n.timeOn = line.getNotesOn()[i].getAbsoluteTime();
-            n.timeOff = line.getNotesOff()[i].getAbsoluteTime();
+            n.midiValue = noteOn.getMidiValue();
+            n.timeOn = noteOn.getAbsoluteTime();
+            n.timeOff = *(timesOff.begin()+note_n);
             n.duration = n.timeOff-n.timeOn;
             n.played = false;
             n.color = sf::Color(230, 255/ins_cout*ins, 255/ins_cout*ins);
             notesWithDurations.push_back(n);
+            note_n+=1;
         }
         ins+=1;
     }
+ 
+    
+
+
+    
+    std::cout << "NOTES END: " << c.restart().asMilliseconds() << std::endl;
+    std::cout << "SORT START: " << c.restart().asMilliseconds() << std::endl;
     
     std::sort(notesWithDurations.begin(), notesWithDurations.end(), [](tNote n1, tNote n2){
         return n1.timeOn < n2.timeOn;
     });
     
-
+    std::cout << "SORT END: " << c.restart().asMilliseconds() << std::endl;
     
+
+    //VERTICAL
+//    for(auto& note:notesWithDurations){
+//        sf::RectangleShape rect;
+//        std::cout << "NOTE: " << note.midiValue << " timeOn: " << note.timeOn << std::endl;
+//        rect.setSize(sf::Vector2f(WIDHT/127, note.duration/2));
+//        rect.setPosition(sf::Vector2f(WIDHT/127*note.midiValue, (note.timeOn-notesWithDurations[0].timeOn+HEIGHT/2)));
+//        rect.setFillColor(note.color);
+//        rect.setOutlineColor(sf::Color(0,0,0));
+//        noteRects.push_back(rect);
+//    }
+    
+    
+    std::cout << "RECT START: " << c.restart().asMilliseconds() << std::endl;
+    //GORIZONTAL
     for(auto& note:notesWithDurations){
         sf::RectangleShape rect;
-        std::cout << "NOTE: " << note.midiValue << " timeOn: " << note.timeOn << std::endl;
-        rect.setSize(sf::Vector2f(WIDHT/127, note.duration/2));
-        rect.setPosition(sf::Vector2f(WIDHT/127*note.midiValue, (note.timeOn-notesWithDurations[0].timeOn+HEIGHT/2)));
+//        std::cout << "NOTE: " << note.midiValue << " timeOn: " << note.timeOn << std::endl;
+        rect.setSize(sf::Vector2f(note.duration/2, HEIGHT/127));
+        rect.setPosition(sf::Vector2f(note.timeOn-notesWithDurations[0].timeOn+WIDHT/2, (HEIGHT/127*note.midiValue)));
         rect.setFillColor(note.color);
         rect.setOutlineColor(sf::Color(0,0,0));
         noteRects.push_back(rect);
     }
+    std::cout << "RECT END: " << c.restart().asMilliseconds() << std::endl;
     
     
     
@@ -125,10 +161,27 @@ int main(int argc, char const** argv)
 
     
     
+    //VERTICAL
+//    sf::RectangleShape line;
+//    line.setSize(sf::Vector2f(WIDHT, 5));
+//    line.setPosition(sf::Vector2f(0, HEIGHT/2));
+//
+//
+//    sf::RectangleShape rectOff;
+//    rectOff.setSize(sf::Vector2f(WIDHT, HEIGHT/2));
+//    rectOff.setPosition(sf::Vector2f(0, 0));
+//    rectOff.setFillColor(sf::Color(127,127,127));
     
+    //GORIZONTAL
     sf::RectangleShape line;
-    line.setSize(sf::Vector2f(WIDHT, 5));
-    line.setPosition(sf::Vector2f(0, HEIGHT/2));
+    line.setSize(sf::Vector2f(5, HEIGHT));
+    line.setPosition(sf::Vector2f(WIDHT/2, 0));
+    
+    
+    sf::RectangleShape rectOff;
+    rectOff.setSize(sf::Vector2f(WIDHT/2, HEIGHT));
+    rectOff.setPosition(sf::Vector2f(0, 0));
+    rectOff.setFillColor(sf::Color(127,127,127));
     
 
     
@@ -152,7 +205,7 @@ int main(int argc, char const** argv)
     
 
 
-    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"The Jazz Police.mid");
+    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"toto-africa.mid");
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
@@ -254,11 +307,19 @@ int main(int argc, char const** argv)
 
       nowTime = testMidi.getPlayingOffset().asMilliseconds();
       int dt = nowTime-lastTime;
+      //VERTICAL
+//      for (auto& noteRect:noteRects){
+//          sfApp.draw(noteRect);
+//          if(testMidi.getStatus() == sf::SoundStream::Playing && nowTime>notesWithDurations[0].timeOn){
+//              noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-dt));
+//          }
+//      }
+      
+      //GORIZONTAL
       for (auto& noteRect:noteRects){
           sfApp.draw(noteRect);
           if(testMidi.getStatus() == sf::SoundStream::Playing && nowTime>notesWithDurations[0].timeOn){
-//              std::cout << dt << std::endl;
-              noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-dt));
+              noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x-dt, noteRect.getPosition().y));
           }
       }
       
@@ -267,7 +328,7 @@ int main(int argc, char const** argv)
       }
       
       
-
+      sfApp.draw(rectOff, sf::BlendMultiply);
 
       sfApp.display();
   }
