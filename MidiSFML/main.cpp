@@ -39,6 +39,7 @@
 #include "MidiPlayer/Parser.hpp"
 #include <chrono>
 #include <thread>
+#include "App/VisAlgorithm.hpp"
 
 
 int main(int argc, char const** argv)
@@ -63,114 +64,19 @@ int main(int argc, char const** argv)
     int WIDHT = 1920;
     int HEIGHT = 1080;
 
-    std::vector<sf::RectangleShape> noteRects;
-    
-    struct tNote{
-        int midiValue;
-        int duration;
-        int timeOn;
-        int timeOff;
-        bool played;
-        sf::Color color;
-    };
-    
-    std::vector<tNote> notesWithDurations;
-    std::map<int, int> offsets;
-    int totalDuration = 0;
     
 //    Song songFromTxt = parser.parseFromTxt(fss.getRoot()+"song.txt");
 //    generator.generateMidi(songFromTxt, fss.getRoot());
     
-    Song test = parser.parseFromMidi("toto-africa.mid", fss.pathToMidis());
+    Song test = parser.parseFromMidi("ezio_family.mid", fss.pathToMidis());
     std::cout << test.getTitle() << std::endl;
     
-    double coof = 1;
-    
-    int ins = 0;
-    int ins_cout = test.getLines().size();
-    
-    sf::Clock c;
-    
-    std::cout << "NOTES START: " << c.restart().asMilliseconds() << std::endl;
-
-    for(auto& line:test.getLines()){
-        
-        std::vector<int> timesOff;
-        for (auto& noteOff: line.getNotesOff()){
-            timesOff.push_back(noteOff.getAbsoluteTime());
-        }
-        
-        int note_n = 0;
-        for(auto& noteOn: line.getNotesOn()){
-            tNote n;
-            n.midiValue = noteOn.getMidiValue();
-            n.timeOn = noteOn.getAbsoluteTime();
-            n.timeOff = *(timesOff.begin()+note_n);
-            n.duration = n.timeOff-n.timeOn;
-            n.played = false;
-            n.color = sf::Color(230, 255/ins_cout*ins, 255/ins_cout*ins);
-            notesWithDurations.push_back(n);
-            note_n+=1;
-        }
-        ins+=1;
-    }
  
     
 
 
-    
-    std::cout << "NOTES END: " << c.restart().asMilliseconds() << std::endl;
-    std::cout << "SORT START: " << c.restart().asMilliseconds() << std::endl;
-    
-    std::sort(notesWithDurations.begin(), notesWithDurations.end(), [](tNote n1, tNote n2){
-        return n1.timeOn < n2.timeOn;
-    });
-    
-    std::cout << "SORT END: " << c.restart().asMilliseconds() << std::endl;
-    
+    VisAlgorith vis = VisAlgorith(test, WIDHT, HEIGHT);
 
-    //VERTICAL
-//    for(auto& note:notesWithDurations){
-//        sf::RectangleShape rect;
-//        std::cout << "NOTE: " << note.midiValue << " timeOn: " << note.timeOn << std::endl;
-//        rect.setSize(sf::Vector2f(WIDHT/127, note.duration/2));
-//        rect.setPosition(sf::Vector2f(WIDHT/127*note.midiValue, (note.timeOn-notesWithDurations[0].timeOn+HEIGHT/2)));
-//        rect.setFillColor(note.color);
-//        rect.setOutlineColor(sf::Color(0,0,0));
-//        noteRects.push_back(rect);
-//    }
-    
-    
-    std::cout << "RECT START: " << c.restart().asMilliseconds() << std::endl;
-    //GORIZONTAL
-    for(auto& note:notesWithDurations){
-        sf::RectangleShape rect;
-//        std::cout << "NOTE: " << note.midiValue << " timeOn: " << note.timeOn << std::endl;
-        rect.setSize(sf::Vector2f(note.duration/2, HEIGHT/127));
-        rect.setPosition(sf::Vector2f(note.timeOn-notesWithDurations[0].timeOn+WIDHT/2, (HEIGHT/127*note.midiValue)));
-        rect.setFillColor(note.color);
-        rect.setOutlineColor(sf::Color(0,0,0));
-        noteRects.push_back(rect);
-    }
-    std::cout << "RECT END: " << c.restart().asMilliseconds() << std::endl;
-    
-    
-    
-    
-    
-
-    
-    
-    //VERTICAL
-//    sf::RectangleShape line;
-//    line.setSize(sf::Vector2f(WIDHT, 5));
-//    line.setPosition(sf::Vector2f(0, HEIGHT/2));
-//
-//
-//    sf::RectangleShape rectOff;
-//    rectOff.setSize(sf::Vector2f(WIDHT, HEIGHT/2));
-//    rectOff.setPosition(sf::Vector2f(0, 0));
-//    rectOff.setFillColor(sf::Color(127,127,127));
     
     //GORIZONTAL
     sf::RectangleShape line;
@@ -205,16 +111,14 @@ int main(int argc, char const** argv)
     
 
 
-    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"toto-africa.mid");
+    sfmidi::Midi testMidi(fss.pathToSynths()+"Touhou.sf2", fss.pathToMidis()+"ezio_family.mid");
     if (testMidi.hasError()) {
       std::cout<<testMidi.getError();
       return 1;
     }
     double gain = 1.0;
       testMidi.setGain(gain);
-//  testMidi.play();
-    int nowTime = 0;
-    int lastTime = 0;
+
   while (sfApp.isOpen()) {
     sf::Event sfEvent;
       
@@ -305,28 +209,11 @@ int main(int argc, char const** argv)
 
 
 
-      nowTime = testMidi.getPlayingOffset().asMilliseconds();
-      int dt = nowTime-lastTime;
-      //VERTICAL
-//      for (auto& noteRect:noteRects){
-//          sfApp.draw(noteRect);
-//          if(testMidi.getStatus() == sf::SoundStream::Playing && nowTime>notesWithDurations[0].timeOn){
-//              noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-dt));
-//          }
-//      }
-      
-      //GORIZONTAL
-      for (auto& noteRect:noteRects){
+      int nowTime = testMidi.getPlayingOffset().asMilliseconds();
+      for (auto& noteRect:vis.updateRects(nowTime)){
           sfApp.draw(noteRect);
-          if(testMidi.getStatus() == sf::SoundStream::Playing && nowTime>notesWithDurations[0].timeOn){
-              noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x-dt, noteRect.getPosition().y));
-          }
       }
-      
-      if (nowTime != lastTime){
-          lastTime = nowTime;
-      }
-      
+
       
       sfApp.draw(rectOff, sf::BlendMultiply);
 

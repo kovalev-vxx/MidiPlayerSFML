@@ -19,6 +19,7 @@
 		313333272831538900EA4DFD /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333252831538900EA4DFD /* Song.cpp */; };
 		3133332A2831564B00EA4DFD /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333282831564B00EA4DFD /* Parser.cpp */; };
 		3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133332B2831574100EA4DFD /* MidiGenerator.cpp */; };
+		3139574628524E98005E2E93 /* VisAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3139574428524E98005E2E93 /* VisAlgorithm.cpp */; };
 		31B409642831912300B161C5 /* MidiEventList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4095A2831912300B161C5 /* MidiEventList.cpp */; };
 		31B409652831912300B161C5 /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4095D2831912300B161C5 /* Options.cpp */; };
 		31B409662831912300B161C5 /* MidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409602831912300B161C5 /* MidiMessage.cpp */; };
@@ -110,6 +111,8 @@
 		313333292831564B00EA4DFD /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
 		3133332B2831574100EA4DFD /* MidiGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiGenerator.cpp; sourceTree = "<group>"; };
 		3133332C2831574100EA4DFD /* MidiGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MidiGenerator.hpp; sourceTree = "<group>"; };
+		3139574428524E98005E2E93 /* VisAlgorithm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VisAlgorithm.cpp; sourceTree = "<group>"; };
+		3139574528524E98005E2E93 /* VisAlgorithm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VisAlgorithm.hpp; sourceTree = "<group>"; };
 		31B409512831655500B161C5 /* debussy-clair-de-lune.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "debussy-clair-de-lune.mid"; sourceTree = "<group>"; };
 		31B409522831665400B161C5 /* Queen - Bohemian Rhapsody.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "Queen - Bohemian Rhapsody.mid"; sourceTree = "<group>"; };
 		31B4095328318B1B00B161C5 /* moonlight_sonata_third_movement.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = moonlight_sonata_third_movement.mid; sourceTree = "<group>"; };
@@ -537,6 +540,8 @@
 				31F76A99283451240007AC27 /* TextureManager.hpp */,
 				31F76A9B2834519D0007AC27 /* AnimationHandler.cpp */,
 				31F76A9C2834519D0007AC27 /* AnimationHandler.hpp */,
+				3139574428524E98005E2E93 /* VisAlgorithm.cpp */,
+				3139574528524E98005E2E93 /* VisAlgorithm.hpp */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 				3133332A2831564B00EA4DFD /* Parser.cpp in Sources */,
 				31F76A8D283406410007AC27 /* AppState.cpp in Sources */,
 				313332B428311C8100EA4DFD /* Loader.cpp in Sources */,
+				3139574628524E98005E2E93 /* VisAlgorithm.cpp in Sources */,
 				31F76A9328340A740007AC27 /* AppStartState.cpp in Sources */,
 				31B409652831912300B161C5 /* Options.cpp in Sources */,
 				31B409662831912300B161C5 /* MidiMessage.cpp in Sources */,
