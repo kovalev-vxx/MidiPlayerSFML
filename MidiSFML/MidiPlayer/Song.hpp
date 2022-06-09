@@ -21,6 +21,7 @@ private:
     std::string _title;
     double _volume;
 public:
+    Song();
     Song(std::vector<SongLine> songLines, std::string title, double volume);
     Song(std::vector<SongLine> songLines, std::string title);
     Song(std::vector<SongLine> songLines, double volume);

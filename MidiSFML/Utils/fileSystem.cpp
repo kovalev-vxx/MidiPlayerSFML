@@ -41,3 +41,10 @@ std::string fileSystem::pathToMidis(){
 std::string fileSystem::pathToGeneratedMidis(){
     return std::filesystem::path(pathToResousers() + "generatedMidis/");
 }
+
+std::vector<std::string> fileSystem::fileList(std::string path){
+    std::vector<std::string> files;
+    for (const auto & entry : std::filesystem::directory_iterator(path))
+        files.push_back(entry.path().filename());
+    return files;
+}

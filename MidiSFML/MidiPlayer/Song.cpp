@@ -8,6 +8,9 @@
 
 #include "Song.hpp"
 
+Song::Song(){
+}
+
 
 Song::Song(std::vector<SongLine> songLines, std::string title, double volume){
     _songLines = songLines;

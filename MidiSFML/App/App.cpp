@@ -13,73 +13,219 @@
 #include <SFML/System.hpp>
  
 #include "App.hpp"
-#include "AppState.hpp"
 
-void App::loadTextures()
-{
-    texmgr.loadTexture("background", "res/bg.png");
-}
- 
-void App::pushState(AppState* state)
-{
-    this->states.push(state);
- 
-    return;
-}
- 
-void App::popState()
-{
-    delete this->states.top();
-    this->states.pop();
- 
-    return;
-}
- 
-void App::changeState(AppState* state)
-{
-    if(!this->states.empty())
-        popState();
-    pushState(state);
- 
-    return;
-}
- 
-AppState* App::peekState()
-{
-    if(this->states.empty()) return nullptr;
-    return this->states.top();
-}
- 
-void App::gameLoop()
-{
-    sf::Clock clock;
- 
-    while(this->window.isOpen())
-    {
-        sf::Time elapsed = clock.restart();
-        float dt = elapsed.asSeconds();
- 
-        if(peekState() == nullptr) continue;
-        peekState()->handleInput();
-        peekState()->update(dt);
-        this->window.clear(sf::Color::Black);
-        peekState()->draw(dt);
-        this->window.display();
-    }
-}
  
 App::App(int argc, char const** argv)
 {
-    this->fs.setRoot(argv[0]);
-    this->texmgr.setFileSystem(this->fs);
-    this->loadTextures();
-    this->window.create(sf::VideoMode(800, 600), "Midi Player");
-    this->window.setFramerateLimit(60);
-    this->background.setTexture(this->texmgr.getRef("background"));
+    _fs.setRoot(argv[0]);
+    _window.create(sf::VideoMode(1920, 1080, 32), "Midi Player");
     
 }
- 
-App::~App()
-{
-    while(!this->states.empty()) popState();
+
+
+void App::config(){
+    std::cout << R"(
+ _______________________________________________________________
+|| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||| | ||| | | ||
+||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_|||_|_|||_|_|_||
+| | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
+|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
+)" << std::endl;
+    std::cout << "Welcome to MidiPlayer!" << std::endl;
+    
+    int choice = 0;
+    std::string playMode;
+    
+    std::cout << "\nCHOOSE: " << std::endl;
+    std::cout << "1. Play from midi" << std::endl;
+    std::cout << "2. Play from txt" << std::endl;
+    
+    
+    while(playMode==""){
+        int key_in;
+        std::cin >> key_in;
+        switch (key_in) {
+            case 1:
+                playMode="midi";
+                break;
+            case 2:
+                playMode="txt";
+                break;
+            default:
+                std::cout << "TRY AGAIN!" << std::endl;
+        }
+    }
+    
+    if(playMode=="midi"){
+        std::cout << "CHOOSE FILE:" << std::endl;
+        auto files = _fs.fileList(_fs.pathToMidis());
+        int start = 1;
+        for (auto& file:files){
+            std::cout << start << ". " << file << std::endl;
+            start++;
+        }
+        std::string file;
+        while (file==""){
+            int key_in = 0;
+            std::cin >> key_in;
+            if(key_in>=1 && key_in<=files.size()){
+                file = files[key_in-1];
+                
+            } else {
+                std::cout << "TRY AGAIN!" << std::endl;
+            }
+        }
+        _filePath = _fs.pathToMidis()+file;
+        _song = _parser.parseFromMidi(file, _fs.pathToMidis());
+    }
+    
+    
+    
+    std::cout << "CHOOSE SYNTH:" << std::endl;
+    int start = 1;
+    auto files = _fs.fileList(_fs.pathToSynths());
+    for (auto& file:files){
+        std::cout << start << ". " << file << std::endl;
+        start++;
+    }
+    while(_synthPath==""){
+        int key_in = 0;
+        std::cin >> key_in;
+        if(key_in>=1 && key_in<=files.size()){
+            _synthPath = _fs.pathToSynths()+files[key_in-1];
+        } else {
+            std::cout << "TRY AGAIN!" << std::endl;
+        }
+    }
+    
+}
+
+
+void App::start(){
+    auto WIDHT = _window.getSize().x;
+    auto HEIGHT = _window.getSize().y;
+    VisAlgorith vis = VisAlgorith(_song, WIDHT, HEIGHT);
+    sf::RectangleShape line;
+    line.setSize(sf::Vector2f(5, HEIGHT));
+    line.setPosition(sf::Vector2f(WIDHT/2, 0));
+    
+    
+    sf::RectangleShape rectOff;
+    rectOff.setSize(sf::Vector2f(WIDHT/2, HEIGHT));
+    rectOff.setPosition(sf::Vector2f(0, 0));
+    rectOff.setFillColor(sf::Color(127,127,127));
+    
+    sfmidi::Midi player(_synthPath, _filePath);
+    if (player.hasError()) {
+      std::cout<<player.getError();
+      return 1;
+    }
+    double gain = 1.0;
+    player.setGain(gain);
+    
+    
+    while (_window.isOpen()) {
+      sf::Event sfEvent;
+        
+          while (_window.pollEvent(sfEvent)) {
+            if (sfEvent.type == sf::Event::Closed)
+              _window.close();
+
+              if (sfEvent.type == sf::Event::KeyPressed) {
+              switch (sfEvent.key.code) {
+                    case sf::Keyboard::Escape:
+                  {
+                    _window.close();
+                    break;
+                  }
+
+                case sf::Keyboard::F12:
+                  {
+                    sf::Image screen = _window.capture();
+                    screen.saveToFile("screenshot.png");
+
+                    break;
+                  }
+
+                  case sf::Keyboard::Up:
+                  {
+                      if (gain<1){
+                          gain+=0.05;
+                          std::cout << gain << std::endl;
+                          player.setGain(gain);
+                      }
+
+                      break;
+
+                  }
+                  case sf::Keyboard::Down:
+                  {
+                      if (gain>=0.05){
+                          gain-=0.05;
+                          std::cout << gain << std::endl;
+                          player.setGain(gain);
+                      }
+                      break;
+
+                  }
+
+                case sf::Keyboard::Left:
+                  {
+                    sf::Int32 playingOffset =
+                      player.getPlayingOffset().asMilliseconds();
+                    if (playingOffset > 4000) {
+                      player.setPlayingOffset
+                        (sf::milliseconds(playingOffset - 4000));
+                    }
+                    else
+                      player.setPlayingOffset(sf::Time::Zero);
+
+                    break;
+                  }
+
+                case sf::Keyboard::Right:
+                  {
+                    sf::Int32 playingOffset =
+                      player.getPlayingOffset().asMilliseconds();
+
+                    player.setPlayingOffset
+                      (sf::milliseconds(playingOffset + 4000));
+
+                    break;
+                  }
+
+                case sf::Keyboard::Space:
+                  {
+                    if (player.getStatus() != sf::SoundStream::Playing)
+                      player.play();
+                    else
+                      player.pause();
+                    break;
+                  }
+              }
+            }
+          }
+        
+
+        
+        _window.clear();
+            
+        _window.draw(line);
+
+
+
+        int nowTime = player.getPlayingOffset().asMilliseconds();
+        for (auto& noteRect:vis.updateRects(nowTime)){
+            _window.draw(noteRect);
+        }
+
+        
+        _window.draw(rectOff, sf::BlendMultiply);
+
+        _window.display();
+    }
+
+    player.stop();
+
+    return 0;
 }

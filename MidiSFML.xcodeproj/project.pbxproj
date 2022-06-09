@@ -27,12 +27,7 @@
 		31B409682831912300B161C5 /* MidiEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409622831912300B161C5 /* MidiEvent.cpp */; };
 		31B409692831912300B161C5 /* MidiFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409632831912300B161C5 /* MidiFile.cpp */; };
 		31B4098828326E2A00B161C5 /* MidiPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4098628326E2A00B161C5 /* MidiPlayer.cpp */; };
-		31F76A8D283406410007AC27 /* AppState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76A8B283406410007AC27 /* AppState.cpp */; };
 		31F76A90283406CE0007AC27 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76A8E283406CE0007AC27 /* App.cpp */; };
-		31F76A9328340A740007AC27 /* AppStartState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76A9128340A740007AC27 /* AppStartState.cpp */; };
-		31F76A9728343B9B0007AC27 /* AppPlayerState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76A9528343B9B0007AC27 /* AppPlayerState.cpp */; };
-		31F76A9A283451240007AC27 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76A98283451240007AC27 /* TextureManager.cpp */; };
-		31F76A9D2834519D0007AC27 /* AnimationHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76A9B2834519D0007AC27 /* AnimationHandler.cpp */; };
 		31F76AA22834609E0007AC27 /* fileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31F76AA02834609E0007AC27 /* fileSystem.cpp */; };
 /* End PBXBuildFile section */
 
@@ -191,18 +186,8 @@
 		31C9198D28350619006E968F /* CELINE_DION_-_All_by_myself.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "CELINE_DION_-_All_by_myself.mid"; sourceTree = "<group>"; };
 		31C9198F28350619006E968F /* Hello.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = Hello.mid; sourceTree = "<group>"; };
 		31C9199028350619006E968F /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		31F76A8B283406410007AC27 /* AppState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppState.cpp; sourceTree = "<group>"; };
-		31F76A8C283406410007AC27 /* AppState.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppState.hpp; sourceTree = "<group>"; };
 		31F76A8E283406CE0007AC27 /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		31F76A8F283406CE0007AC27 /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
-		31F76A9128340A740007AC27 /* AppStartState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppStartState.cpp; sourceTree = "<group>"; };
-		31F76A9228340A740007AC27 /* AppStartState.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppStartState.hpp; sourceTree = "<group>"; };
-		31F76A9528343B9B0007AC27 /* AppPlayerState.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppPlayerState.cpp; sourceTree = "<group>"; };
-		31F76A9628343B9B0007AC27 /* AppPlayerState.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppPlayerState.hpp; sourceTree = "<group>"; };
-		31F76A98283451240007AC27 /* TextureManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
-		31F76A99283451240007AC27 /* TextureManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextureManager.hpp; sourceTree = "<group>"; };
-		31F76A9B2834519D0007AC27 /* AnimationHandler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationHandler.cpp; sourceTree = "<group>"; };
-		31F76A9C2834519D0007AC27 /* AnimationHandler.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AnimationHandler.hpp; sourceTree = "<group>"; };
 		31F76AA02834609E0007AC27 /* fileSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fileSystem.cpp; sourceTree = "<group>"; };
 		31F76AA12834609E0007AC27 /* fileSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = fileSystem.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -528,18 +513,8 @@
 		31F76A8A283406290007AC27 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				31F76A8B283406410007AC27 /* AppState.cpp */,
-				31F76A8C283406410007AC27 /* AppState.hpp */,
 				31F76A8E283406CE0007AC27 /* App.cpp */,
 				31F76A8F283406CE0007AC27 /* App.hpp */,
-				31F76A9128340A740007AC27 /* AppStartState.cpp */,
-				31F76A9228340A740007AC27 /* AppStartState.hpp */,
-				31F76A9528343B9B0007AC27 /* AppPlayerState.cpp */,
-				31F76A9628343B9B0007AC27 /* AppPlayerState.hpp */,
-				31F76A98283451240007AC27 /* TextureManager.cpp */,
-				31F76A99283451240007AC27 /* TextureManager.hpp */,
-				31F76A9B2834519D0007AC27 /* AnimationHandler.cpp */,
-				31F76A9C2834519D0007AC27 /* AnimationHandler.hpp */,
 				3139574428524E98005E2E93 /* VisAlgorithm.cpp */,
 				3139574528524E98005E2E93 /* VisAlgorithm.hpp */,
 			);
@@ -621,24 +596,19 @@
 				313333262831538900EA4DFD /* SongLine.cpp in Sources */,
 				313332B328311C8100EA4DFD /* Music.cpp in Sources */,
 				313332B228311C8100EA4DFD /* Midi.cpp in Sources */,
-				31F76A9728343B9B0007AC27 /* AppPlayerState.cpp in Sources */,
 				31B409682831912300B161C5 /* MidiEvent.cpp in Sources */,
 				31B409672831912300B161C5 /* Binasc.cpp in Sources */,
 				31F76A90283406CE0007AC27 /* App.cpp in Sources */,
 				3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */,
 				31F76AA22834609E0007AC27 /* fileSystem.cpp in Sources */,
 				3133332A2831564B00EA4DFD /* Parser.cpp in Sources */,
-				31F76A8D283406410007AC27 /* AppState.cpp in Sources */,
 				313332B428311C8100EA4DFD /* Loader.cpp in Sources */,
 				3139574628524E98005E2E93 /* VisAlgorithm.cpp in Sources */,
-				31F76A9328340A740007AC27 /* AppStartState.cpp in Sources */,
 				31B409652831912300B161C5 /* Options.cpp in Sources */,
 				31B409662831912300B161C5 /* MidiMessage.cpp in Sources */,
 				3133329D28311C6900EA4DFD /* main.cpp in Sources */,
 				313333212831537800EA4DFD /* Chord.cpp in Sources */,
-				31F76A9D2834519D0007AC27 /* AnimationHandler.cpp in Sources */,
 				313333202831537800EA4DFD /* Note.cpp in Sources */,
-				31F76A9A283451240007AC27 /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

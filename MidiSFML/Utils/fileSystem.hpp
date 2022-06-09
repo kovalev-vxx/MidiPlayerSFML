@@ -13,6 +13,7 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include <vector>
 
 class fileSystem{
 private:
@@ -26,6 +27,8 @@ public:
     std::string pathToSynths();
     std::string pathToMidis();
     std::string pathToGeneratedMidis();
+    std::vector<std::string> fileList(std::string path);
+    
 };
 
 

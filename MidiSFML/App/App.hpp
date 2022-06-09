@@ -12,8 +12,11 @@
 #include <stdio.h>
 #include <stack>
 #include <SFML/Graphics.hpp>
-#include "TextureManager.hpp"
 #include "../Utils/fileSystem.hpp"
+#include "../MidiPlayer/MidiGenerator.hpp"
+#include "../MidiPlayer/Parser.hpp"
+#include "VisAlgorithm.hpp"
+#include "sfMidi.h"
  
 class AppState;
  
@@ -21,25 +24,21 @@ class App
 {
     private:
     
-    void loadTextures();
+    sf::RenderWindow _window;
+    sf::Sprite _background;
+    fileSystem _fs;
+    MidiGenerator _generator;
+    Parser _parser;
+    Song _song;
+    std::string _filePath;
+    std::string _synthPath;
     
     public:
- 
-    std::stack<AppState*> states;
- 
-    sf::RenderWindow window;
-    TextureManager texmgr;
-    sf::Sprite background;
-    fileSystem fs;
- 
-    void pushState(AppState* state);
-    void popState();
-    void changeState(AppState* state);
-    AppState* peekState();
- 
-    void gameLoop();
+    
+    
     App(int argc, char const** argv);
-    ~App();
+    void config();
+    void start();
 };
 
 #endif /* App_hpp */
