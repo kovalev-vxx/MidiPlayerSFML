@@ -1,3 +1,0 @@
-/Users/kovalev.vxx/Code/XCode/MidiSFML/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/kovalev.vxx/Code/XCode/MidiSFML/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/kovalev.vxx/Code/XCode/MidiSFML/cmake-build-debug/CMakeFiles/MidiSFML.dir

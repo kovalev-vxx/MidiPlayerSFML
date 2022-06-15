@@ -12,14 +12,12 @@
 
 fileSystem::fileSystem(std::string root){
     _root = std::filesystem::path(root + "/");
-    
 }
 
 void fileSystem::setRoot(std::string path){
     _root = std::filesystem::path(path).parent_path();
     _root = std::filesystem::path(_root+"/");
 }
-
 
 std::string fileSystem::getRoot(){
     return _root;
@@ -36,6 +34,10 @@ std::string fileSystem::pathToSynths(){
 
 std::string fileSystem::pathToMidis(){
     return std::filesystem::path(pathToResousers() + "midis/");
+}
+
+std::string fileSystem::pathToTxt(){
+    return std::filesystem::path(pathToResousers() + "txt/");
 }
 
 std::string fileSystem::pathToGeneratedMidis(){

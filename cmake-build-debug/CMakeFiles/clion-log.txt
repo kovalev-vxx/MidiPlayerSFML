@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /Users/kovalev.vxx/Code/XCode/MidiSFML Select CMakeLists.txt

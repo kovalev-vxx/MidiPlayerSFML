@@ -79,6 +79,30 @@ void App::config(){
         _song = _parser.parseFromMidi(file, _fs.pathToMidis());
     }
     
+    if(playMode=="txt"){
+        std::cout << "CHOOSE FILE:" << std::endl;
+        auto files = _fs.fileList(_fs.pathToTxt());
+        int start = 1;
+        for (auto& file:files){
+            std::cout << start << ". " << file << std::endl;
+            start++;
+        }
+        std::string file;
+        while (file==""){
+            int key_in = 0;
+            std::cin >> key_in;
+            if(key_in>=1 && key_in<=files.size()){
+                file = files[key_in-1];
+                
+            } else {
+                std::cout << "TRY AGAIN!" << std::endl;
+            }
+        }
+        _song = _parser.parseFromTxt(_fs.pathToTxt()+file);
+        _filePath = _generator.generateMidi(_song, _fs.pathToGeneratedMidis());
+    }
+    
+    
     
     
     std::cout << "CHOOSE SYNTH:" << std::endl;

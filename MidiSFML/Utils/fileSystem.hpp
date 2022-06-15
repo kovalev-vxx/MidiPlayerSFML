@@ -27,8 +27,8 @@ public:
     std::string pathToSynths();
     std::string pathToMidis();
     std::string pathToGeneratedMidis();
+    std::string pathToTxt();
     std::vector<std::string> fileList(std::string path);
-    
 };
 
 

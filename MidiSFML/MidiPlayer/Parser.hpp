@@ -26,8 +26,6 @@
 
 std::string getContent(std::string line, std::string type);
 
-int getInstrumentId(std::string usingInstrumental);
-
 class Parser{
 private:
     double _volumeOfSong = 1.0;
