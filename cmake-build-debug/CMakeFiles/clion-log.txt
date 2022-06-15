@@ -1,4 +1,4 @@
-/home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/ninja/linux/ninja -G Ninja /home/purpleduck/CLionProjects/MidiPlayerSFML
+/home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/ninja/linux/ninja -G Ninja /home/purpleduck/CLionProjects/MidiPlayerSFML2
 -- The C compiler identification is GNU 9.4.0
 -- The CXX compiler identification is GNU 9.4.0
 -- Detecting C compiler ABI info
@@ -14,4 +14,4 @@
 -- Could NOT find FluidSynth (missing: FLUIDSYNTH_LIBRARIES FLUIDSYNTH_INCLUDE_DIR) 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug
+-- Build files have been written to: /home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug

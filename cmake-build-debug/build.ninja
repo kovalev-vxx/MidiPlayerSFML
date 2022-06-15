@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug/
+cmake_ninja_workdir = /home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug && /home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/purpleduck/CLionProjects/MidiPlayerSFML -B/home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug
+  COMMAND = cd /home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug && /home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/purpleduck/CLionProjects/MidiPlayerSFML2 -B/home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,7 +57,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug && /home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug && /home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -72,154 +72,154 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_MidiPlayerSFML: phony || CMakeFiles/MidiPlayerSFML.dir
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Binasc.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/midifile/Binasc.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Binasc.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/midifile/Binasc.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Binasc.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEvent.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/midifile/MidiEvent.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEvent.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/midifile/MidiEvent.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEvent.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEventList.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/midifile/MidiEventList.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEventList.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/midifile/MidiEventList.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiEventList.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiFile.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/midifile/MidiFile.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiFile.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/midifile/MidiFile.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiFile.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiMessage.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/midifile/MidiMessage.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiMessage.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/midifile/MidiMessage.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/MidiMessage.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Options.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/midifile/Options.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Options.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/midifile/Options.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile/Options.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/midifile
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Loader.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi/Loader.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Loader.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi/Loader.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Loader.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Midi.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi/Midi.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Midi.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi/Midi.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Midi.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Music.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi/Music.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Music.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi/Music.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi/Music.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/libs/sfMidi
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Chord.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/Chord.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Chord.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/Chord.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Chord.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiGenerator.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/MidiGenerator.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiGenerator.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/MidiGenerator.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiGenerator.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiPlayer.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/MidiPlayer.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiPlayer.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/MidiPlayer.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/MidiPlayer.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Note.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/Note.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Note.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/Note.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Note.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Parser.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/Parser.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Parser.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/Parser.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Parser.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Song.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/Song.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Song.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/Song.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/Song.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/SongLine.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer/SongLine.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/SongLine.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer/SongLine.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer/SongLine.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/MidiPlayer
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
   TARGET_PDB = MidiPlayerSFML.pdb
 
-build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/main.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/main.cpp || cmake_object_order_depends_target_MidiPlayerSFML
+build CMakeFiles/MidiPlayerSFML.dir/MidiSFML/main.cpp.o: CXX_COMPILER__MidiPlayerSFML_Debug /home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/main.cpp || cmake_object_order_depends_target_MidiPlayerSFML
   DEP_FILE = CMakeFiles/MidiPlayerSFML.dir/MidiSFML/main.cpp.o.d
   FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML/MidiSFML/MidiPlayer
+  INCLUDES = -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/fluidsynth -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/libs/sfMidi -I/home/purpleduck/CLionProjects/MidiPlayerSFML2/MidiSFML/MidiPlayer
   OBJECT_DIR = CMakeFiles/MidiPlayerSFML.dir
   OBJECT_FILE_DIR = CMakeFiles/MidiPlayerSFML.dir/MidiSFML
   TARGET_COMPILE_PDB = CMakeFiles/MidiPlayerSFML.dir/
@@ -251,7 +251,7 @@ build MidiPlayerSFML: CXX_EXECUTABLE_LINKER__MidiPlayerSFML_Debug CMakeFiles/Mid
 # =============================================================================
 
 #############################################
-# Folder: /home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug
+# Folder: /home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug
 
 build all: phony MidiPlayerSFML
 

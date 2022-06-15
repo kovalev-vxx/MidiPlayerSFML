@@ -42,7 +42,7 @@ rule CXX_EXECUTABLE_LINKER__MidiPlayerSFML_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/purpleduck/CLionProjects/MidiPlayerSFML -B/home/purpleduck/CLionProjects/MidiPlayerSFML/cmake-build-debug
+  command = /home/purpleduck/Downloads/CLion-2021.3.4/clion-2021.3.4/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/purpleduck/CLionProjects/MidiPlayerSFML2 -B/home/purpleduck/CLionProjects/MidiPlayerSFML2/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
