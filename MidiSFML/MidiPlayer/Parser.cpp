@@ -34,28 +34,6 @@ std::string getContent(std::string line, std::string type) {
     return line.substr(first, charCount);
 }
 
-int getInstrumentId(std::string usingInstrumental) {
-    cxxmidi::Instrument instrument;
-    std::string lookingInstrumental;
-    int instrumentalId;
-    int i = 0;
-
-    while (true) {
-        lookingInstrumental = instrument.GetName(i);
-
-        std::transform(lookingInstrumental.begin(), lookingInstrumental.end(), lookingInstrumental.begin(), tolower);
-        std::transform(usingInstrumental.begin(), usingInstrumental.end(), usingInstrumental.begin(), tolower);
-
-        if (lookingInstrumental.find(usingInstrumental) < lookingInstrumental.size()) {
-            instrumentalId = i;
-            break;
-        }
-        i++;
-    }
-
-    return instrumentalId;
-}
-
 Parser::Parser() {
 }
 
@@ -101,12 +79,24 @@ Song Parser::parseFromTxt(std::string filePath){
             else if (tag == "line")
                 instrumentId = 1;
             else if (tag.find("chord") < tag.size()) {
-                // listOfNote have a string of notes
+                // The listOfNote has a string of notes
                 std::vector<std::string> listOfNotes;
 
-                boost::split(listOfNotes, body, boost::is_any_of(", "), boost::token_compress_on);
+                std::string note;
+                std::string sep = ", ";
+                size_t sep_size = sep.size();
 
-                // Count a duration for the chord
+                while (true) {
+                    note = body.substr(0, body.find(sep));
+                    if (note.size() != 0)
+                        listOfNotes.push_back(note);
+                    if (note.size() == body.size())
+                        break;
+                    else
+                        body = body.substr(note.size() + sep_size);
+                }
+
+                // Count a duration for a chord
                 int chordDuration;
                 std::string duration = getContent(tag, "1");
 
@@ -118,25 +108,25 @@ Song Parser::parseFromTxt(std::string filePath){
                 else
                     chordDuration = std::stoi(getContent(tag, "1")) * oneDuration;
 
-                // Create a start of SongLine
+                // Create a start of the SongLine
                 if (getContent(tag, "2") == "real_note")
                     // ex: A4 to 69
-                    for (std::string &i : listOfNotes)
+                    for (std::string& i : listOfNotes)
                         notesOn.emplace_back(Note(i, timeForChord)); // double to int
                 else
-                    for (std::string &i : listOfNotes)
+                    for (std::string& i : listOfNotes)
                         notesOn.emplace_back(Note(std::stoi(i), timeForChord));
 
                 timeForChord += chordDuration;
 
-                // Create an end of SongLine
+                // Create an end of the SongLine
                 if (getContent(tag, "2") == "real_note")
                     // ex: A4 to 69
-                    for (std::string &i : listOfNotes)
-                        notesOn.emplace_back(Note(i, timeForChord)); // double to int
+                    for (std::string& i : listOfNotes)
+                        notesOff.emplace_back(Note(i, timeForChord)); // double to int
                 else
-                    for (std::string &i : listOfNotes)
-                        notesOn.emplace_back(Note(std::stoi(i), timeForChord));
+                    for (std::string& i : listOfNotes)
+                        notesOff.emplace_back(Note(std::stoi(i), timeForChord));
             }
             else if (tag.find("pause") < tag.size()) {
                 // Add pause for a SongLine
@@ -158,6 +148,7 @@ Song Parser::parseFromTxt(std::string filePath){
                 songLines.emplace_back(SongLine(notesOn, notesOff, instrumentId));
                 notesOn.clear();
                 notesOff.clear();
+                timeForChord = 0;
             }
         }
 
