@@ -28,6 +28,7 @@ public:
     std::string pathToMidis();
     std::string pathToGeneratedMidis();
     std::string pathToTxt();
+    std::string getFont();
     std::vector<std::string> fileList(std::string path);
 };
 

@@ -19,7 +19,10 @@
 		313333272831538900EA4DFD /* Song.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333252831538900EA4DFD /* Song.cpp */; };
 		3133332A2831564B00EA4DFD /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313333282831564B00EA4DFD /* Parser.cpp */; };
 		3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3133332B2831574100EA4DFD /* MidiGenerator.cpp */; };
-		3139574628524E98005E2E93 /* VisAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3139574428524E98005E2E93 /* VisAlgorithm.cpp */; };
+		3139574628524E98005E2E93 /* HorizontalVisAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3139574428524E98005E2E93 /* HorizontalVisAlgorithm.cpp */; };
+		313A53CC285B30930004990C /* MidiPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313A53CA285B30930004990C /* MidiPlayer.cpp */; };
+		313A53D2285B49EC0004990C /* VerticalVisAlgorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313A53D0285B49EC0004990C /* VerticalVisAlgorithm.cpp */; };
+		313A53D5285B58690004990C /* GUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 313A53D3285B58690004990C /* GUI.cpp */; };
 		31B409642831912300B161C5 /* MidiEventList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4095A2831912300B161C5 /* MidiEventList.cpp */; };
 		31B409652831912300B161C5 /* Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B4095D2831912300B161C5 /* Options.cpp */; };
 		31B409662831912300B161C5 /* MidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31B409602831912300B161C5 /* MidiMessage.cpp */; };
@@ -105,8 +108,15 @@
 		313333292831564B00EA4DFD /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
 		3133332B2831574100EA4DFD /* MidiGenerator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiGenerator.cpp; sourceTree = "<group>"; };
 		3133332C2831574100EA4DFD /* MidiGenerator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MidiGenerator.hpp; sourceTree = "<group>"; };
-		3139574428524E98005E2E93 /* VisAlgorithm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VisAlgorithm.cpp; sourceTree = "<group>"; };
-		3139574528524E98005E2E93 /* VisAlgorithm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VisAlgorithm.hpp; sourceTree = "<group>"; };
+		3139574428524E98005E2E93 /* HorizontalVisAlgorithm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HorizontalVisAlgorithm.cpp; sourceTree = "<group>"; };
+		3139574528524E98005E2E93 /* HorizontalVisAlgorithm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HorizontalVisAlgorithm.hpp; sourceTree = "<group>"; };
+		313A53C8285B2E950004990C /* IVisAlgorithm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IVisAlgorithm.hpp; sourceTree = "<group>"; };
+		313A53CA285B30930004990C /* MidiPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MidiPlayer.cpp; sourceTree = "<group>"; };
+		313A53CB285B30930004990C /* MidiPlayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MidiPlayer.hpp; sourceTree = "<group>"; };
+		313A53D0285B49EC0004990C /* VerticalVisAlgorithm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VerticalVisAlgorithm.cpp; sourceTree = "<group>"; };
+		313A53D1285B49EC0004990C /* VerticalVisAlgorithm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VerticalVisAlgorithm.hpp; sourceTree = "<group>"; };
+		313A53D3285B58690004990C /* GUI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GUI.cpp; sourceTree = "<group>"; };
+		313A53D4285B58690004990C /* GUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GUI.hpp; sourceTree = "<group>"; };
 		3174ABB7285A18D0004133E4 /* song.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = song.txt; sourceTree = "<group>"; };
 		31B409512831655500B161C5 /* debussy-clair-de-lune.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "debussy-clair-de-lune.mid"; sourceTree = "<group>"; };
 		31B409522831665400B161C5 /* Queen - Bohemian Rhapsody.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = "Queen - Bohemian Rhapsody.mid"; sourceTree = "<group>"; };
@@ -358,6 +368,8 @@
 				313333292831564B00EA4DFD /* Parser.hpp */,
 				3133332B2831574100EA4DFD /* MidiGenerator.cpp */,
 				3133332C2831574100EA4DFD /* MidiGenerator.hpp */,
+				313A53CA285B30930004990C /* MidiPlayer.cpp */,
+				313A53CB285B30930004990C /* MidiPlayer.hpp */,
 			);
 			path = MidiPlayer;
 			sourceTree = "<group>";
@@ -518,8 +530,13 @@
 			children = (
 				31F76A8E283406CE0007AC27 /* App.cpp */,
 				31F76A8F283406CE0007AC27 /* App.hpp */,
-				3139574428524E98005E2E93 /* VisAlgorithm.cpp */,
-				3139574528524E98005E2E93 /* VisAlgorithm.hpp */,
+				3139574428524E98005E2E93 /* HorizontalVisAlgorithm.cpp */,
+				3139574528524E98005E2E93 /* HorizontalVisAlgorithm.hpp */,
+				313A53C8285B2E950004990C /* IVisAlgorithm.hpp */,
+				313A53D0285B49EC0004990C /* VerticalVisAlgorithm.cpp */,
+				313A53D1285B49EC0004990C /* VerticalVisAlgorithm.hpp */,
+				313A53D3285B58690004990C /* GUI.cpp */,
+				313A53D4285B58690004990C /* GUI.hpp */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -592,10 +609,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				313A53D2285B49EC0004990C /* VerticalVisAlgorithm.cpp in Sources */,
 				31B409692831912300B161C5 /* MidiFile.cpp in Sources */,
 				31B409642831912300B161C5 /* MidiEventList.cpp in Sources */,
 				313333272831538900EA4DFD /* Song.cpp in Sources */,
 				313333262831538900EA4DFD /* SongLine.cpp in Sources */,
+				313A53CC285B30930004990C /* MidiPlayer.cpp in Sources */,
 				313332B328311C8100EA4DFD /* Music.cpp in Sources */,
 				313332B228311C8100EA4DFD /* Midi.cpp in Sources */,
 				31B409682831912300B161C5 /* MidiEvent.cpp in Sources */,
@@ -603,9 +622,10 @@
 				31F76A90283406CE0007AC27 /* App.cpp in Sources */,
 				3133332D2831574100EA4DFD /* MidiGenerator.cpp in Sources */,
 				31F76AA22834609E0007AC27 /* fileSystem.cpp in Sources */,
+				313A53D5285B58690004990C /* GUI.cpp in Sources */,
 				3133332A2831564B00EA4DFD /* Parser.cpp in Sources */,
 				313332B428311C8100EA4DFD /* Loader.cpp in Sources */,
-				3139574628524E98005E2E93 /* VisAlgorithm.cpp in Sources */,
+				3139574628524E98005E2E93 /* HorizontalVisAlgorithm.cpp in Sources */,
 				31B409652831912300B161C5 /* Options.cpp in Sources */,
 				31B409662831912300B161C5 /* MidiMessage.cpp in Sources */,
 				3133329D28311C6900EA4DFD /* main.cpp in Sources */,

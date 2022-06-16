@@ -1,15 +1,19 @@
 //
-//  VisAlgorithm.cpp
+//  VerticalVisAlgorith.cpp
 //  MidiSFML
 //
-//  Created by Valery Kovalev on 09.06.2022.
+//  Created by Valery Kovalev on 16.06.2022.
 //  Copyright © 2022 Valery Kovalev. All rights reserved.
 //
 
-#include "VisAlgorithm.hpp"
+#include "VerticalVisAlgorithm.hpp"
 
-
-VisAlgorith::VisAlgorith(Song& song, int windowWidth, int windowHeight){
+VerticalVisAlgorithm::VerticalVisAlgorithm(MidiPlayer& player, sf::RenderWindow& window){
+    _window = &window;
+    auto windowHeight = _window->getSize().y;
+    auto windowWidth = _window->getSize().x;
+    _player = &player;
+    
     _nowTime = 0;
     _lastTime = 0;
     _dt = 0;
@@ -25,8 +29,8 @@ VisAlgorith::VisAlgorith(Song& song, int windowWidth, int windowHeight){
     std::vector<tNote> notesWithDurations;
     
     int ins = 0;
-    int ins_cout = song.getLines().size();
-    for(auto& line:song.getLines()){
+    int ins_cout = _player->getSong().getLines().size();
+    for(auto& line:_player->getSong().getLines()){
         
         std::vector<int> timesOff;
         for (auto& noteOff: line.getNotesOff()){
@@ -64,30 +68,43 @@ VisAlgorith::VisAlgorith(Song& song, int windowWidth, int windowHeight){
     
     for(auto& note:notesWithDurations){
         sf::RectangleShape rect;
-        rect.setSize(sf::Vector2f(note.duration/2, windowHeight/127));
-        rect.setPosition(sf::Vector2f(note.timeOn-_start+windowWidth/2, (windowHeight/127*note.midiValue)));
+        rect.setSize(sf::Vector2f(windowWidth/127, note.duration/2));
+        rect.setPosition(sf::Vector2f((windowWidth/127*note.midiValue), note.timeOn-_start+windowHeight/2));
         rect.setFillColor(note.color);
         rect.setOutlineColor(sf::Color(0,0,0));
         _rects.push_back(rect);
     }
+    
+    _separator.setSize(sf::Vector2f(5, windowHeight));
+    _separator.setPosition(sf::Vector2f(windowWidth/2, 0));
+    
+    _separator.setSize(sf::Vector2f(windowWidth, 5));
+    _separator.setPosition(sf::Vector2f(0, windowHeight/2));
+    
+
+    _blendRect.setSize(sf::Vector2f(windowWidth, windowHeight/2));
+    _blendRect.setPosition(sf::Vector2f(0, 0));
+    _blendRect.setFillColor(sf::Color(127,127,127));
 }
 
 
-std::vector<sf::RectangleShape> VisAlgorith::updateRects(int nowTime){
-    _dt = nowTime-_lastTime;
-    if(nowTime>=_start){
+void VerticalVisAlgorithm::draw(){
+    _nowTime = _player->getPlayingOffset().asMilliseconds();
+    
+    _dt = _nowTime-_lastTime;
+    if(_nowTime>=_start){
         for (auto& noteRect:_rects){
-            noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x-_dt, noteRect.getPosition().y));
+            noteRect.setPosition(sf::Vector2f(noteRect.getPosition().x, noteRect.getPosition().y-_dt));
         }
     }
-    if (nowTime != _lastTime){
-        _lastTime = nowTime;
+    if (_nowTime != _lastTime){
+        _lastTime = _nowTime;
     }
-    return _rects;
+    
+    for (auto& noteRect:_rects){
+        _window->draw(noteRect);
+    }
+    
+    _window->draw(_separator);
+    _window->draw(_blendRect, sf::BlendMultiply);
 }
-
-std::vector<sf::RectangleShape> VisAlgorith::getRects(){
-    return _rects;
-}
-
-

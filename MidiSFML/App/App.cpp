@@ -75,8 +75,9 @@ void App::config(){
                 std::cout << "TRY AGAIN!" << std::endl;
             }
         }
-        _filePath = _fs.pathToMidis()+file;
-        _song = _parser.parseFromMidi(file, _fs.pathToMidis());
+        _fileName = file;
+        _fileDir = _fs.pathToMidis();
+        _song = _parser.parseFromMidi(_fileName, _fileDir);
     }
     
     if(playMode=="txt"){
@@ -99,7 +100,10 @@ void App::config(){
             }
         }
         _song = _parser.parseFromTxt(_fs.pathToTxt()+file);
-        _filePath = _generator.generateMidi(_song, _fs.pathToGeneratedMidis());
+        std::filesystem::path path = _generator.generateMidi(_song, _fs.pathToGeneratedMidis());
+        _fileName = path.filename();
+        _fileDir = path.parent_path();
+        _fileDir+="/";
     }
     
     
@@ -122,24 +126,40 @@ void App::config(){
         }
     }
     
+    std::cout << "\nCHOOSE: " << std::endl;
+    std::cout << "1. Vertical mode" << std::endl;
+    std::cout << "2. Horizontal mode" << std::endl;
+    
+    
+    while(_visMode==""){
+        int key_in;
+        std::cin >> key_in;
+        switch (key_in) {
+            case 1:
+                _visMode="ver";
+                break;
+            case 2:
+                _visMode="hor";
+                break;
+            default:
+                std::cout << "TRY AGAIN!" << std::endl;
+        }
+    }
 }
 
 
 void App::start(){
-    auto WIDHT = _window.getSize().x;
-    auto HEIGHT = _window.getSize().y;
-    VisAlgorith vis = VisAlgorith(_song, WIDHT, HEIGHT);
-    sf::RectangleShape line;
-    line.setSize(sf::Vector2f(5, HEIGHT));
-    line.setPosition(sf::Vector2f(WIDHT/2, 0));
+    sf::Font font;
+    if (!font.loadFromFile(_fs.getFont()))
+    {
+        std::cout << "Font error";
+        return 1;
+    }
+    MidiPlayer player = MidiPlayer(_synthPath, _fileDir, _fileName);
+    GUI gui = GUI(player, _window, font);
+    HorizontalVisAlgorithm h_vis = HorizontalVisAlgorithm(player, _window);
+    VerticalVisAlgorithm v_vis = VerticalVisAlgorithm(player, _window);
     
-    
-    sf::RectangleShape rectOff;
-    rectOff.setSize(sf::Vector2f(WIDHT/2, HEIGHT));
-    rectOff.setPosition(sf::Vector2f(0, 0));
-    rectOff.setFillColor(sf::Color(127,127,127));
-    
-    sfmidi::Midi player(_synthPath, _filePath);
     if (player.hasError()) {
       std::cout<<player.getError();
       return 1;
@@ -193,31 +213,6 @@ void App::start(){
 
                   }
 
-                case sf::Keyboard::Left:
-                  {
-                    sf::Int32 playingOffset =
-                      player.getPlayingOffset().asMilliseconds();
-                    if (playingOffset > 4000) {
-                      player.setPlayingOffset
-                        (sf::milliseconds(playingOffset - 4000));
-                    }
-                    else
-                      player.setPlayingOffset(sf::Time::Zero);
-
-                    break;
-                  }
-
-                case sf::Keyboard::Right:
-                  {
-                    sf::Int32 playingOffset =
-                      player.getPlayingOffset().asMilliseconds();
-
-                    player.setPlayingOffset
-                      (sf::milliseconds(playingOffset + 4000));
-
-                    break;
-                  }
-
                 case sf::Keyboard::Space:
                   {
                     if (player.getStatus() != sf::SoundStream::Playing)
@@ -233,19 +228,13 @@ void App::start(){
 
         
         _window.clear();
-            
-        _window.draw(line);
-
-
-
-        int nowTime = player.getPlayingOffset().asMilliseconds();
-        for (auto& noteRect:vis.updateRects(nowTime)){
-            _window.draw(noteRect);
+        if(_visMode=="ver"){
+            v_vis.draw();
         }
-
-        
-        _window.draw(rectOff, sf::BlendMultiply);
-
+        if(_visMode=="hor"){
+            h_vis.draw();
+        }
+        gui.draw();
         _window.display();
     }
 

@@ -10,13 +10,15 @@
 #define App_hpp
 
 #include <stdio.h>
-#include <stack>
 #include <SFML/Graphics.hpp>
 #include "../Utils/fileSystem.hpp"
 #include "../MidiPlayer/MidiGenerator.hpp"
-#include "../MidiPlayer/Parser.hpp"
-#include "VisAlgorithm.hpp"
-#include "sfMidi.h"
+#include "HorizontalVisAlgorithm.hpp"
+#include "VerticalVisAlgorithm.hpp"
+#include "../MidiPlayer/MidiPlayer.hpp"
+#include <filesystem>
+#include "IVisAlgorithm.hpp"
+#include "GUI.hpp"
  
 class AppState;
  
@@ -30,7 +32,9 @@ class App
     MidiGenerator _generator;
     Parser _parser;
     Song _song;
-    std::string _filePath;
+    std::string _visMode;
+    std::string _fileName;
+    std::string _fileDir;
     std::string _synthPath;
     
     public:

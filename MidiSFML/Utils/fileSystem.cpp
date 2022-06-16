@@ -40,6 +40,10 @@ std::string fileSystem::pathToTxt(){
     return std::filesystem::path(pathToResousers() + "txt/");
 }
 
+std::string fileSystem::getFont(){
+    return std::filesystem::path(pathToResousers()+"fonts/font.ttf");
+}
+
 std::string fileSystem::pathToGeneratedMidis(){
     return std::filesystem::path(pathToResousers() + "generatedMidis/");
 }
