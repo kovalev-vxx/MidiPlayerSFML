@@ -165,7 +165,6 @@ Song Parser::parseFromTxt(std::string filePath){
 
 Song Parser::parseFromMidi(std::string fileName, std::string fileDir){
     smf::MidiFile midifile;
-    std::cout << fileDir+fileName << std::endl;
     midifile.read(fileDir+fileName);
     midifile.doTimeAnalysis();
     midifile.linkNotePairs();
