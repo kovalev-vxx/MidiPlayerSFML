@@ -8,20 +8,42 @@
 
 #include "Song.hpp"
 
+Song::Song(){
+}
 
-Song::Song(std::vector<SongLine> songLines, int tempo, std::string title, double volume){
+
+Song::Song(std::vector<SongLine> songLines, std::string title, double volume){
     _songLines = songLines;
-    _tempo = tempo;
     _title = title;
+    if(volume<0 | volume>1){
+        throw std::invalid_argument("The volume must be between 0 and 1");
+    }
+    _volume = volume;
+}
+
+Song::Song(std::vector<SongLine> songLines, double volume){
+    _songLines = songLines;
+    _title = "Untitle";
+    if(volume<0 | volume>1){
+        throw std::invalid_argument("The volume must be between 0 and 1");
+    }
+    _volume = volume;
+}
+
+Song::Song(std::vector<SongLine> songLines, std::string title){
+    _songLines = songLines;
+    _title = title;
+    _volume = 1;
+}
+
+Song::Song(std::vector<SongLine> songLines){
+    _songLines = songLines;
+    _title = "Untitle";
     _volume = 1;
 }
 
 std::vector<SongLine> Song::getLines(){
     return _songLines;
-}
-
-int Song::getTempo(){
-    return _tempo;
 }
 
 std::string Song::getTitle(){

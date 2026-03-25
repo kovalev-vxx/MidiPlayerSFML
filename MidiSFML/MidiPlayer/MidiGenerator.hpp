@@ -1,20 +1,19 @@
-//
-//  MidiGenerator.hpp
-//  MidiSFML
-//
-//  Created by Valery Kovalev on 15.05.2022.
-//  Copyright © 2022 Valery Kovalev. All rights reserved.
-//
-
 #ifndef MidiGenerator_hpp
 #define MidiGenerator_hpp
 
 #include <stdio.h>
 #include "Song.hpp"
+#include "file.hpp"
+#include <iostream>
+#include <string>
+#include "note.hpp"
+#include "message.hpp"
+#include "instrument.hpp"
+
 
 class MidiGenerator{
 public:
-    void generateMidi(Song song);
+    std::string generateMidi(Song &song, std::string exportDir);
 };
 
 #endif /* MidiGenerator_hpp */

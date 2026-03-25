@@ -1,3 +1,15 @@
+# Build
+build/
+
+# IDE / OS
+.DS_Store
+*.xcodeproj/xcuserdata/
+*.xcworkspace/
+.idea/
+.vscode/
+*.swp
+*~
+
 # Prerequisites
 *.d
 
@@ -10,11 +22,6 @@
 # Precompiled Headers
 *.gch
 *.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
 
 # Fortran module files
 *.mod

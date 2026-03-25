@@ -1,0 +1,40 @@
+---SONG FILE---
+<head>
+    <title>The Imperial March</title>
+    <tempo>120</tempo>>
+</head>
+
+<lines>
+    <line>
+        <chord duration="1" mode="real_note">A3</chord>
+        <chord duration="1" mode="real_note">A3</chord>
+        <chord duration="1" mode="real_note">A3</chord>
+        <chord duration="1/2" mode="real_note">F2</chord>
+        <chord duration="1/2" mode="real_note">C3</chord>
+        <chord duration="1" mode="real_note">A3</chord>
+        <chord duration="1/2" mode="real_note">F2</chord>
+        <chord duration="1/2" mode="real_note">C3</chord>
+        <chord duration="2" mode="real_note">A3</chord>
+        <chord duration="1" mode="real_note">E3</chord>
+        <chord duration="1" mode="real_note">E3</chord>
+        <chord duration="1" mode="real_note">E3</chord>
+        <chord duration="1/2" mode="real_note">F3</chord>
+        <chord duration="1/2" mode="real_note">C3</chord>
+        <chord duration="1" mode="real_note">G#2</chord>
+        <chord duration="1/2" mode="real_note">F2</chord>
+        <chord duration="1/2" mode="real_note">C3</chord>
+        <chord duration="2" mode="real_note">A3</chord>
+    </line>
+
+    <line>
+        <chord duration="3" mode="real_note">A1, C2, E2</chord>
+        <chord duration="1" mode="real_note">F2, G#2, B2</chord>
+        <chord duration="1" mode="real_note">A1, C2, E2</chord>
+        <chord duration="1" mode="real_note">F2, G#2, B2</chord>
+        <chord duration="5" mode="real_note">A1, C2, E2</chord>
+        <chord duration="3" mode="real_note">F2, G#2, B2</chord>
+        <chord duration="2" mode="real_note">A1, C2, E2</chord>
+    </line>
+
+
+</lines>
