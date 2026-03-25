@@ -153,7 +153,7 @@ void App::start(){
     if (!font.loadFromFile(_fs.getFont()))
     {
         std::cout << "Font error";
-        return 1;
+        return;
     }
     MidiPlayer player = MidiPlayer(_synthPath, _fileDir, _fileName);
     GUI gui = GUI(player, _window, font);
@@ -162,7 +162,7 @@ void App::start(){
     
     if (player.hasError()) {
       std::cout<<player.getError();
-      return 1;
+      return;
     }
     double gain = 1.0;
     player.setGain(gain);
@@ -239,6 +239,4 @@ void App::start(){
     }
 
     player.stop();
-
-    return 0;
 }
