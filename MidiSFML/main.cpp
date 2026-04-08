@@ -5,6 +5,5 @@
 int main(int argc, char const** argv)
 {
     App app = App(argc, argv);
-    app.config();
-    app.start();
+    app.run();
 }

@@ -19,30 +19,39 @@
 #include <filesystem>
 #include "IVisAlgorithm.hpp"
 #include "GUI.hpp"
- 
-class AppState;
- 
+#include "Menu.hpp"
+#include <memory>
+
+enum class AppState {
+    MENU,
+    PLAYING
+};
+
 class App
 {
     private:
-    
+
     sf::RenderWindow _window;
-    sf::Sprite _background;
+    sf::Font _font;
     fileSystem _fs;
-    MidiGenerator _generator;
-    Parser _parser;
-    Song _song;
+
+    AppState _state;
+    std::unique_ptr<Menu> _menu;
+
+    std::unique_ptr<MidiPlayer> _player;
+    std::unique_ptr<GUI> _gui;
+    std::unique_ptr<HorizontalVisAlgorithm> _hVis;
+    std::unique_ptr<VerticalVisAlgorithm> _vVis;
     std::string _visMode;
-    std::string _fileName;
-    std::string _fileDir;
-    std::string _synthPath;
-    
+    double _gain;
+
+    void startPlayback(const MenuResult& result);
+    void stopPlayback();
+
     public:
-    
-    
+
     App(int argc, char const** argv);
-    void config();
-    void start();
+    void run();
 };
 
 #endif /* App_hpp */
