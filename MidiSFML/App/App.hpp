@@ -15,6 +15,7 @@
 #include "../MidiPlayer/MidiGenerator.hpp"
 #include "HorizontalVisAlgorithm.hpp"
 #include "VerticalVisAlgorithm.hpp"
+#include "ThreeDVisAlgorithm.hpp"
 #include "../MidiPlayer/MidiPlayer.hpp"
 #include <filesystem>
 #include "IVisAlgorithm.hpp"
@@ -42,6 +43,7 @@ class App
     std::unique_ptr<GUI> _gui;
     std::unique_ptr<HorizontalVisAlgorithm> _hVis;
     std::unique_ptr<VerticalVisAlgorithm> _vVis;
+    std::unique_ptr<ThreeDVisAlgorithm> _3dVis;
     std::string _visMode;
     double _gain;
 

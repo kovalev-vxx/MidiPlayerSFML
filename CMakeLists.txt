@@ -51,6 +51,7 @@ set(SOURCES
     MidiSFML/App/Menu.cpp
     MidiSFML/App/HorizontalVisAlgorithm.cpp
     MidiSFML/App/VerticalVisAlgorithm.cpp
+    MidiSFML/App/ThreeDVisAlgorithm.cpp
     MidiSFML/MidiPlayer/Chord.cpp
     MidiSFML/MidiPlayer/MidiGenerator.cpp
     MidiSFML/MidiPlayer/MidiPlayer.cpp

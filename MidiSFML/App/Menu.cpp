@@ -110,6 +110,7 @@ void Menu::loadScreen() {
             _title = "CHOOSE VISUALIZATION";
             _items.push_back("Vertical mode");
             _items.push_back("Horizontal mode");
+            _items.push_back("3D mode");
             break;
 
         case MenuScreen::DONE:
@@ -150,7 +151,9 @@ void Menu::selectItem() {
             break;
 
         case MenuScreen::VIS_MODE:
-            _result.visMode = (_selectedIndex == 0) ? "ver" : "hor";
+            if (_selectedIndex == 0)      _result.visMode = "ver";
+            else if (_selectedIndex == 1) _result.visMode = "hor";
+            else                          _result.visMode = "3d";
             _result.ready = true;
             _screen = MenuScreen::DONE;
             break;

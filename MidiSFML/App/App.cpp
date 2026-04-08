@@ -42,6 +42,7 @@ void App::startPlayback(const MenuResult& result) {
     _gui = std::make_unique<GUI>(*_player, _window, _font);
     _hVis = std::make_unique<HorizontalVisAlgorithm>(*_player, _window);
     _vVis = std::make_unique<VerticalVisAlgorithm>(*_player, _window);
+    _3dVis = std::make_unique<ThreeDVisAlgorithm>(*_player, _window);
     _visMode = result.visMode;
 
     _gain = 1.0;
@@ -58,6 +59,7 @@ void App::stopPlayback() {
     _gui.reset();
     _hVis.reset();
     _vVis.reset();
+    _3dVis.reset();
     _menu->reset();
     _state = AppState::MENU;
 }
@@ -141,6 +143,9 @@ void App::run() {
             }
             if (_visMode == "hor") {
                 _hVis->draw();
+            }
+            if (_visMode == "3d") {
+                _3dVis->draw();
             }
             _gui->draw();
         }
